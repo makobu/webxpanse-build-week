@@ -54,10 +54,13 @@ Codex with GPT-5.6 was used for the Build Week implementation, debugging, focuse
 Requirements: PHP 8.1+, MySQL 8+, Composer, and Apache or another web server configured for the `public/` directory.
 
 ```bash
+cp .env.example .env
 composer install
 php database/migrations/migrate.php
 php scripts/create_admin_user.php
 ```
+
+On Windows PowerShell, use `Copy-Item .env.example .env` instead of `cp`. Create the MySQL database named in `.env` before running migrations.
 
 With this repository at `C:\xampp\htdocs\crm`, open:
 
@@ -66,6 +69,16 @@ http://localhost/crm/public/
 ```
 
 AI configuration is workspace-scoped. Save and enable an OpenAI-compatible provider in workspace Settings. Official OpenAI endpoints can use the Responses API path in `AIService`.
+
+## Create the judging workspace
+
+After creating an owner user, generate the isolated, simulation-first judging workspace with:
+
+```bash
+php scripts/create_build_week_demo.php --presenter-email=owner@example.com --ttl-hours=24
+```
+
+The command prints a one-use magic-login URL plus temporary credentials. Open the URL in the same local installation. The resulting workspace has complete founder context, three active deals, no false won deals, AI Coach enabled for the presentation only, and a dated outreach commitment. It expires automatically and does not arm live message delivery.
 
 ## Focused verification
 
