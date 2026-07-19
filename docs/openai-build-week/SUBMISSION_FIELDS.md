@@ -1,0 +1,49 @@
+# Final Devpost field package
+
+Live requirements verified July 19, 2026 for OpenAI Build Week (`challenge_slug: openai`). The project page is `WebXpanse - Clarity`, Devpost project ID `1349031`.
+
+## Deliverables
+
+- Project: `1349031`
+- Category: `Work & Productivity`
+- Video: public YouTube URL, under three minutes
+- Website: not required
+- ZIP file: not required
+
+## Required custom answers
+
+| Field ID | Devpost field | Prepared value |
+| --- | --- | --- |
+| `27945` | Submitter Type | `Individual` |
+| `27946` | Country of Residence | **[CONFIRM COUNTRY; use `Kenya` only if correct]** |
+| `27947` | Category | `Work & Productivity` |
+| `27948` | Code repository URL | **[ADD JUDGE-ACCESSIBLE REPOSITORY URL]** |
+| `27950` | `/feedback` Session ID | **[ADD CODEX FEEDBACK SESSION ID]** |
+
+## Optional judge-testing field (`27949`)
+
+Use this after the repository URL is available:
+
+> Follow the OpenAI Build Week README in the repository. After installation and migrations, create the isolated judging workspace with `php scripts/create_build_week_demo.php --presenter-email=YOUR_OWNER_EMAIL --ttl-hours=24`. The command prints a one-use magic-login URL and temporary credentials. The workspace is simulation-first, does not arm live message delivery, and expires automatically. The public video demonstrates the same flow.
+
+Field `27951` is not applicable because WebXpanse is submitted as a Work & Productivity application, not a plugin or developer tool.
+
+## Final submission payload template
+
+```json
+{
+  "challenge_slug": "openai",
+  "project": "1349031",
+  "video_url": "REPLACE_WITH_PUBLIC_YOUTUBE_URL",
+  "custom_answers": [
+    {"submission_field_id": 27945, "value": "Individual"},
+    {"submission_field_id": 27946, "value": ["REPLACE_WITH_CONFIRMED_COUNTRY"]},
+    {"submission_field_id": 27947, "value": "Work & Productivity"},
+    {"submission_field_id": 27948, "value": "REPLACE_WITH_REPOSITORY_URL"},
+    {"submission_field_id": 27949, "value": "REPLACE_WITH_THE_JUDGE_TESTING_TEXT_ABOVE"},
+    {"submission_field_id": 27950, "value": "REPLACE_WITH_FEEDBACK_SESSION_ID"}
+  ]
+}
+```
+
+Do not call the final submission action while any `REPLACE_` or bracketed placeholder remains.

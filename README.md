@@ -12,7 +12,7 @@ The Build Week entry focuses on a narrow daily loop for solo founders:
 4. Connect the founder's decision to a dated commitment and CRM action.
 5. Report only verified automation outcomes.
 
-Start with the [Build Week submission brief](docs/openai-build-week/README.md), [change log](docs/openai-build-week/BUILD_WEEK_CHANGELOG.md), [three-minute demo script](docs/openai-build-week/DEMO_SCRIPT.md), and [Devpost copy](docs/openai-build-week/DEVPOST_SUBMISSION.md).
+Start with the [Build Week submission brief](docs/openai-build-week/README.md), [change log](docs/openai-build-week/BUILD_WEEK_CHANGELOG.md), [three-minute demo script](docs/openai-build-week/DEMO_SCRIPT.md), [Devpost copy](docs/openai-build-week/DEVPOST_SUBMISSION.md), and [final field package](docs/openai-build-week/SUBMISSION_FIELDS.md).
 
 ![Status](https://img.shields.io/badge/status-production--ready-green)
 ![PHP Version](https://img.shields.io/badge/PHP-8.1%2B-blue)

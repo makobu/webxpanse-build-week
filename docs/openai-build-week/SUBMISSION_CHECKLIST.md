@@ -40,6 +40,7 @@ Deadline: July 22, 2026 at 3:00 AM East Africa Time. Treat July 21 as the final 
 ## Devpost
 
 - [ ] Replace all bracketed placeholders in `DEVPOST_SUBMISSION.md`.
+- [ ] Replace all placeholders in `SUBMISSION_FIELDS.md` and confirm the field IDs still match the live form.
 - [ ] Confirm founder name: Dennis Makobu.
 - [ ] Confirm solo submitter type.
 - [ ] Confirm country of residence and eligibility before entering it.
