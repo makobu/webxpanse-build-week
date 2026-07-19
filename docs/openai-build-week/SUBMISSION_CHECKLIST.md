@@ -16,11 +16,11 @@ Deadline: July 22, 2026 at 3:00 AM East Africa Time. Treat July 21 as the final 
 ## Repository
 
 - [x] Create a public GitHub repository or make the intended repository public.
-- [ ] Add the repository URL to all Build Week documents and Devpost.
-- [ ] Confirm `.env`, credentials, uploads, logs, exports, backups, and local archives are not published.
-- [ ] Verify a fresh clone can install dependencies and reach the documented setup path.
-- [ ] Run `php scripts/create_build_week_demo.php --help` and create one fresh judging workspace from the published repository.
-- [ ] Confirm the Build Week commit window is visible in public history.
+- [x] Add the repository URL to all Build Week documents and Devpost.
+- [x] Confirm `.env`, credentials, uploads, logs, exports, backups, and local archives are not published.
+- [x] Verify a fresh clone can install dependencies and reach the documented setup path.
+- [x] Run `php scripts/create_build_week_demo.php --help` and create one fresh judging workspace from the published repository.
+- [x] Confirm the Build Week commit window is visible in public history.
 
 ## Video
 
