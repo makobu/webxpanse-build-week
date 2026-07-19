@@ -33,7 +33,7 @@ Deadline: July 22, 2026 at 3:00 AM East Africa Time. Treat July 21 as the final 
 
 ## OpenAI feedback
 
-- [ ] Submit product feedback through the required OpenAI `/feedback` flow.
+- [x] Submit product feedback through the required OpenAI `/feedback` flow.
 - [x] Save the returned feedback ID: `019f74ad-26fd-7713-a474-cb83d9cb101e`.
 - [x] Add the feedback ID to the repository docs.
 
@@ -41,8 +41,8 @@ Deadline: July 22, 2026 at 3:00 AM East Africa Time. Treat July 21 as the final 
 
 - [ ] Replace all bracketed placeholders in `DEVPOST_SUBMISSION.md`.
 - [ ] Replace all placeholders in `SUBMISSION_FIELDS.md` and confirm the field IDs still match the live form.
-- [ ] Confirm founder name: Dennis Makobu.
-- [ ] Confirm solo submitter type.
+- [x] Confirm founder name: Dennis Makobu.
+- [x] Confirm solo submitter type.
 - [x] Confirm country of residence: Kenya.
 - [ ] Select Work & Productivity.
 - [ ] Add technologies: PHP, MySQL, JavaScript, OpenAI Responses API, GPT-5.x, PHPUnit, Playwright, Codex, ChatGPT.
