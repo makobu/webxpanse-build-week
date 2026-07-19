@@ -96,6 +96,6 @@ The presentation test verifies that demo-only capabilities cannot be installed i
 - Devpost project: https://devpost.com/software/webxpanse
 - Public source repository: **[ADD PUBLIC REPOSITORY URL]**
 - Three-minute video: **[ADD PUBLIC YOUTUBE URL]**
-- OpenAI `/feedback` ID: **[ADD FEEDBACK ID]**
+- OpenAI `/feedback` ID: `019f74ad-26fd-7713-a474-cb83d9cb101e`
 
-Do not submit until the three placeholders above are replaced and each link opens in a logged-out browser.
+Do not submit until the repository and video placeholders above are replaced and each link opens in a logged-out browser.

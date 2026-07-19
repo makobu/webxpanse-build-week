@@ -86,7 +86,7 @@ Next I want to measure whether the operating rhythm shortens time-to-decision an
 - Try it: **[ADD LIVE DEMO URL, if public]**
 - Source code: **[ADD PUBLIC REPOSITORY URL]**
 - Demo video: **[ADD PUBLIC YOUTUBE URL]**
-- OpenAI feedback: **[ADD /feedback ID]**
+- OpenAI feedback: `019f74ad-26fd-7713-a474-cb83d9cb101e`
 
 ## Technologies
 
