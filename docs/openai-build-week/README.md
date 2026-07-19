@@ -49,7 +49,7 @@ The Build Week work concentrates that foundation into the submitted experience. 
 
 Codex with GPT-5.6 was used for the Build Week implementation, debugging, focused tests, browser verification, and submission preparation. Earlier product work also used ChatGPT and Codex with GPT-5.4 and GPT-5.5. Dennis remained the sole builder and made the product and submission decisions.
 
-## Run locally
+## Source evaluation setup
 
 Requirements: PHP 8.1+, MySQL 8+, Composer, and Apache or another web server configured for the `public/` directory.
 
@@ -78,7 +78,7 @@ After creating an owner user, generate the isolated, simulation-first judging wo
 php scripts/create_build_week_demo.php --presenter-email=owner@example.com --ttl-hours=24
 ```
 
-The command prints a one-use magic-login URL plus temporary credentials. Open the URL in the same local installation. The resulting workspace has complete founder context, three active deals, no false won deals, AI Coach enabled for the presentation only, and a dated outreach commitment. It expires automatically and does not arm live message delivery.
+The command prints a one-use magic-login URL plus temporary credentials. Open the URL in the same evaluation environment. The resulting workspace has complete founder context, three active deals, no false won deals, AI Coach enabled for the presentation only, and a dated outreach commitment. It expires automatically and does not arm live message delivery.
 
 ## Focused verification
 

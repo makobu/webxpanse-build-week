@@ -1,6 +1,6 @@
 # CRM User Guide
 
-Complete guide to using the Self-Hosted CRM System.
+Complete guide to using the WebXpanse business operating platform.
 
 ## Table of Contents
 

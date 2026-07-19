@@ -1,6 +1,6 @@
 # Live Upload Checklist
 
-This is the current production upload runbook for the CRM app. It assumes a self-hosted PHP/MySQL deployment where the application root may be uploaded to a hosting account and Apache rewrites public traffic into `public/`.
+This is an internal infrastructure runbook for WebXpanse platform maintainers. It documents a manual PHP/MySQL upload path and is not a customer deployment or product-distribution guide.
 
 Do not upload to a live server until every required gate below is either green or explicitly accepted by the Super Admin as a launch risk.
 

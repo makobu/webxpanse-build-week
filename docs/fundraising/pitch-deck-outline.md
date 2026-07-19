@@ -40,7 +40,7 @@ Points:
 
 - too horizontal
 - weak for WhatsApp-first execution
-- poor fit for self-hosted/control-heavy buyers
+- poor fit for teams that need controlled, auditable execution
 - automation is often brittle or hard to audit
 
 ## Slide 4: Product
@@ -91,7 +91,7 @@ Points:
 
 - AI is attracting outsized venture capital
 - investors are looking for workflow-specific systems of action
-- self-hosted control is a real buyer need in some markets
+- secure platform operations and data governance are real buyer needs in some markets
 - distributors and wholesalers remain underserved by generic CRM vendors
 
 ## Slide 7: Moat
@@ -102,7 +102,7 @@ Headline:
 
 Points:
 
-- self-hosted and zero lock-in
+- secure workspace governance and clear data portability
 - workflow-specific execution layer
 - auditability and safety gates
 - data from real operational usage
@@ -119,7 +119,7 @@ Points:
 - 3-5 design partners
 - 30-60 day pilot
 - prove ROI
-- convert to paid deployments
+- convert to paid customer workspaces
 - expand inside accounts
 
 ## Slide 9: Raise

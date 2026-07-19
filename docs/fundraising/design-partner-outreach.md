@@ -69,7 +69,7 @@ Body:
 
 `Hi [Name],`
 
-`I’m building a self-hosted AI operating CRM for distributors and wholesalers that run a lot of sales over WhatsApp and email.`
+`I’m building an AI operating platform for distributors and wholesalers that run a lot of sales over WhatsApp and email.`
 
 `The first workflow we are focused on is inbound inquiry -> quote/proforma draft -> follow-up -> deal progression -> collections follow-through.`
 

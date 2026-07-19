@@ -18,7 +18,7 @@ Build the first list from:
 - founders you know
 - operators in distribution and wholesale
 - angels who like workflow software
-- investors already talking about vertical AI, systems of action, self-hosted infra, or emerging-market B2B
+- investors already talking about vertical AI, systems of action, vertical B2B software, or emerging-market B2B
 
 Do not start with random cold blasts.
 
@@ -63,7 +63,7 @@ Body:
 
 `The product starts with one workflow: inbound inquiry -> quote/proforma draft -> follow-up -> deal progression -> collections follow-through.`
 
-`The thesis is that legacy CRMs are systems of record, but this category needs a controlled system of action with self-hosting and auditability built in.`
+`The thesis is that legacy CRMs are systems of record, but this category needs a controlled system of action with auditability and workflow governance built in.`
 
 `I’m at the design-partner stage and speaking with a small number of angels and micro-VCs who understand vertical AI and workflow software.`
 

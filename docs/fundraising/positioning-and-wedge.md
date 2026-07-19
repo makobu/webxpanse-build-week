@@ -74,7 +74,7 @@ Do not claim:
 Do claim:
 
 - control-heavy AI operations for a narrow workflow
-- self-hosted and auditable execution
+- secure and auditable execution
 - progression from copilot to governed autonomy
 - expansion from one workflow wedge into a broader operating system
 
@@ -84,7 +84,7 @@ Use this framing:
 
 - incumbents are broad systems of record
 - this product is becoming a system of action
-- self-hosting, auditability, and workflow control are not side features; they are part of the buying reason
+- security, auditability, and workflow control are not side features; they are part of the buying reason
 
 Better line:
 

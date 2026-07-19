@@ -1,6 +1,6 @@
 # Contributing Guide
 
-Guidelines for contributing to the Self-Hosted CRM System.
+Guidelines for contributing to the WebXpanse business operating platform.
 
 ## Getting Started
 

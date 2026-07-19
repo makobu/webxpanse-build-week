@@ -12,7 +12,7 @@ Why this wedge:
 
 - the product already has unified inbox, WhatsApp, deals, tasks, reporting, workflow automation, quotes/invoices, and AI/autonomy controls
 - distributors and wholesalers often run high-friction, message-heavy sales workflows that generic CRMs handle poorly
-- self-hosting and control matter more in these environments than they do for generic SMB software buyers
+- secure workspace control, auditability, and workflow governance matter more in these environments than they do for generic SMB software buyers
 - this story is easier to fund than a broad `replace HubSpot/Salesforce` pitch
 
 ## What Is Included

@@ -1,6 +1,6 @@
 # Developer Guide
 
-Complete guide for developers working on the Self-Hosted CRM System.
+Complete guide for developers working on the WebXpanse business operating platform.
 
 ## Table of Contents
 

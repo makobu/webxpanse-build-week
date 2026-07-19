@@ -1,6 +1,6 @@
 # CRM API Documentation
 
-Complete REST API reference for the Self-Hosted CRM System.
+Complete REST API reference for the WebXpanse business operating platform.
 
 ## Base URL
 

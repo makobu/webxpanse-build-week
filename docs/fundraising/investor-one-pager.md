@@ -18,11 +18,11 @@ The result:
 - deal leakage between inbox, sales, and finance
 - poor auditability when teams try to automate
 
-Generic CRMs store data, but they are not designed to run high-frequency message-led commercial operations with strong control and self-hosting requirements.
+Generic CRMs store data, but they are not designed to run high-frequency message-led commercial operations with strong control, auditability, and workspace-governance requirements.
 
 ## Solution
 
-We are building a self-hosted AI operating CRM that turns the CRM from a system of record into a system of action.
+We are building an AI operating platform that turns the CRM from a system of record into a system of action.
 
 The first workflow wedge is:
 
@@ -42,7 +42,7 @@ The product combines:
 - AI is making workflow automation and agent-like execution practical
 - investors are actively backing vertical AI and systems of action
 - WhatsApp-first commercial teams remain underserved by legacy CRM products
-- self-hosted control is increasingly valuable where data sensitivity, customization, or vendor lock-in concerns are high
+- platform security, data governance, and workflow control are increasingly valuable where data sensitivity and customization requirements are high
 
 External context:
 
@@ -54,7 +54,7 @@ External context:
 
 - narrower starting wedge than incumbent CRMs
 - stronger fit for message-heavy commercial workflows
-- self-hosted and control-heavy from the start
+- secure workspace governance and governed execution from the start
 - AI roadmap is operational, governed, and auditable rather than chat-only
 - expansion path from workflow wedge to broader operating platform
 
@@ -71,7 +71,7 @@ Initial GTM:
 
 - recruit 3-5 design partners
 - prove ROI in one wedge workflow
-- convert pilots into paid deployments
+- convert pilots into paid customer workspaces
 - expand within the same account from messaging and quoting into collections and workflow execution
 
 ## What We Need To Prove Next
@@ -98,4 +98,4 @@ Recommended raise framing:
 
 ## Closing Line
 
-`We are not trying to out-feature Salesforce. We are building an AI-driven, self-hosted operating layer for a painful commercial workflow that legacy CRM products do not run well.`
+`We are not trying to out-feature Salesforce. We are building an AI-driven operating layer for a painful commercial workflow that legacy CRM products do not run well.`

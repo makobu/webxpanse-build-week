@@ -1,6 +1,6 @@
 # WebXpanse — Clarity
 
-WebXpanse is a self-hosted business operating system. Clarity is its AI co-founder experience: it turns business context, customer activity, tasks, pipeline, and strategic assumptions into one evidence-backed founder priority and a measurable next action.
+WebXpanse is an AI-powered business operating platform for founder-led teams. Clarity is its AI co-founder experience: it turns business context, customer activity, tasks, pipeline, and strategic assumptions into one evidence-backed founder priority and a measurable next action.
 
 ## OpenAI Build Week 2026
 
@@ -28,7 +28,7 @@ Start with the [Build Week submission brief](docs/openai-build-week/README.md), 
 - **Advanced Search** - Global search across all modules
 
 ### Communication
-- **Email System** - Self-hosted SMTP with queue management
+- **Email System** - Integrated SMTP with queue management
 - **Email Tracking** - Open and click tracking
 - **Email Templates** - WYSIWYG editor with variable support
 - **WhatsApp Integration** - Business API integration with webhooks
@@ -67,7 +67,9 @@ Start with the [Build Week submission brief](docs/openai-build-week/README.md), 
 - **Tiered AI Strategy** - Local → Open Source → Premium
 - **Cost Optimization** - AI usage tracking and budget management
 
-## 📋 Requirements
+The source setup below is provided for Build Week evaluation and platform development. It does not describe WebXpanse's customer delivery model.
+
+## 📋 Local Evaluation Requirements
 
 - **PHP** 8.1 or higher
 - **MySQL** 8.0 or higher
@@ -75,14 +77,14 @@ Start with the [Build Week submission brief](docs/openai-build-week/README.md), 
 - **Redis** (optional, recommended for caching)
 - **Web Server** (Apache/Nginx)
 
-## 🛠️ Installation
+## 🛠️ Judge and Reviewer Setup
 
 ### Quick Start
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
-   cd crm
+   git clone https://github.com/makobu/webxpanse-build-week.git
+   cd webxpanse-build-week
    ```
 
 2. **Install dependencies**
@@ -119,12 +121,19 @@ Start with the [Build Week submission brief](docs/openai-build-week/README.md), 
    ```
 
 8. **Access the application**
-   - Open your browser: `http://localhost/crm/public/`
+   - Open the URL mapped to the `public/` directory, for example `http://localhost/webxpanse-build-week/public/`
    - Login with your admin credentials
 
-### Detailed Installation
+9. **Create an isolated Build Week judging workspace**
+   ```bash
+   php scripts/create_build_week_demo.php --presenter-email=YOUR_OWNER_EMAIL --ttl-hours=24
+   ```
+   - Use the one-time presentation link printed by the command.
+   - The workspace is temporary, simulation-first, and separate from normal customer workspaces.
 
-See [Deployment Guide](docs/deployment.md) for detailed installation instructions including production setup.
+### Maintainer Infrastructure Reference
+
+Platform maintainers can use the [Deployment Guide](docs/deployment.md) for internal infrastructure setup. It is not a customer installation guide.
 
 ## 📚 Documentation
 
@@ -134,7 +143,7 @@ See [Deployment Guide](docs/deployment.md) for detailed installation instruction
 - **[API Collection](docs/api-collection.json)** - Postman/Insomnia collection
 - **[Developer Guide](docs/developer-guide.md)** - Development documentation
 - **[Architecture](docs/architecture.md)** - System architecture
-- **[Deployment Guide](docs/deployment.md)** - Production deployment
+- **[Deployment Guide](docs/deployment.md)** - Internal infrastructure deployment
 - **[Cron Jobs Setup](docs/CRON_SETUP.md)** - Cron jobs and background workers
 - **[Email Assistant Capabilities](docs/email-assistant-capabilities.md)** - Personal Assistant skills and email commands
 - **[Troubleshooting Guide](docs/troubleshooting.md)** - Common issues and solutions
@@ -269,7 +278,7 @@ See [TODO.md](TODO.md) for current development priorities and upcoming features.
 
 **Current Version**: 1.0.0-beta  
 **Completion**: 94%  
-**Status**: Production-ready (core features complete)
+**Status**: Build Week evaluation snapshot ready (core experience complete)
 
 ### Completion Breakdown
 - ✅ Core Features: 100%

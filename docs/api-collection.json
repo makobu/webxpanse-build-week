@@ -1,7 +1,7 @@
 {
   "info": {
     "name": "CRM API Collection",
-    "description": "Complete API collection for Self-Hosted CRM System",
+    "description": "Complete API collection for the WebXpanse business operating platform",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "version": "1.0.0"
   },

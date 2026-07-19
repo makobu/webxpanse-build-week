@@ -440,5 +440,5 @@
 ---
 
 *Last Updated: 2026-01-24*
-*Project: Self-Hosted CRM System*
+*Project: WebXpanse Business Operating Platform*
 *Version: 1.0.0-beta*

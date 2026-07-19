@@ -1,6 +1,6 @@
 # Deployment Guide
 
-Complete guide for deploying the Self-Hosted CRM System to production.
+Infrastructure deployment guide for WebXpanse platform maintainers.
 
 For the current live-server upload package, environment requirements, migration order, strict preflight gates, and post-upload smoke test, use [Live Upload Checklist](live-upload-checklist.md) as the release runbook.
 

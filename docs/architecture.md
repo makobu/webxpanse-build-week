@@ -1,6 +1,6 @@
 # System Architecture
 
-Technical architecture documentation for the Self-Hosted CRM System.
+Technical architecture documentation for the WebXpanse business operating platform.
 
 ## Overview
 

@@ -1,6 +1,6 @@
 {
-    "name": "crm/self-hosted-crm",
-    "description": "Self-hosted, cost-effective CRM system with maximum control",
+    "name": "webxpanse/platform",
+    "description": "AI-powered business operating platform for founder-led teams",
     "license": "proprietary",
     "type": "project",
     "require": {

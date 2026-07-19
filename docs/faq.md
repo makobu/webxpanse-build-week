@@ -1,12 +1,12 @@
 # Frequently Asked Questions (FAQ)
 
-Common questions and answers about the Self-Hosted CRM System.
+Common questions and answers about the WebXpanse business operating platform.
 
 ## General
 
 ### What is this CRM system?
 
-A fully self-hosted, open-source CRM system that gives you complete control over your customer data with zero vendor lock-in.
+WebXpanse is an AI-powered business operating platform for founder-led teams. It combines CRM, communication, workflow, pipeline, and decision support in one workspace, with Clarity turning operating evidence into prioritized action.
 
 ### What technologies does it use?
 
@@ -17,36 +17,29 @@ A fully self-hosted, open-source CRM system that gives you complete control over
 
 ### Is it free?
 
-Yes, the software is free to use. You only need to provide your own hosting infrastructure.
+Plan availability and pricing are provided by WebXpanse. Customers do not need to provision or maintain hosting infrastructure, and the repository source remains governed by its stated license.
 
 ### Can I customize it?
 
-Yes! The codebase is fully customizable. See the [Developer Guide](developer-guide.md) for details.
+Workspaces can be configured with roles, custom fields, workflows, templates, integrations, and installed capabilities. Maintainer-level development guidance is available in the [Developer Guide](developer-guide.md).
 
 ---
 
-## Installation & Setup
+## Access & Workspace Setup
 
-### What are the system requirements?
+### What do I need to use WebXpanse?
 
-- PHP 8.1 or higher
-- MySQL 8.0 or higher
-- Web server (Apache/Nginx)
-- Composer
-- Redis (optional, recommended)
+- An active WebXpanse account or workspace invitation
+- A modern web browser
+- Any connected email, WhatsApp, calendar, or AI credentials required by the capabilities your workspace chooses to enable
 
-### How do I install it?
+### How do I get started?
 
-See the [Installation Guide](deployment.md#installation) for step-by-step instructions.
+Sign in to your provisioned workspace and complete the guided workspace setup. Customers do not install or maintain the underlying application infrastructure.
 
-### How do I create the first admin user?
+### Is source setup available for evaluation and development?
 
-Run the admin user creation script:
-```bash
-php scripts/create_admin_user.php
-```
-
-Or use the web interface if user registration is enabled.
+Yes. The repository [README](../README.md) documents a local evaluation path for Build Week judges and platform developers. That path is separate from the customer product experience.
 
 ### How do I configure email sending?
 
@@ -391,22 +384,13 @@ The system includes:
 - Audit logging
 - Role-based access control
 
-### Should I use this in production?
+### Who manages production infrastructure?
 
-The core features are production-ready. Ensure you:
-- Use HTTPS
-- Configure proper backups
-- Set up monitoring
-- Follow security best practices
-- Keep software updated
+WebXpanse platform maintainers manage production deployment, HTTPS, backups, monitoring, security updates, and infrastructure operations.
 
-### How do I backup my data?
+### Where are backup and recovery procedures documented?
 
-1. **Database**: Use `mysqldump` or your preferred backup tool
-2. **Files**: Backup the `uploads/` directory
-3. **Configuration**: Backup `.env` file (securely)
-
-See [Deployment Guide](deployment.md#backup-and-recovery) for detailed backup procedures.
+The [Deployment Guide](deployment.md#backup-and-recovery) contains internal backup and recovery procedures for authorized platform maintainers.
 
 ---
 

@@ -36,7 +36,7 @@ When I click “Ask Clarity why,” the visible constraint, reason, and evidence
 
 ## How I built it
 
-WebXpanse is a self-hosted PHP and MySQL application with workspace tenancy, CRM records, tasks, communication channels, pipelines, reporting, permissions, and automation services.
+WebXpanse is a multi-workspace AI business operating platform built with PHP and MySQL. It brings CRM records, tasks, communication channels, pipelines, reporting, permissions, and automation services into one operating layer.
 
 For Clarity, I added a deterministic context and decision layer around the model:
 

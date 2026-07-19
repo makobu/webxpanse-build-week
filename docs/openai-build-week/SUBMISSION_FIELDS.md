@@ -24,7 +24,7 @@ Live requirements verified July 19, 2026 for OpenAI Build Week (`challenge_slug:
 
 Use this after the repository URL is available:
 
-> Follow the OpenAI Build Week README in the repository. After installation and migrations, create the isolated judging workspace with `php scripts/create_build_week_demo.php --presenter-email=YOUR_OWNER_EMAIL --ttl-hours=24`. The command prints a one-use magic-login URL and temporary credentials. The workspace is simulation-first, does not arm live message delivery, and expires automatically. The public video demonstrates the same flow.
+> Follow the source-evaluation setup in the OpenAI Build Week README. After preparing the evaluation environment and running migrations, create the isolated judging workspace with `php scripts/create_build_week_demo.php --presenter-email=YOUR_OWNER_EMAIL --ttl-hours=24`. The command prints a one-use magic-login URL and temporary credentials. The workspace is simulation-first, does not arm live message delivery, and expires automatically. The public video demonstrates the same flow.
 
 Field `27951` is not applicable because WebXpanse is submitted as a Work & Productivity application, not a plugin or developer tool.
 

@@ -1,6 +1,6 @@
 # Troubleshooting Guide
 
-Common issues and solutions for the Self-Hosted CRM System.
+Common issues and solutions for the WebXpanse business operating platform.
 
 ## Table of Contents
 

@@ -1,6 +1,6 @@
 # Maintenance Procedures
 
-Regular maintenance tasks and procedures for the Self-Hosted CRM System.
+Regular maintenance tasks and procedures for the WebXpanse business operating platform.
 
 ## Table of Contents
 

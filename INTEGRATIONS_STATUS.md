@@ -103,7 +103,7 @@
 - `cli/scheduled_email_worker.php` - Scheduled email worker
 
 **Features**:
-- Self-hosted SMTP email sending
+- Integrated SMTP email sending
 - Email queue system
 - Email tracking (open/click)
 - Email templates
