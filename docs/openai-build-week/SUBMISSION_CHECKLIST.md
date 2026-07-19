@@ -11,7 +11,7 @@ Deadline: July 22, 2026 at 3:00 AM East Africa Time. Treat July 21 as the final 
 - [x] Remove contradictory setup and automation-readiness cards from the presentation dashboard.
 - [x] Send the visible constraint and evidence into “Ask Clarity why.”
 - [x] Verify the dashboard and Clarity handoff in a real browser.
-- [ ] Record a final clean browser pass after the committed code is checked out.
+- [x] Record a final clean browser pass after the committed code is checked out.
 
 ## Repository
 

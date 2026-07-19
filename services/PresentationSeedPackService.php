@@ -572,7 +572,7 @@ class PresentationSeedPackService
         $threadContacts = array_slice($contacts, 0, 25);
         foreach ($threadContacts as $index => $contact) {
             $channel = $index % 2 === 0 ? 'whatsapp' : 'email';
-            $threadKey = 'presentation-seed-' . $pack['key'] . '-' . ($index + 1) . '-' . $channel;
+            $threadKey = 'presentation-seed-' . $seedRunId . '-' . $pack['key'] . '-' . ($index + 1) . '-' . $channel;
             $threadId = $this->insertTracked($seedRunId, $workspaceId, 'conversation_threads', [
                 'workspace_id' => $workspaceId,
                 'contact_id' => (int) $contact['id'],
@@ -728,7 +728,7 @@ class PresentationSeedPackService
                     'status' => (!empty($pack['founder_story'])
                         ? ['sent', 'viewed', 'overdue', 'sent']
                         : ['sent', 'viewed', 'partially_paid', 'overdue'])[$index % 4],
-                    'invoice_number' => 'PRES-' . date('ymd') . '-' . str_pad((string) ($seedRunId + $index), 5, '0', STR_PAD_LEFT),
+                    'invoice_number' => 'PRES-' . date('ymd') . '-' . str_pad((string) $seedRunId, 5, '0', STR_PAD_LEFT) . '-' . str_pad((string) ($index + 1), 2, '0', STR_PAD_LEFT),
                     'deal_id' => $dealId,
                     'contact_id' => (int) $contact['id'],
                     'assigned_to' => $actorUserId,

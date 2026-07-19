@@ -111,4 +111,45 @@ class PresentationFounderWorkspaceServiceTest extends DatabaseTestCase
             );
         }
     }
+
+    public function testFounderPackConversationKeysAreUniqueAcrossPresentationWorkspaces(): void
+    {
+        $provisioning = new WorkspaceProvisioningService();
+        $firstWorkspaceId = $provisioning->provisionWorkspace([
+            'workspace_name' => 'WebXpanse Build Week First Reset',
+            'owner_user_id' => 1,
+        ]);
+        $secondWorkspaceId = $provisioning->provisionWorkspace([
+            'workspace_name' => 'WebXpanse Build Week Second Reset',
+            'owner_user_id' => 1,
+        ]);
+
+        $seedService = new PresentationSeedPackService();
+        $firstSeed = $seedService->seed($firstWorkspaceId, 1, 'solo_founder', null, false);
+        $secondSeed = $seedService->seed($secondWorkspaceId, 1, 'solo_founder', null, false);
+
+        $this->assertTrue((bool) ($firstSeed['success'] ?? false));
+        $this->assertTrue((bool) ($secondSeed['success'] ?? false));
+
+        $firstKeys = array_column(Database::query(
+            'SELECT thread_key FROM conversation_threads WHERE workspace_id = ? ORDER BY id',
+            [$firstWorkspaceId]
+        ), 'thread_key');
+        $secondKeys = array_column(Database::query(
+            'SELECT thread_key FROM conversation_threads WHERE workspace_id = ? ORDER BY id',
+            [$secondWorkspaceId]
+        ), 'thread_key');
+
+        $this->assertNotEmpty($firstKeys);
+        $this->assertNotEmpty($secondKeys);
+        $this->assertSame([], array_values(array_intersect($firstKeys, $secondKeys)));
+        $this->assertStringStartsWith(
+            'presentation-seed-' . (int) ($firstSeed['seed_run_id'] ?? 0) . '-solo_founder-',
+            (string) $firstKeys[0]
+        );
+        $this->assertStringStartsWith(
+            'presentation-seed-' . (int) ($secondSeed['seed_run_id'] ?? 0) . '-solo_founder-',
+            (string) $secondKeys[0]
+        );
+    }
 }

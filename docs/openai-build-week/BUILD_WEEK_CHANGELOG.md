@@ -21,6 +21,7 @@ The judge-facing repository may be published as a clean snapshot. That deliberat
 | July 19 | `065481ff` | Fixed regional donation-payment readiness in the live judging flow. |
 | July 19 | `9e6e243e` | Added the judge-ready solo-founder presentation workspace, evidence handoff, tests, README, demo script, and Devpost package. |
 | July 19 | `af5d50ff` | Aligned the recording and submission materials with the live Build Week requirements. |
+| July 19 | `91a73dfa` | Made presentation seeding repeatable across multiple judge workspaces and verified the final Clarity evidence handoff. |
 
 ## What remained pre-existing
 
