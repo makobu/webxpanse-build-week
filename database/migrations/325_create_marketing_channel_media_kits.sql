@@ -1,0 +1,47 @@
+-- Marketing Phase 33: channel-specific media kits for manual publishing packages.
+
+CREATE TABLE IF NOT EXISTS marketing_channel_media_kits (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    workspace_id INT NOT NULL,
+    uuid CHAR(36) NOT NULL,
+    title VARCHAR(255) NOT NULL,
+    channel VARCHAR(80) NOT NULL,
+    status ENUM('draft','ready','exported','archived') NOT NULL DEFAULT 'draft',
+    content_item_id INT NULL,
+    landing_page_id INT NULL,
+    distribution_post_id INT NULL,
+    utm_link_id INT NULL,
+    primary_media_file_id INT NULL,
+    destination_url VARCHAR(1400) NULL,
+    required_dimensions_json JSON NULL,
+    aspect_ratios_json JSON NULL,
+    copy_fields_json JSON NULL,
+    media_slots_json JSON NULL,
+    destination_rules_json JSON NULL,
+    export_checklist_json JSON NULL,
+    readiness_json JSON NULL,
+    export_payload_json JSON NULL,
+    metadata_json JSON NULL,
+    exported_at DATETIME NULL,
+    created_by INT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    UNIQUE KEY uniq_marketing_channel_media_kit_uuid (uuid),
+    KEY idx_marketing_channel_media_kit_workspace_status (workspace_id, status, updated_at),
+    KEY idx_marketing_channel_media_kit_workspace_channel (workspace_id, channel, status),
+    KEY idx_marketing_channel_media_kit_workspace_content (workspace_id, content_item_id),
+    KEY idx_marketing_channel_media_kit_workspace_landing (workspace_id, landing_page_id),
+    KEY idx_marketing_channel_media_kit_workspace_distribution (workspace_id, distribution_post_id),
+    KEY idx_marketing_channel_media_kit_workspace_media (workspace_id, primary_media_file_id),
+    CONSTRAINT fk_marketing_channel_media_kit_workspace FOREIGN KEY (workspace_id) REFERENCES workspaces(id) ON DELETE CASCADE,
+    CONSTRAINT fk_marketing_channel_media_kit_content FOREIGN KEY (content_item_id) REFERENCES marketing_content_items(id) ON DELETE SET NULL,
+    CONSTRAINT fk_marketing_channel_media_kit_landing FOREIGN KEY (landing_page_id) REFERENCES marketing_landing_pages(id) ON DELETE SET NULL,
+    CONSTRAINT fk_marketing_channel_media_kit_distribution FOREIGN KEY (distribution_post_id) REFERENCES marketing_distribution_posts(id) ON DELETE SET NULL,
+    CONSTRAINT fk_marketing_channel_media_kit_utm FOREIGN KEY (utm_link_id) REFERENCES marketing_utm_links(id) ON DELETE SET NULL,
+    CONSTRAINT fk_marketing_channel_media_kit_media FOREIGN KEY (primary_media_file_id) REFERENCES marketing_media_files(id) ON DELETE SET NULL,
+    CONSTRAINT fk_marketing_channel_media_kit_creator FOREIGN KEY (created_by) REFERENCES users(id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+ALTER TABLE marketing_channel_export_bundles
+    ADD COLUMN IF NOT EXISTS media_kit_id INT NULL AFTER distribution_post_id,
+    ADD INDEX IF NOT EXISTS idx_marketing_channel_export_workspace_media_kit (workspace_id, media_kit_id);

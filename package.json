@@ -1,0 +1,24 @@
+{
+  "name": "crm-header-tests",
+  "version": "1.0.0",
+  "description": "Playwright tests for CRM header aesthetics",
+  "scripts": {
+    "test": "playwright test",
+    "test:header": "playwright test tests/header-visual.spec.js",
+    "test:email": "playwright test tests/email-ai-template.spec.js",
+    "test:email:headed": "playwright test tests/email-ai-template.spec.js --headed",
+    "test:smoke": "playwright test tests/smoke --project=chromium --workers=1 --timeout=60000",
+    "test:smoke:headed": "playwright test tests/smoke --project=chromium --headed",
+    "test:stabilization": "playwright test tests/smoke --project=chromium --workers=1 --timeout=60000",
+    "test:smoke:auth": "playwright test tests/smoke/auth.smoke.spec.js --project=chromium",
+    "test:takeover:smoke": "playwright test tests/smoke/business-continuity.smoke.spec.js --project=chromium",
+    "test:ui": "playwright test --ui",
+    "test:debug": "playwright test --debug",
+    "test:headed": "playwright test --headed",
+    "audit:performance": "node scripts/run-performance-audit.js",
+    "install-browsers": "playwright install"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.40.0"
+  }
+}

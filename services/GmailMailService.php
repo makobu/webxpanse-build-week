@@ -1,0 +1,24 @@
+<?php
+/**
+ * Personal Gmail API integration for the main mailbox.
+ */
+
+namespace CRM\Services;
+
+class GmailMailService extends GoogleOAuthMailService
+{
+    public function __construct()
+    {
+        parent::__construct([
+            'provider_key' => EmailIntegrationService::PROVIDER_GMAIL_OAUTH,
+            'provider_label' => 'Gmail',
+            'client_id_env_key' => 'GMAIL_MAIL_CLIENT_ID',
+            'client_secret_env_key' => 'GMAIL_MAIL_CLIENT_SECRET',
+            'redirect_env_key' => 'GMAIL_MAIL_REDIRECT_URI',
+            'default_callback_path' => '/api/email/gmail/callback.php',
+            'state_session_key' => 'gmail_mail_state',
+            'user_session_key' => 'gmail_mail_user_id',
+            'default_grant_type' => GoogleOAuthScopeCatalog::GRANT_GMAIL_SEND,
+        ]);
+    }
+}

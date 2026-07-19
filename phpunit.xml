@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.0/phpunit.xsd"
+         bootstrap="tests/bootstrap.php"
+         colors="true"
+         cacheDirectory=".phpunit.cache"
+         executionOrder="depends,defects"
+         failOnRisky="true"
+         failOnWarning="true"
+         beStrictAboutOutputDuringTests="true"
+         processIsolation="false"
+         stopOnFailure="false">
+    <testsuites>
+        <testsuite name="AI">
+            <file>tests/Unit/Services/AIConfidenceCalibrationServiceTest.php</file>
+            <file>tests/Unit/Services/AIAutomationDiagnosticsServiceTest.php</file>
+            <file>tests/Unit/Services/AIAdviceFeedbackServiceTest.php</file>
+            <file>tests/Unit/Services/AIAutomationIncidentServiceTest.php</file>
+            <file>tests/Unit/Services/AIContextAssemblyServiceTest.php</file>
+            <file>tests/Unit/Services/AIControlDecisionBridgeTest.php</file>
+            <file>tests/Unit/Services/AIDecisionOutcomeServiceTest.php</file>
+            <file>tests/Unit/Services/AIDiagnosticsReasonMapperTest.php</file>
+            <file>tests/Unit/Services/AIOperatingContextServiceTest.php</file>
+            <file>tests/Unit/Services/AIOutcomeClassifierTest.php</file>
+            <file>tests/Unit/Services/AIPromptDryRunServiceTest.php</file>
+            <file>tests/Unit/Services/AIPromptQualityServiceTest.php</file>
+            <file>tests/Unit/Services/AIPromptRegistryServiceTest.php</file>
+            <file>tests/Unit/Services/AIQualificationPolicyServiceTest.php</file>
+            <file>tests/Unit/Services/AIRetrievalQualityServiceTest.php</file>
+            <file>tests/Unit/Services/AIRoleProfileServiceTest.php</file>
+            <file>tests/Unit/Services/AIRuntimeControlServiceTest.php</file>
+            <file>tests/Unit/Services/AIRuntimeConfigTest.php</file>
+            <file>tests/Unit/Services/AIProviderProbeServiceTest.php</file>
+            <file>tests/Unit/Services/AIServiceRuntimeStatusTest.php</file>
+            <file>tests/Unit/Services/AITextResponseNormalizerServiceTest.php</file>
+            <file>tests/Unit/Services/AIRuntimeWiringTest.php</file>
+            <file>tests/Unit/Services/AICoachRecommendationControlServiceTest.php</file>
+            <file>tests/Unit/Services/AICoachRecommendationRankingServiceTest.php</file>
+            <file>tests/Unit/Services/AITaskCompletionServiceTest.php</file>
+            <file>tests/Unit/Services/AIThresholdUpdateServiceTest.php</file>
+            <file>tests/Unit/Services/AIUserWorkContextServiceTest.php</file>
+            <file>tests/Unit/Services/AIAutoResponderServiceTest.php</file>
+            <file>tests/Unit/Services/CustomerReplyAssistantServiceTest.php</file>
+            <file>tests/Unit/Services/EmailAssistantActionPlannerTest.php</file>
+            <file>tests/Unit/Services/EmailAssistantApplicationServiceTest.php</file>
+            <file>tests/Unit/Services/EmailAssistantPolicyBridgeTest.php</file>
+            <file>tests/Unit/Services/EmailAssistantResolverTest.php</file>
+            <file>tests/Integration/AICoachDiagnosticsControlsPageTest.php</file>
+            <file>tests/Integration/EmailAssistantIntegrationTest.php</file>
+        </testsuite>
+        <testsuite name="Unit">
+            <directory>tests/Unit</directory>
+        </testsuite>
+        <testsuite name="Integration">
+            <directory>tests/Integration</directory>
+        </testsuite>
+        <testsuite name="Performance">
+            <directory>tests/Performance</directory>
+        </testsuite>
+        <testsuite name="Security">
+            <directory>tests/Security</directory>
+        </testsuite>
+        <testsuite name="WorkspaceSmoke">
+            <file>tests/Unit/Services/EmailAssistantResolverTest.php</file>
+            <file>tests/Unit/Services/MobileTokenAuthServiceTest.php</file>
+            <file>tests/Unit/Services/WorkflowQueueServiceTest.php</file>
+            <file>tests/Integration/InvoiceWorkspaceIsolationTest.php</file>
+            <file>tests/Integration/WorkspaceSeparationRegressionTest.php</file>
+            <file>tests/Integration/TenantEndpointIsolationTest.php</file>
+        </testsuite>
+    </testsuites>
+    <source>
+        <include>
+            <directory suffix=".php">core</directory>
+            <directory suffix=".php">modules</directory>
+            <directory suffix=".php">services</directory>
+        </include>
+        <exclude>
+            <directory>vendor</directory>
+            <directory>tests</directory>
+        </exclude>
+    </source>
+</phpunit>

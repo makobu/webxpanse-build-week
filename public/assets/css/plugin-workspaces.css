@@ -1,0 +1,1214 @@
+/* Shared compact workspace system for the four top-level marketing products. */
+
+.plugin-workspace-shell {
+    --workspace-ink: #0f172a;
+    --workspace-muted: #64748b;
+    --workspace-line: #e2e8f0;
+    --workspace-blue: #2563eb;
+    --workspace-blue-soft: #eff6ff;
+    --workspace-green: #16a34a;
+    --workspace-amber: #d97706;
+    --workspace-control-height: 44px;
+    color: var(--workspace-ink);
+    background: #fff;
+}
+
+.page-premium.plugin-workspace-shell.marketing-command-center-page,
+.page-premium.plugin-workspace-shell.marketing-assistants-page {
+    background: #fff;
+}
+
+.plugin-workspace-shell > .container,
+.plugin-workspace-shell .design-container,
+.plugin-workspace-shell .social-media-container {
+    width: min(100%, 1440px);
+    max-width: 1440px;
+}
+
+.plugin-workspace-shell .page-header,
+.plugin-workspace-shell .marketing-founder-hero.page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    min-height: 0;
+    margin: 0;
+    padding: 28px 0 24px;
+    border: 0;
+    border-bottom: 1px solid var(--workspace-line);
+    border-radius: 0;
+    background: #fff;
+    box-shadow: none;
+}
+
+.plugin-workspace-shell .page-header h1,
+.plugin-workspace-shell .marketing-founder-hero h1 {
+    margin: 0;
+    color: var(--workspace-ink);
+    font-size: clamp(1.85rem, 3vw, 2.15rem);
+    line-height: 1.1;
+    letter-spacing: -.035em;
+}
+
+.plugin-workspace-shell .page-header p,
+.plugin-workspace-shell .marketing-founder-hero p {
+    max-width: none;
+    margin: 6px 0 0;
+    color: var(--workspace-muted);
+    font-size: .9rem;
+    line-height: 1.4;
+}
+
+.plugin-workspace-shell .page-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.plugin-workspace-shell .workspace-setup-link {
+    display: inline-flex;
+    min-height: var(--workspace-control-height);
+    align-items: center;
+    padding: 0 4px;
+    color: var(--workspace-blue);
+    font-size: .82rem;
+    font-weight: 800;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.plugin-workspace-shell .workspace-cta-compact { display: none; }
+
+.plugin-workspace-shell .btn-premium-primary,
+.plugin-workspace-shell .btn-premium-secondary {
+    min-height: var(--workspace-control-height);
+    border-radius: 7px;
+    box-shadow: none;
+}
+
+/* Flat metric rails */
+.plugin-workspace-shell .design-summary,
+.plugin-workspace-shell .social-summary,
+.plugin-workspace-shell .marketing-founder-summary,
+.plugin-workspace-shell .marketing-assistants-summary {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-bottom: 1px solid var(--workspace-line);
+    border-radius: 0;
+    background: #fff;
+    box-shadow: none;
+}
+
+.plugin-workspace-shell .design-summary article,
+.plugin-workspace-shell .social-summary article,
+.plugin-workspace-shell .marketing-founder-summary .marketing-summary-tile,
+.plugin-workspace-shell .marketing-assistants-summary .marketing-summary-tile {
+    display: flex;
+    min-width: 0;
+    min-height: 76px;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 22px;
+    border: 0;
+    border-right: 1px solid var(--workspace-line);
+    border-radius: 0;
+    color: var(--workspace-ink);
+    background: #fff;
+    box-shadow: none;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+.plugin-workspace-shell .design-summary article:last-child,
+.plugin-workspace-shell .social-summary article:last-child,
+.plugin-workspace-shell .marketing-founder-summary .marketing-summary-tile:last-child,
+.plugin-workspace-shell .marketing-assistants-summary .marketing-summary-tile:last-child {
+    border-right: 0;
+}
+
+.plugin-workspace-shell .design-summary-icon,
+.plugin-workspace-shell .social-summary-icon,
+.plugin-workspace-shell .marketing-founder-summary .marketing-summary-tile > i,
+.plugin-workspace-shell .marketing-assistants-summary .marketing-summary-tile > i {
+    display: grid;
+    width: 30px;
+    height: 30px;
+    flex: 0 0 30px;
+    place-items: center;
+    border: 0;
+    border-radius: 0;
+    color: var(--workspace-blue);
+    background: transparent;
+    font-size: 1rem;
+}
+
+.plugin-workspace-shell .design-summary article > div,
+.plugin-workspace-shell .social-summary article > div,
+.plugin-workspace-shell .marketing-assistants-summary .marketing-summary-tile > div {
+    display: flex;
+    min-width: 0;
+    align-items: baseline;
+    gap: 8px;
+}
+
+.plugin-workspace-shell .design-summary small,
+.plugin-workspace-shell .social-summary small,
+.plugin-workspace-shell .marketing-founder-summary .marketing-summary-tile span,
+.plugin-workspace-shell .marketing-assistants-summary .marketing-summary-tile span {
+    color: var(--workspace-ink);
+    font-size: .78rem;
+    font-weight: 700;
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.plugin-workspace-shell .design-summary strong,
+.plugin-workspace-shell .social-summary strong,
+.plugin-workspace-shell .marketing-founder-summary .marketing-summary-tile strong,
+.plugin-workspace-shell .marketing-assistants-summary .marketing-summary-tile strong {
+    margin: 0;
+    color: var(--workspace-blue);
+    font-size: 1rem;
+    line-height: 1.2;
+}
+
+.plugin-workspace-shell .design-summary p,
+.plugin-workspace-shell .social-summary p {
+    display: none;
+}
+
+.plugin-workspace-shell .marketing-founder-summary .marketing-summary-tile.primary,
+.plugin-workspace-shell .marketing-founder-summary .marketing-summary-tile.action {
+    color: var(--workspace-ink);
+    background: #fff;
+}
+
+/* One-outcome on-ramp: visible for beginners, dismissible for experienced operators. */
+.plugin-workspace-shell .plugin-quick-start-wrap {
+    min-width: 0;
+    border-bottom: 1px solid var(--workspace-line);
+    background: #fff;
+}
+
+.plugin-workspace-shell .plugin-quick-start {
+    display: grid;
+    grid-template-columns: minmax(250px, .8fr) minmax(460px, 1.7fr) auto;
+    gap: 28px;
+    align-items: center;
+    min-height: 102px;
+    padding: 17px 0;
+}
+
+.plugin-workspace-shell .plugin-quick-start[hidden],
+.plugin-workspace-shell .plugin-quick-start-restore[hidden] {
+    display: none !important;
+}
+
+.plugin-workspace-shell .plugin-quick-start-intro { min-width: 0; }
+
+.plugin-workspace-shell .plugin-quick-start-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 6px;
+}
+
+.plugin-workspace-shell .plugin-quick-start-meta span {
+    color: var(--workspace-muted);
+    font-size: .7rem;
+    font-weight: 850;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+}
+
+.plugin-workspace-shell .plugin-quick-start-meta strong {
+    color: var(--workspace-blue);
+    font-size: .78rem;
+    white-space: nowrap;
+}
+
+.plugin-workspace-shell .plugin-quick-start h2 {
+    margin: 0;
+    color: var(--workspace-ink);
+    font-size: 1rem;
+    line-height: 1.35;
+    letter-spacing: -.015em;
+}
+
+.plugin-workspace-shell .plugin-quick-start-steps {
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.plugin-workspace-shell .plugin-quick-start-steps li {
+    position: relative;
+    display: flex;
+    min-width: 0;
+    flex: 1 1 0;
+    align-items: center;
+    gap: 9px;
+    color: var(--workspace-muted);
+    font-size: .76rem;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.plugin-workspace-shell .plugin-quick-start-steps li + li {
+    padding-left: 26px;
+}
+
+.plugin-workspace-shell .plugin-quick-start-steps li + li::before {
+    position: absolute;
+    top: 50%;
+    left: 4px;
+    width: 14px;
+    height: 1px;
+    background: var(--workspace-line);
+    content: '';
+}
+
+.plugin-workspace-shell .plugin-quick-start-number {
+    display: grid;
+    width: 30px;
+    height: 30px;
+    flex: 0 0 30px;
+    place-items: center;
+    border-radius: 50%;
+    color: var(--workspace-muted);
+    background: #f1f5f9;
+    font-size: .72rem;
+    font-weight: 850;
+}
+
+.plugin-workspace-shell .plugin-quick-start-steps .is-current,
+.plugin-workspace-shell .plugin-quick-start-steps .is-complete {
+    color: var(--workspace-ink);
+}
+
+.plugin-workspace-shell .plugin-quick-start-steps .is-current .plugin-quick-start-number,
+.plugin-workspace-shell .plugin-quick-start-steps .is-complete .plugin-quick-start-number {
+    color: #fff;
+    background: var(--workspace-blue);
+}
+
+.plugin-workspace-shell .plugin-quick-start-steps .is-complete .plugin-quick-start-number {
+    background: var(--workspace-green);
+}
+
+.plugin-workspace-shell .plugin-quick-start-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.plugin-workspace-shell .plugin-quick-start-cta {
+    display: inline-flex;
+    min-width: max-content;
+    align-items: center;
+    justify-content: center;
+    padding-inline: 16px;
+    font-size: .76rem;
+    text-decoration: none;
+}
+
+.plugin-workspace-shell .plugin-quick-start-toggle,
+.plugin-workspace-shell .plugin-quick-start-restore {
+    min-height: var(--workspace-control-height);
+    border: 0;
+    color: var(--workspace-muted);
+    background: transparent;
+    font-size: .75rem;
+    font-weight: 750;
+    cursor: pointer;
+}
+
+.plugin-workspace-shell .plugin-quick-start-toggle:hover,
+.plugin-workspace-shell .plugin-quick-start-restore:hover {
+    color: var(--workspace-blue);
+}
+
+.plugin-workspace-shell .plugin-quick-start-toggle:focus-visible,
+.plugin-workspace-shell .plugin-quick-start-restore:focus-visible {
+    outline: 3px solid rgba(37, 99, 235, .24);
+    outline-offset: 2px;
+}
+
+.plugin-workspace-shell .plugin-quick-start-restore {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 6px 0;
+    padding: 0 4px;
+}
+
+/* Underline workspace tabs */
+.plugin-workspace-shell .design-tabs,
+.plugin-workspace-shell .social-tabs {
+    display: flex;
+    gap: 28px;
+    margin: 0;
+    padding: 0;
+    overflow-x: auto;
+    border: 0;
+    border-bottom: 1px solid var(--workspace-line);
+    border-radius: 0;
+    background: #fff;
+    scrollbar-width: thin;
+}
+
+.plugin-workspace-shell .design-tabs a,
+.plugin-workspace-shell .social-tabs a {
+    display: inline-flex;
+    min-height: 52px;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px;
+    border: 0;
+    border-bottom: 3px solid transparent;
+    border-radius: 0;
+    color: var(--workspace-muted);
+    background: transparent;
+    font-size: .82rem;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.plugin-workspace-shell .design-tabs a:hover,
+.plugin-workspace-shell .design-tabs a.is-active,
+.plugin-workspace-shell .social-tabs a:hover,
+.plugin-workspace-shell .social-tabs a.is-active {
+    color: var(--workspace-blue);
+    border-bottom-color: var(--workspace-blue);
+    background: transparent;
+}
+
+/* Design workspace */
+.plugin-workspace-shell .design-overview-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) minmax(280px, .75fr);
+    gap: 0;
+    padding-top: 28px;
+}
+
+.plugin-workspace-shell .design-panel {
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: #fff;
+    box-shadow: none;
+}
+
+.plugin-workspace-shell .design-start-panel {
+    padding-right: 34px;
+    border-right: 1px solid var(--workspace-line);
+}
+
+.plugin-workspace-shell .design-readiness-panel {
+    padding-left: 34px;
+}
+
+.plugin-workspace-shell .design-section-heading {
+    margin: 0 0 14px;
+}
+
+.plugin-workspace-shell .design-section-heading h2,
+.plugin-workspace-shell .social-section-heading h2,
+.plugin-workspace-shell .social-section-block > h2,
+.plugin-workspace-shell .premium-section-header h2 {
+    color: var(--workspace-ink);
+    font-size: 1.05rem;
+    line-height: 1.3;
+}
+
+.plugin-workspace-shell .design-eyebrow,
+.plugin-workspace-shell .design-section-heading p,
+.plugin-workspace-shell .design-start-card small,
+.plugin-workspace-shell .design-check small,
+.plugin-workspace-shell .design-next-action {
+    display: none;
+}
+
+.plugin-workspace-shell .design-start-actions,
+.plugin-workspace-shell .design-check-list {
+    display: grid;
+    gap: 0;
+}
+
+.plugin-workspace-shell .design-start-card {
+    display: grid;
+    grid-template-columns: 38px minmax(0, 1fr) auto;
+    min-height: 64px;
+    align-items: center;
+    gap: 14px;
+    padding: 8px 4px;
+    border: 0;
+    border-bottom: 1px solid var(--workspace-line);
+    border-radius: 0;
+    color: var(--workspace-ink);
+    background: #fff;
+    box-shadow: none;
+    transition: color .15s ease, background-color .15s ease;
+}
+
+.plugin-workspace-shell .design-start-card:hover {
+    transform: none;
+    color: var(--workspace-blue);
+    border-color: var(--workspace-line);
+    background: #f8fafc;
+    box-shadow: none;
+}
+
+.plugin-workspace-shell .design-start-card > span {
+    display: grid;
+    width: 34px;
+    height: 34px;
+    place-items: center;
+    border-radius: 6px;
+    color: var(--workspace-blue);
+    background: var(--workspace-blue-soft);
+}
+
+.plugin-workspace-shell .design-check {
+    min-height: 54px;
+    align-items: center;
+    padding: 8px 0;
+    border-color: var(--workspace-line);
+}
+
+.plugin-workspace-shell .design-check > span {
+    border-radius: 4px;
+    font-size: .62rem;
+}
+
+/* Social Media workspace */
+.plugin-workspace-shell .social-panel {
+    padding-top: 26px;
+}
+
+.plugin-workspace-shell .social-section-block,
+.plugin-workspace-shell .social-composer,
+.plugin-workspace-shell .social-composer-rail section {
+    border: 0;
+    border-radius: 0;
+    background: #fff;
+    box-shadow: none;
+}
+
+.plugin-workspace-shell .social-overview-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.65fr) minmax(280px, .75fr);
+    gap: 0;
+}
+
+.plugin-workspace-shell .social-overview-layout > .social-section-block:first-child {
+    padding: 0 34px 0 0;
+    border-right: 1px solid var(--workspace-line);
+}
+
+.plugin-workspace-shell .social-next-step {
+    padding: 0 0 0 34px;
+}
+
+.plugin-workspace-shell .social-section-heading {
+    margin-bottom: 14px;
+}
+
+.plugin-workspace-shell .social-section-heading p,
+.plugin-workspace-shell .social-health-grid small {
+    display: none;
+}
+
+.plugin-workspace-shell .social-health-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0;
+    margin-bottom: 18px;
+    border-top: 1px solid var(--workspace-line);
+    border-bottom: 1px solid var(--workspace-line);
+}
+
+.plugin-workspace-shell .social-health-grid > div {
+    padding: 14px;
+    border: 0;
+    border-right: 1px solid var(--workspace-line);
+    border-radius: 0;
+    background: #fff;
+}
+
+.plugin-workspace-shell .social-health-grid > div:last-child { border-right: 0; }
+
+.plugin-workspace-shell .social-panel[data-social-panel="composer"].is-active {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 0;
+    padding-top: 0;
+}
+
+.plugin-workspace-shell .social-composer { display: contents; }
+
+.plugin-workspace-shell .social-composer-main {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    padding: 26px 34px 30px 0;
+    border: 0;
+    border-right: 1px solid var(--workspace-line);
+}
+
+.plugin-workspace-shell .social-composer-destinations {
+    grid-column: 2;
+    grid-row: 1;
+    padding: 26px 0 22px 28px;
+    border-bottom: 1px solid var(--workspace-line);
+}
+
+.plugin-workspace-shell .social-composer-rail {
+    display: block;
+    grid-column: 2;
+    grid-row: 2;
+    padding-left: 28px;
+}
+
+.plugin-workspace-shell .social-composer-rail section {
+    padding: 22px 0;
+}
+
+.plugin-workspace-shell .social-composer-rail section:first-child { display: none; }
+
+.plugin-workspace-shell .social-ai-readiness {
+    min-height: 48px;
+    margin-bottom: 18px;
+    padding: 9px 12px;
+    border-radius: 6px;
+}
+
+.plugin-workspace-shell .social-ai-readiness p { display: none; }
+.plugin-workspace-shell .social-content-brief .social-section-heading { margin: 0 0 10px; }
+.plugin-workspace-shell .social-content-brief {
+    margin: 20px 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: #fff;
+    box-shadow: none;
+}
+.plugin-workspace-shell .social-copy-field textarea { min-height: 112px; }
+
+.plugin-workspace-shell .social-composer-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: stretch;
+}
+
+.plugin-workspace-shell .social-composer-actions .btn-premium-primary { margin-left: 0; }
+
+/* Campaign Manager workspace */
+.plugin-workspace-shell .marketing-founder-shell {
+    display: grid;
+    grid-template-columns: minmax(0, 1.65fr) minmax(280px, .75fr);
+    gap: 0 24px;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: #fff;
+    box-shadow: none;
+}
+
+.plugin-workspace-shell .marketing-founder-hero,
+.plugin-workspace-shell .marketing-founder-summary,
+.plugin-workspace-shell .marketing-founder-shell > .plugin-quick-start-wrap,
+.plugin-workspace-shell .marketing-lifecycle-graph,
+.plugin-workspace-shell .marketing-advanced-tools {
+    grid-column: 1 / -1;
+}
+
+.plugin-workspace-shell .marketing-founder-hero { grid-row: 1; }
+.plugin-workspace-shell .marketing-founder-summary { grid-row: 2; }
+.plugin-workspace-shell .marketing-founder-shell > .plugin-quick-start-wrap { grid-row: 3; }
+.plugin-workspace-shell .marketing-lifecycle-graph { grid-row: 4; }
+
+.plugin-workspace-shell .marketing-launch-packet-card {
+    grid-column: 1;
+    grid-row: 5;
+    margin: 26px 0 0;
+    padding: 0 28px 0 0;
+    border: 0;
+    border-right: 1px solid var(--workspace-line);
+    border-radius: 0;
+    background: #fff;
+    box-shadow: none;
+}
+
+.plugin-workspace-shell .marketing-founder-layout { display: contents; }
+.plugin-workspace-shell .marketing-stage-grid { display: none; }
+
+.plugin-workspace-shell .marketing-today-panel {
+    grid-column: 2;
+    grid-row: 5;
+    margin-top: 26px;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: #fff;
+    box-shadow: none;
+}
+
+.plugin-workspace-shell .marketing-lifecycle-graph {
+    display: flex;
+    gap: 0;
+    margin: 0;
+    padding: 18px 0;
+    overflow-x: auto;
+    border-bottom: 1px solid var(--workspace-line);
+    background: #fff;
+}
+
+.plugin-workspace-shell .marketing-lifecycle-graph li {
+    min-width: 130px;
+    flex: 1 0 130px;
+}
+
+.plugin-workspace-shell .marketing-lifecycle-node {
+    color: var(--workspace-muted);
+    font-size: .75rem;
+    text-decoration: none;
+}
+
+.plugin-workspace-shell .marketing-launch-packet-main {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 18px;
+    align-items: start;
+    padding: 0;
+}
+
+.plugin-workspace-shell .marketing-launch-packet-score {
+    width: 68px;
+    height: 68px;
+    min-height: 68px;
+    padding: 0;
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+
+.plugin-workspace-shell .marketing-launch-packet-copy { padding: 0; }
+.plugin-workspace-shell .marketing-launch-packet-copy .premium-section-header p,
+.plugin-workspace-shell .marketing-launch-packet-highlight p,
+.plugin-workspace-shell .marketing-launch-packet-actions > span { display: none; }
+
+.plugin-workspace-shell .marketing-launch-packet-highlight {
+    margin-top: 12px;
+    padding: 12px 0;
+    border: 0;
+    border-top: 1px solid var(--workspace-line);
+    border-radius: 0;
+    background: #fff;
+}
+
+.plugin-workspace-shell .marketing-launch-packet-footer {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 18px;
+    align-items: end;
+    padding: 18px 0 0;
+    border: 0;
+}
+
+.plugin-workspace-shell .marketing-launch-packet-lists { gap: 24px; }
+.plugin-workspace-shell .marketing-launch-packet-lists > div { padding: 0; border: 0; background: #fff; }
+.plugin-workspace-shell .marketing-launch-packet-actions { align-items: flex-end; }
+
+.plugin-workspace-shell .marketing-today-panel .premium-section-header p { display: none; }
+.plugin-workspace-shell .marketing-today-action {
+    min-height: 58px;
+    padding: 10px 4px;
+    border: 0;
+    border-bottom: 1px solid var(--workspace-line);
+    border-radius: 0;
+    background: #fff;
+}
+
+.plugin-workspace-shell .marketing-advanced-tools,
+.plugin-workspace-shell .marketing-detailed-systems {
+    margin-top: 24px;
+    border: 0;
+    border-top: 1px solid var(--workspace-line);
+    border-bottom: 1px solid var(--workspace-line);
+    border-radius: 0;
+    background: #fff;
+}
+
+.plugin-workspace-shell .marketing-advanced-tools { grid-row: 6; }
+
+/* Marketing Assistants workspace */
+.plugin-workspace-shell.marketing-assistants-page .container { max-width: 1440px; }
+
+.plugin-workspace-shell .marketing-assistants-layout {
+    display: grid;
+    grid-template-columns: 260px minmax(360px, 1fr) 300px;
+    gap: 0;
+    align-items: stretch;
+    padding-top: 0;
+}
+
+.plugin-workspace-shell .marketing-assistants-main,
+.plugin-workspace-shell .marketing-assistants-side { display: contents; }
+
+.plugin-workspace-shell .marketing-assistants-board {
+    grid-column: 1;
+    grid-row: 1;
+    padding: 24px 22px 28px 0;
+    border: 0;
+    border-right: 1px solid var(--workspace-line);
+    border-radius: 0;
+    background: #fff;
+    box-shadow: none;
+}
+
+.plugin-workspace-shell .marketing-assistants-board .premium-section-header {
+    margin: 0 0 14px;
+    padding: 0;
+    border: 0;
+    background: #fff;
+}
+
+.plugin-workspace-shell .marketing-assistants-board .premium-section-header p,
+.plugin-workspace-shell .marketing-assistants-board .premium-section-header .badge {
+    display: none;
+}
+
+.plugin-workspace-shell .marketing-assistant-card-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3px;
+}
+
+.plugin-workspace-shell .marketing-assistant-card {
+    display: grid;
+    grid-template-columns: 34px minmax(0, 1fr);
+    min-height: 52px;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 10px;
+    border: 0;
+    border-radius: 6px;
+    color: var(--workspace-ink);
+    background: #fff;
+    box-shadow: none;
+}
+
+.plugin-workspace-shell .marketing-assistant-card:hover,
+.plugin-workspace-shell .marketing-assistant-card.is-selected {
+    transform: none;
+    color: var(--workspace-blue);
+    border-color: transparent;
+    background: var(--workspace-blue-soft);
+    box-shadow: none;
+}
+
+.plugin-workspace-shell .marketing-assistant-visual {
+    width: 32px;
+    height: 32px;
+    border: 0;
+    border-radius: 5px;
+    color: var(--workspace-blue);
+    background: transparent;
+}
+
+.plugin-workspace-shell .marketing-assistant-card-body { min-width: 0; }
+.plugin-workspace-shell .marketing-assistant-card h3 { margin: 0; font-size: .8rem; }
+.plugin-workspace-shell .marketing-assistant-card p,
+.plugin-workspace-shell .marketing-assistant-pill,
+.plugin-workspace-shell .marketing-assistant-card-action { display: none; }
+
+.plugin-workspace-shell .marketing-assistants-run-panel {
+    grid-column: 2;
+    grid-row: 1;
+    margin: 0;
+    padding: 24px 34px 30px;
+    border: 0;
+    border-right: 1px solid var(--workspace-line);
+    border-radius: 0;
+    background: #fff;
+    box-shadow: none;
+}
+
+.plugin-workspace-shell .marketing-assistants-run-panel .premium-section-header p { display: none; }
+
+.plugin-workspace-shell .marketing-assistants-run-panel .premium-section-header,
+.plugin-workspace-shell .marketing-assistants-today .premium-section-header {
+    margin: 0 0 14px;
+    padding: 0;
+    border: 0;
+    background: #fff;
+}
+
+.plugin-workspace-shell.marketing-assistants-page .content-card > .premium-section-header:first-child {
+    margin: 0 0 14px;
+    padding: 0;
+    border: 0;
+    background: #fff;
+}
+
+.plugin-workspace-shell .marketing-assistant-readiness {
+    display: grid;
+    gap: 0;
+    margin: 14px 0 20px;
+    border-top: 1px solid var(--workspace-line);
+}
+
+.plugin-workspace-shell .marketing-assistant-readiness > div {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 12px;
+    align-items: center;
+    min-height: 46px;
+    border-bottom: 1px solid var(--workspace-line);
+    font-size: .78rem;
+}
+
+.plugin-workspace-shell .marketing-assistant-readiness strong { color: var(--workspace-green); }
+
+.plugin-workspace-shell .marketing-assistants-form textarea { min-height: 118px; }
+
+.plugin-workspace-shell .marketing-assistants-today {
+    grid-column: 3;
+    grid-row: 1;
+    margin: 0;
+    padding: 24px 0 28px 28px;
+    border: 0;
+    border-radius: 0;
+    background: #fff;
+    box-shadow: none;
+}
+
+.plugin-workspace-shell .marketing-assistants-today .premium-section-header p { display: none; }
+
+.plugin-workspace-shell .marketing-assistants-today-action {
+    min-height: 58px;
+    padding: 10px 4px;
+    border: 0;
+    border-bottom: 1px solid var(--workspace-line);
+    border-radius: 0;
+    background: #fff;
+}
+
+.plugin-workspace-shell .marketing-assistants-today-action span { display: none; }
+
+.plugin-workspace-shell .marketing-assistants-tools {
+    grid-column: 1 / -1;
+    margin: 0;
+    border: 0;
+    border-top: 1px solid var(--workspace-line);
+    border-radius: 0;
+    background: #fff;
+}
+
+.plugin-workspace-shell .marketing-assistants-tools summary {
+    min-height: 54px;
+    padding: 0 4px;
+    border: 0;
+    background: #fff;
+}
+
+@media (max-width: 1080px) {
+    .plugin-workspace-shell .plugin-quick-start {
+        grid-template-columns: minmax(230px, .75fr) minmax(420px, 1.4fr);
+        gap: 18px 24px;
+    }
+
+    .plugin-workspace-shell .plugin-quick-start-actions {
+        grid-column: 1 / -1;
+        justify-content: flex-end;
+        margin-top: -8px;
+    }
+
+    .plugin-workspace-shell .marketing-assistants-layout {
+        grid-template-columns: 230px minmax(340px, 1fr);
+    }
+
+    .plugin-workspace-shell .marketing-assistants-today {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        padding: 22px 0;
+        border-top: 1px solid var(--workspace-line);
+    }
+
+    .plugin-workspace-shell .marketing-assistants-today-list {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+    }
+}
+
+@media (max-width: 760px) {
+    .plugin-workspace-shell .page-header,
+    .plugin-workspace-shell .marketing-founder-hero.page-header {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 22px 0 18px;
+    }
+
+    .plugin-workspace-shell .page-header > div:first-child,
+    .plugin-workspace-shell .marketing-founder-hero > div:first-child { min-width: 0; }
+    .plugin-workspace-shell .page-header h1,
+    .plugin-workspace-shell .marketing-founder-hero h1 { font-size: 1.25rem; }
+    .plugin-workspace-shell .page-header p,
+    .plugin-workspace-shell .marketing-founder-hero p { font-size: .78rem; }
+    .plugin-workspace-shell .page-header-actions {
+        width: auto;
+        flex: 0 0 auto;
+        align-items: flex-start;
+    }
+    .plugin-workspace-shell .page-header-actions > * { flex: 0 0 auto; }
+    .plugin-workspace-shell .workspace-setup-link { display: none; }
+    .plugin-workspace-shell .page-header-actions .btn-premium-primary {
+        width: auto;
+        max-width: 120px;
+        padding-inline: 14px;
+        font-size: .75rem;
+        white-space: normal;
+    }
+    .plugin-workspace-shell .page-header-actions .btn-premium-primary i { display: none; }
+    .plugin-workspace-shell .workspace-cta-full { display: none; }
+    .plugin-workspace-shell .workspace-cta-compact { display: inline; }
+
+    .plugin-workspace-shell .design-summary,
+    .plugin-workspace-shell .social-summary,
+    .plugin-workspace-shell .marketing-founder-summary,
+    .plugin-workspace-shell .marketing-assistants-summary {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .plugin-workspace-shell .design-summary article,
+    .plugin-workspace-shell .social-summary article,
+    .plugin-workspace-shell .marketing-founder-summary .marketing-summary-tile,
+    .plugin-workspace-shell .marketing-assistants-summary .marketing-summary-tile {
+        min-height: 70px;
+        padding: 12px 10px;
+        border-bottom: 1px solid var(--workspace-line);
+    }
+
+    .plugin-workspace-shell .design-summary article:nth-child(2),
+    .plugin-workspace-shell .social-summary article:nth-child(2),
+    .plugin-workspace-shell .marketing-founder-summary .marketing-summary-tile:nth-child(2),
+    .plugin-workspace-shell .marketing-assistants-summary .marketing-summary-tile:nth-child(2) { border-right: 0; }
+
+    .plugin-workspace-shell .design-summary article:nth-child(n+3),
+    .plugin-workspace-shell .social-summary article:nth-child(n+3),
+    .plugin-workspace-shell .marketing-founder-summary .marketing-summary-tile:nth-child(n+3),
+    .plugin-workspace-shell .marketing-assistants-summary .marketing-summary-tile:nth-child(n+3) { border-bottom: 0; }
+
+    .plugin-workspace-shell .plugin-quick-start {
+        display: block;
+        min-height: 0;
+        padding: 20px 0 18px;
+    }
+
+    .plugin-workspace-shell .plugin-quick-start-meta {
+        margin-bottom: 7px;
+    }
+
+    .plugin-workspace-shell .plugin-quick-start h2 {
+        max-width: 30rem;
+        font-size: .96rem;
+    }
+
+    .plugin-workspace-shell .plugin-quick-start-steps {
+        display: grid;
+        grid-template-columns: 1fr;
+        margin: 18px 0 16px;
+    }
+
+    .plugin-workspace-shell .plugin-quick-start-steps li,
+    .plugin-workspace-shell .plugin-quick-start-steps li + li {
+        min-height: 50px;
+        padding: 8px 0;
+        border-bottom: 1px solid var(--workspace-line);
+    }
+
+    .plugin-workspace-shell .plugin-quick-start-steps li:last-child {
+        border-bottom: 0;
+    }
+
+    .plugin-workspace-shell .plugin-quick-start-steps li + li::before {
+        display: none;
+    }
+
+    .plugin-workspace-shell .plugin-quick-start-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 4px;
+        margin: 0;
+    }
+
+    .plugin-workspace-shell .plugin-quick-start-cta {
+        width: 100%;
+        min-height: var(--workspace-control-height);
+        box-sizing: border-box;
+    }
+
+    .plugin-workspace-shell .plugin-quick-start-toggle {
+        justify-self: center;
+        padding-inline: 14px;
+    }
+
+    .plugin-workspace-shell .plugin-quick-start-restore {
+        min-height: var(--workspace-control-height);
+    }
+
+    .plugin-workspace-shell .design-tabs,
+    .plugin-workspace-shell .social-tabs {
+        display: flex;
+        gap: 20px;
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+
+    .plugin-workspace-shell .design-tabs::-webkit-scrollbar,
+    .plugin-workspace-shell .social-tabs::-webkit-scrollbar { display: none; }
+
+    .plugin-workspace-shell .design-tabs a,
+    .plugin-workspace-shell .social-tabs a {
+        min-width: max-content;
+        padding-inline: 2px;
+    }
+
+    .plugin-workspace-shell .design-overview-grid,
+    .plugin-workspace-shell .social-overview-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .plugin-workspace-shell .design-start-panel,
+    .plugin-workspace-shell .social-overview-layout > .social-section-block:first-child {
+        padding: 0 0 24px;
+        border: 0;
+        border-bottom: 1px solid var(--workspace-line);
+    }
+
+    .plugin-workspace-shell .design-readiness-panel,
+    .plugin-workspace-shell .social-next-step { padding: 24px 0 0; }
+
+    .plugin-workspace-shell .social-panel[data-social-panel="composer"].is-active {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .plugin-workspace-shell .social-composer-main,
+    .plugin-workspace-shell .social-composer-destinations,
+    .plugin-workspace-shell .social-composer-rail {
+        grid-column: 1;
+        grid-row: auto;
+        padding: 22px 0;
+        border: 0;
+        border-bottom: 1px solid var(--workspace-line);
+    }
+
+    .plugin-workspace-shell .social-form-grid,
+    .plugin-workspace-shell .social-health-grid { grid-template-columns: 1fr; }
+
+    .plugin-workspace-shell .social-health-grid > div {
+        border-right: 0;
+        border-bottom: 1px solid var(--workspace-line);
+    }
+
+    .plugin-workspace-shell .social-health-grid > div:last-child { border-bottom: 0; }
+
+    .plugin-workspace-shell .marketing-founder-shell { grid-template-columns: 1fr; }
+
+    .plugin-workspace-shell .marketing-founder-hero,
+    .plugin-workspace-shell .marketing-founder-summary,
+    .plugin-workspace-shell .marketing-founder-shell > .plugin-quick-start-wrap,
+    .plugin-workspace-shell .marketing-lifecycle-graph,
+    .plugin-workspace-shell .marketing-launch-packet-card,
+    .plugin-workspace-shell .marketing-today-panel,
+    .plugin-workspace-shell .marketing-advanced-tools { grid-column: 1; }
+
+    .plugin-workspace-shell .marketing-founder-hero,
+    .plugin-workspace-shell .marketing-founder-summary,
+    .plugin-workspace-shell .marketing-founder-shell > .plugin-quick-start-wrap,
+    .plugin-workspace-shell .marketing-lifecycle-graph,
+    .plugin-workspace-shell .marketing-launch-packet-card,
+    .plugin-workspace-shell .marketing-today-panel,
+    .plugin-workspace-shell .marketing-advanced-tools { grid-row: auto; }
+
+    .plugin-workspace-shell .marketing-founder-hero { order: 1; }
+    .plugin-workspace-shell .marketing-founder-summary { order: 2; }
+    .plugin-workspace-shell .marketing-founder-shell > .plugin-quick-start-wrap { order: 3; }
+    .plugin-workspace-shell .marketing-lifecycle-graph { order: 4; }
+    .plugin-workspace-shell .marketing-launch-packet-card { order: 5; }
+    .plugin-workspace-shell .marketing-today-panel { order: 6; }
+    .plugin-workspace-shell .marketing-advanced-tools { order: 7; }
+
+    .plugin-workspace-shell .marketing-founder-summary .marketing-summary-tile {
+        display: grid;
+        grid-template-columns: 30px minmax(0, 1fr);
+        grid-template-rows: auto auto;
+        align-content: center;
+        column-gap: 8px;
+        row-gap: 2px;
+    }
+
+    .plugin-workspace-shell .marketing-founder-summary .marketing-summary-tile > i {
+        grid-column: 1;
+        grid-row: 1 / span 2;
+    }
+
+    .plugin-workspace-shell .marketing-founder-summary .marketing-summary-tile > span,
+    .plugin-workspace-shell .marketing-founder-summary .marketing-summary-tile > strong {
+        grid-column: 2;
+    }
+
+    .plugin-workspace-shell .marketing-lifecycle-graph { scrollbar-width: none; }
+    .plugin-workspace-shell .marketing-lifecycle-graph::-webkit-scrollbar { display: none; }
+
+    .plugin-workspace-shell .marketing-launch-packet-card {
+        padding: 24px 0;
+        border: 0;
+        border-bottom: 1px solid var(--workspace-line);
+    }
+
+    .plugin-workspace-shell .marketing-today-panel { margin: 0; padding: 24px 0; }
+    .plugin-workspace-shell .marketing-launch-packet-footer { grid-template-columns: 1fr; }
+    .plugin-workspace-shell .marketing-launch-packet-lists { grid-template-columns: 1fr 1fr; }
+
+    .plugin-workspace-shell .marketing-assistants-layout { grid-template-columns: 1fr; }
+
+    .plugin-workspace-shell .marketing-assistants-board,
+    .plugin-workspace-shell .marketing-assistants-run-panel,
+    .plugin-workspace-shell .marketing-assistants-today,
+    .plugin-workspace-shell .marketing-assistants-tools {
+        grid-column: 1;
+        grid-row: auto;
+        padding: 22px 0;
+        border: 0;
+        border-bottom: 1px solid var(--workspace-line);
+    }
+
+    .plugin-workspace-shell .marketing-assistants-board { order: 1; }
+    .plugin-workspace-shell .marketing-assistants-run-panel { order: 2; }
+    .plugin-workspace-shell .marketing-assistants-today { order: 3; }
+    .plugin-workspace-shell .marketing-assistants-tools { order: 4; }
+    .plugin-workspace-shell .marketing-assistants-today-list { grid-template-columns: 1fr; gap: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .plugin-workspace-shell .social-panel,
+    .plugin-workspace-shell .design-start-card,
+    .plugin-workspace-shell .marketing-assistant-card {
+        animation: none;
+        transition: none;
+    }
+}

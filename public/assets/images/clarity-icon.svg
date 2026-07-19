@@ -1,0 +1,29 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="clarityBg" x1="40" y1="28" x2="214" y2="226" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F7FBFF"/>
+      <stop offset="0.45" stop-color="#7DD3FC"/>
+      <stop offset="1" stop-color="#1D4ED8"/>
+    </linearGradient>
+    <linearGradient id="clarityOrb" x1="80" y1="78" x2="176" y2="178" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E0F2FE"/>
+      <stop offset="1" stop-color="#2563EB"/>
+    </linearGradient>
+    <filter id="clarityShadow" x="18" y="18" width="220" height="220" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#1E3A8A" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#clarityShadow)">
+    <circle cx="128" cy="118" r="92" fill="url(#clarityBg)"/>
+    <circle cx="128" cy="118" r="80" stroke="#DBEAFE" stroke-width="4"/>
+    <circle cx="128" cy="118" r="56" fill="url(#clarityOrb)"/>
+    <path d="M102 119C102 104.641 113.641 93 128 93H146C160.359 93 172 104.641 172 119C172 133.359 160.359 145 146 145H132.5L118.5 156.5V145H128C113.641 145 102 133.359 102 119Z" fill="#0F172A" fill-opacity="0.86"/>
+    <path d="M119 111H151" stroke="#F8FAFC" stroke-width="7" stroke-linecap="round"/>
+    <path d="M119 124H143" stroke="#BFDBFE" stroke-width="7" stroke-linecap="round"/>
+    <circle cx="174" cy="79" r="10" fill="#FACC15"/>
+    <path d="M73 72L78.2 84.8L91 90L78.2 95.2L73 108L67.8 95.2L55 90L67.8 84.8L73 72Z" fill="#F8FAFC"/>
+    <path d="M186 146L189.6 154.4L198 158L189.6 161.6L186 170L182.4 161.6L174 158L182.4 154.4L186 146Z" fill="#E0F2FE"/>
+    <path d="M128 56L131.2 63.8L139 67L131.2 70.2L128 78L124.8 70.2L117 67L124.8 63.8L128 56Z" fill="#EFF6FF"/>
+  </g>
+</svg>

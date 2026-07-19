@@ -1,0 +1,33 @@
+-- Marketing Phase 47: durable execution action snapshots for campaign operator handoff.
+
+CREATE TABLE IF NOT EXISTS marketing_execution_action_snapshots (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    workspace_id INT NOT NULL,
+    campaign_id INT NOT NULL,
+    uuid CHAR(36) NOT NULL,
+    snapshot_status ENUM('current','superseded','archived') NOT NULL DEFAULT 'current',
+    action_center_status ENUM('ready_for_manual_handoff','needs_attention','blocked') NOT NULL DEFAULT 'needs_attention',
+    readiness_score INT NOT NULL DEFAULT 0,
+    urgent_actions INT NOT NULL DEFAULT 0,
+    actions_total INT NOT NULL DEFAULT 0,
+    export_packs_ready INT NOT NULL DEFAULT 0,
+    export_packs_total INT NOT NULL DEFAULT 0,
+    launch_checklists_ready INT NOT NULL DEFAULT 0,
+    launch_checklists_total INT NOT NULL DEFAULT 0,
+    creative_ready INT NOT NULL DEFAULT 0,
+    creative_total INT NOT NULL DEFAULT 0,
+    actions_json JSON NULL,
+    quick_commands_json JSON NULL,
+    operator_snapshot_json JSON NULL,
+    guardrails_json JSON NULL,
+    metadata_json JSON NULL,
+    created_by INT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    UNIQUE KEY uniq_marketing_execution_action_snapshots_uuid (uuid),
+    KEY idx_marketing_execution_action_snapshots_workspace_campaign (workspace_id, campaign_id, snapshot_status, created_at),
+    KEY idx_marketing_execution_action_snapshots_workspace_status (workspace_id, action_center_status, created_at),
+    CONSTRAINT fk_marketing_execution_action_snapshots_workspace FOREIGN KEY (workspace_id) REFERENCES workspaces(id) ON DELETE CASCADE,
+    CONSTRAINT fk_marketing_execution_action_snapshots_campaign FOREIGN KEY (campaign_id) REFERENCES campaigns(id) ON DELETE CASCADE,
+    CONSTRAINT fk_marketing_execution_action_snapshots_creator FOREIGN KEY (created_by) REFERENCES users(id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

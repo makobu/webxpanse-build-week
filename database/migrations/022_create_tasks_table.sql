@@ -1,0 +1,23 @@
+CREATE TABLE IF NOT EXISTS tasks (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    description TEXT,
+    contact_id INT DEFAULT NULL,
+    assigned_to INT DEFAULT NULL,
+    created_by INT NOT NULL,
+    status ENUM('pending', 'in_progress', 'completed', 'cancelled') DEFAULT 'pending',
+    priority ENUM('low', 'medium', 'high', 'urgent') DEFAULT 'medium',
+    due_date DATETIME DEFAULT NULL,
+    completed_at DATETIME DEFAULT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    INDEX idx_contact_id (contact_id),
+    INDEX idx_assigned_to (assigned_to),
+    INDEX idx_created_by (created_by),
+    INDEX idx_status (status),
+    INDEX idx_due_date (due_date),
+    INDEX idx_priority (priority),
+    FOREIGN KEY (contact_id) REFERENCES contacts(id) ON DELETE SET NULL,
+    FOREIGN KEY (assigned_to) REFERENCES users(id) ON DELETE SET NULL,
+    FOREIGN KEY (created_by) REFERENCES users(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

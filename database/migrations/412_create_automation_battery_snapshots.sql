@@ -1,0 +1,22 @@
+CREATE TABLE IF NOT EXISTS automation_battery_snapshots (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    workspace_id INT NOT NULL,
+    subject_user_id INT NOT NULL,
+    score TINYINT UNSIGNED NOT NULL DEFAULT 0,
+    bucket VARCHAR(24) NOT NULL DEFAULT 'low',
+    status_label VARCHAR(120) NOT NULL DEFAULT '',
+    headline_label VARCHAR(160) NOT NULL DEFAULT '',
+    summary TEXT NULL,
+    payload_json JSON NOT NULL,
+    fingerprint CHAR(64) NOT NULL,
+    calculation_source VARCHAR(32) NOT NULL DEFAULT 'manual',
+    calculated_at DATETIME NOT NULL,
+    expires_at DATETIME NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    UNIQUE KEY uniq_automation_battery_workspace_subject (workspace_id, subject_user_id),
+    KEY idx_automation_battery_snapshots_stale (expires_at, workspace_id),
+    KEY idx_automation_battery_snapshots_subject (subject_user_id, calculated_at),
+    CONSTRAINT fk_automation_battery_snapshots_workspace FOREIGN KEY (workspace_id) REFERENCES workspaces(id) ON DELETE CASCADE,
+    CONSTRAINT fk_automation_battery_snapshots_subject_user FOREIGN KEY (subject_user_id) REFERENCES users(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

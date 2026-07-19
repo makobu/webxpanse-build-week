@@ -1,0 +1,88 @@
+.form-studio-page { --form-studio-canvas-width: 720px; }
+.form-studio-page .design-studio-shell { grid-template-columns: 278px minmax(360px, 1fr) 336px; }
+.form-studio-page .design-library { padding: 0; }
+.form-studio-library-tabs { border-bottom: 1px solid var(--studio-border); display: grid; grid-template-columns: repeat(3, 1fr); padding: 0 10px; }
+.form-studio-library-tabs button { appearance: none; background: transparent; border: 0; border-bottom: 2px solid transparent; color: var(--studio-muted); cursor: pointer; font: inherit; font-size: .72rem; font-weight: 760; min-height: 52px; }
+.form-studio-library-tabs button.is-active { border-color: var(--studio-primary); color: var(--studio-primary); }
+.form-studio-library-panel { padding: 14px; }
+.form-studio-library-panel[hidden] { display: none; }
+.form-studio-library-heading { align-items: center; display: flex; justify-content: space-between; margin: 0 0 10px; }
+.form-studio-library-heading h2 { font-size: .78rem; margin: 0; }
+.form-studio-library-heading button { background: transparent; border: 0; color: var(--studio-primary); cursor: pointer; font: inherit; font-size: .68rem; font-weight: 750; }
+.form-field-list { display: grid; gap: 7px; }
+.form-field-tile { min-height: 48px; }
+.form-field-tile .design-block-icon { height: 32px; width: 32px; }
+.form-field-tile strong { font-size: .73rem; }
+.form-studio-category + .form-studio-category { border-top: 1px solid var(--studio-border); margin-top: 14px; padding-top: 14px; }
+.form-studio-category h3 { color: var(--studio-muted); font-size: .64rem; letter-spacing: .07em; margin: 0 0 8px; text-transform: uppercase; }
+
+.form-step-list { display: grid; gap: 8px; }
+.form-step-row { align-items: center; background: #fff; border: 1px solid var(--studio-border); border-radius: 8px; color: var(--studio-text); cursor: pointer; display: grid; font: inherit; gap: 9px; grid-template-columns: 28px minmax(0, 1fr) auto; padding: 9px; text-align: left; width: 100%; }
+.form-step-row:hover { border-color: #abcaf9; }
+.form-step-row.is-active { background: #eef5ff; border-color: var(--studio-primary); }
+.form-step-row > span:first-child { align-items: center; background: #edf3fb; border-radius: 50%; color: var(--studio-primary); display: flex; font-size: .68rem; font-weight: 800; height: 28px; justify-content: center; }
+.form-step-row > span:nth-child(2) { min-width: 0; }
+.form-step-row strong { display: block; font-size: .72rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.form-step-row small { color: var(--studio-muted); display: block; font-size: .62rem; margin-top: 2px; }
+.form-step-row i { color: #98a5b7; font-size: .62rem; }
+
+.form-template-mini-list { display: grid; gap: 9px; }
+.form-template-mini { background: #fff; border: 1px solid var(--studio-border); border-radius: 9px; cursor: pointer; padding: 11px; text-align: left; width: 100%; }
+.form-template-mini:hover { border-color: #abcaf9; box-shadow: 0 5px 16px rgba(18, 48, 91, .08); }
+.form-template-mini strong { display: block; font-size: .74rem; }
+.form-template-mini span { color: var(--studio-muted); display: block; font-size: .64rem; line-height: 1.45; margin-top: 4px; }
+
+.form-studio-page .design-canvas-viewport.is-desktop { max-width: calc(var(--form-studio-canvas-width) + 42px); }
+.form-studio-page .design-canvas-viewport.is-tablet { max-width: 620px; }
+.form-studio-page .design-canvas-viewport.is-mobile { max-width: 430px; }
+.form-studio-page .design-canvas { min-height: 720px; overflow: visible; }
+.form-studio-page .design-canvas .form-runtime { min-height: 720px; padding: 22px; }
+.form-studio-page .design-canvas .form-runtime__card { box-shadow: 0 12px 34px rgba(22, 38, 64, .1); }
+.form-studio-page .design-canvas .form-runtime__field { cursor: pointer; outline: 2px solid transparent; outline-offset: 5px; transition: outline-color .15s ease; }
+.form-studio-page .design-canvas .form-runtime__field:hover { outline-color: rgba(15, 103, 234, .32); }
+.form-studio-page .design-canvas .form-runtime__field.is-selected { outline-color: var(--studio-primary); z-index: 2; }
+.form-studio-page .design-canvas .form-runtime__field.is-selected::after { align-items: center; background: var(--studio-primary); border-radius: 6px; color: #fff; content: "⋮⋮"; display: flex; font-size: 12px; height: 34px; justify-content: center; position: absolute; right: -12px; top: 50%; transform: translateY(-50%); width: 22px; }
+.form-studio-page .design-canvas .form-runtime__field.is-dragging { opacity: .42; }
+.form-studio-page .design-canvas .form-runtime__field.is-drop-target { box-shadow: 0 -3px 0 var(--studio-primary); }
+.form-studio-page .design-canvas .form-runtime__actions button,
+.form-studio-page .design-canvas .form-runtime__steps,
+.form-studio-page .design-canvas .form-runtime__consent { pointer-events: none; }
+.form-studio-page .design-canvas-viewport.is-mobile .form-runtime { padding: 0; }
+.form-studio-page .design-canvas-viewport.is-mobile .form-runtime__card { min-height: 720px; }
+
+.form-inspector-empty { align-items: center; color: var(--studio-muted); display: flex; flex-direction: column; min-height: 260px; justify-content: center; text-align: center; }
+.form-inspector-empty i { background: #edf4ff; border-radius: 12px; color: var(--studio-primary); font-size: 1.2rem; margin-bottom: 10px; padding: 14px; }
+.form-inspector-empty strong { color: var(--studio-text); font-size: .78rem; }
+.form-inspector-empty span { font-size: .67rem; line-height: 1.5; margin-top: 5px; max-width: 210px; }
+.form-options-editor { display: grid; gap: 6px; }
+.form-options-editor-row { align-items: center; display: grid; gap: 5px; grid-template-columns: minmax(0, 1fr) 30px; }
+.form-options-editor-row button { background: transparent; border: 0; color: var(--studio-danger); cursor: pointer; height: 30px; }
+.form-add-option { background: #f5f8fc; border: 1px dashed #b8c6d9; border-radius: 7px; color: var(--studio-primary); cursor: pointer; font: inherit; font-size: .68rem; font-weight: 750; min-height: 36px; width: 100%; }
+.form-logic-summary { align-items: flex-start; background: #f4f8ff; border: 1px solid #c9dcfb; border-radius: 8px; color: #2b527f; display: flex; font-size: .68rem; gap: 8px; line-height: 1.45; margin-bottom: 12px; padding: 10px; }
+.form-logic-condition { background: #f8fafc; border: 1px solid var(--studio-border); border-radius: 8px; display: grid; gap: 7px; margin-bottom: 9px; padding: 9px; }
+.form-logic-condition button { background: transparent; border: 0; color: var(--studio-danger); cursor: pointer; font: inherit; font-size: .65rem; justify-self: end; }
+.form-template-dialog .design-template-card__preview { background: #f5f8fc; display: grid; gap: 5px; grid-template-columns: 1fr; padding: 12px; }
+.form-template-dialog .design-template-card__preview i { background: #dce8f8; border-radius: 3px; display: block; height: 7px; width: 100%; }
+.form-template-dialog .design-template-card__preview i:first-child { background: #96baf2; height: 15px; width: 72%; }
+.form-template-dialog .design-template-card__preview i:last-child { background: var(--studio-primary); justify-self: end; width: 38%; }
+
+.form-studio-create-page .design-create-form { max-width: 1180px; }
+.form-studio-create-page .design-template-card__preview { background: #f5f8fc; display: grid; gap: 6px; padding: 15px; }
+.form-studio-create-page .design-template-card__preview i { background: #dbe5f2; border-radius: 3px; height: 8px; }
+.form-studio-create-page .design-template-card__preview i:first-child { background: #92b7f0; height: 18px; width: 70%; }
+.form-studio-create-page .design-template-card__preview i:last-child { background: #0f67ea; justify-self: end; width: 42%; }
+
+@media (max-width: 1080px) {
+    .form-studio-page .design-studio-shell { grid-template-columns: 250px minmax(330px, 1fr); }
+}
+
+@media (min-width: 761px) and (max-width: 840px) {
+    .form-studio-page .design-studio-shell { display: block; }
+    .form-studio-page .design-library,
+    .form-studio-page .design-inspector { bottom: 58px; box-shadow: 0 0 30px rgba(20, 35, 58, .18); max-width: min(88vw, 340px); position: fixed; top: 68px; transition: transform .2s ease; width: 340px; z-index: 20; }
+    .form-studio-page .design-library { left: 0; transform: translateX(-105%); }
+    .form-studio-page .design-inspector { right: 0; transform: translateX(105%); }
+    .form-studio-page.has-library .design-library,
+    .form-studio-page.has-inspector .design-inspector { transform: translateX(0); }
+    .form-studio-page .design-stage { height: calc(100dvh - 126px); }
+}

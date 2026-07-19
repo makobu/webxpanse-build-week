@@ -1,0 +1,48 @@
+-- Client-specific calendar sharing links and booking attribution.
+
+CREATE TABLE IF NOT EXISTS meeting_calendar_shares (
+    id BIGINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    workspace_id INT NOT NULL,
+    profile_id INT NOT NULL,
+    contact_id INT DEFAULT NULL,
+    deal_id INT DEFAULT NULL,
+    created_by INT DEFAULT NULL,
+    token CHAR(64) NOT NULL,
+    meeting_purpose VARCHAR(80) NOT NULL DEFAULT 'consultation',
+    custom_purpose VARCHAR(255) DEFAULT NULL,
+    duration_minutes INT NOT NULL DEFAULT 30,
+    date_from DATE DEFAULT NULL,
+    date_to DATE DEFAULT NULL,
+    suggested_slots_json JSON DEFAULT NULL,
+    booking_url VARCHAR(1024) DEFAULT NULL,
+    expires_at DATETIME NOT NULL,
+    status ENUM('draft','ready','sent','viewed','booked','expired','cancelled') NOT NULL DEFAULT 'draft',
+    last_draft_subject VARCHAR(500) DEFAULT NULL,
+    last_draft_body MEDIUMTEXT DEFAULT NULL,
+    sent_email_uuid VARCHAR(80) DEFAULT NULL,
+    metadata_json JSON DEFAULT NULL,
+    copied_at DATETIME DEFAULT NULL,
+    sent_at DATETIME DEFAULT NULL,
+    viewed_at DATETIME DEFAULT NULL,
+    booked_at DATETIME DEFAULT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    UNIQUE KEY uniq_meeting_calendar_shares_token (token),
+    KEY idx_meeting_calendar_shares_workspace_status (workspace_id, status, expires_at),
+    KEY idx_meeting_calendar_shares_contact (workspace_id, contact_id, status),
+    KEY idx_meeting_calendar_shares_deal (workspace_id, deal_id, status),
+    KEY idx_meeting_calendar_shares_profile (profile_id, status),
+    CONSTRAINT fk_meeting_calendar_shares_workspace FOREIGN KEY (workspace_id) REFERENCES workspaces(id) ON DELETE CASCADE,
+    CONSTRAINT fk_meeting_calendar_shares_profile FOREIGN KEY (profile_id) REFERENCES meeting_booking_profiles(id) ON DELETE CASCADE,
+    CONSTRAINT fk_meeting_calendar_shares_contact FOREIGN KEY (contact_id) REFERENCES contacts(id) ON DELETE SET NULL,
+    CONSTRAINT fk_meeting_calendar_shares_deal FOREIGN KEY (deal_id) REFERENCES deals(id) ON DELETE SET NULL,
+    CONSTRAINT fk_meeting_calendar_shares_created_by FOREIGN KEY (created_by) REFERENCES users(id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+ALTER TABLE meeting_booking_requests
+    ADD COLUMN IF NOT EXISTS calendar_share_id BIGINT UNSIGNED DEFAULT NULL AFTER profile_id,
+    ADD COLUMN IF NOT EXISTS contact_id INT DEFAULT NULL AFTER calendar_share_id,
+    ADD COLUMN IF NOT EXISTS deal_id INT DEFAULT NULL AFTER contact_id,
+    ADD KEY IF NOT EXISTS idx_meeting_booking_calendar_share (workspace_id, calendar_share_id),
+    ADD KEY IF NOT EXISTS idx_meeting_booking_contact (workspace_id, contact_id, status),
+    ADD KEY IF NOT EXISTS idx_meeting_booking_deal (workspace_id, deal_id, status);

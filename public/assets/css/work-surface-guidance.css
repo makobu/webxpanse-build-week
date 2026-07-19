@@ -1,0 +1,85 @@
+.beginner-work-guidance {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 1rem;
+    align-items: center;
+    margin: 0 0 1rem;
+    padding: 1rem 1.1rem;
+    border: 1px solid rgba(148, 163, 184, 0.24);
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 10px 26px rgba(15, 23, 42, 0.06);
+}
+
+.beginner-work-guidance-main {
+    min-width: 0;
+}
+
+.beginner-work-guidance-eyebrow {
+    margin: 0 0 0.25rem;
+    color: #475569;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.beginner-work-guidance h2 {
+    margin: 0;
+    color: #0f172a;
+    font-size: 1.05rem;
+    line-height: 1.25;
+}
+
+.beginner-work-guidance-main > p:not(.beginner-work-guidance-eyebrow) {
+    margin: 0.4rem 0 0;
+    color: #64748b;
+    font-size: 0.92rem;
+    line-height: 1.45;
+}
+
+.beginner-work-guidance-hint {
+    display: inline-flex;
+    margin-top: 0.65rem;
+    color: #334155;
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+.beginner-work-guidance-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.7rem;
+    flex-wrap: wrap;
+}
+
+.beginner-work-guidance-cta {
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+.beginner-work-guidance-status {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.15rem;
+    padding: 0.45rem 0.7rem;
+    border-radius: 999px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    color: #334155;
+    font-size: 0.78rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+@media (max-width: 760px) {
+    .beginner-work-guidance {
+        grid-template-columns: 1fr;
+        align-items: start;
+    }
+
+    .beginner-work-guidance-actions {
+        justify-content: flex-start;
+    }
+}

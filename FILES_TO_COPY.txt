@@ -1,0 +1,44 @@
+# Files and Directories to Copy to Production Server
+
+## Required Directories:
+api/
+cli/
+config/
+core/
+database/
+docs/
+modules/
+public/
+services/
+views/
+scripts/
+
+## Required Files:
+composer.json
+composer.lock
+README.md
+DEPLOYMENT.md
+.env.production
+
+## Optional (but recommended):
+.gitignore
+.htaccess (if using Apache)
+
+## DO NOT COPY:
+.env (create new one on server from .env.production)
+vendor/ (install via composer on server)
+.git/ (if using version control)
+tests/ (not needed for production)
+node_modules/ (if exists)
+.cursor/ (development files)
+*.log files
+cache/* (will be created automatically)
+uploads/* (empty directory structure is fine)
+
+## Instructions:
+1. Copy all required directories and files to server
+2. On server, run: composer install --no-dev --optimize-autoloader
+3. Copy .env.production to .env and update with production values
+4. Set permissions: chmod 755 -R . && chmod 775 -R uploads cache logs
+5. Run migrations: php database/migrations/migrate.php
+6. Create admin user: php scripts/create_admin_user.php

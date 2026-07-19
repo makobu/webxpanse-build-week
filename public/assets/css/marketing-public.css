@@ -1,0 +1,232 @@
+:root {
+    color-scheme: light;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body.marketing-public-landing {
+    background: #f8fafc;
+    color: #0f172a;
+    margin: 0;
+}
+
+body.marketing-public-preferences {
+    align-items: center;
+    background: #f8fafc;
+    color: #0f172a;
+    display: grid;
+    margin: 0;
+    min-height: 100vh;
+    padding: 1.25rem;
+    place-items: center;
+}
+
+.marketing-public-shell {
+    background: #ffffff;
+    border-left: 1px solid #e2e8f0;
+    border-right: 1px solid #e2e8f0;
+    box-shadow: 0 22px 70px rgba(15, 23, 42, 0.10);
+    margin: 0 auto;
+    max-width: 1080px;
+    min-height: 100vh;
+}
+
+.marketing-public-hero {
+    background: linear-gradient(180deg, #ffffff 0%, #eff6ff 100%);
+    border-bottom: 1px solid #e2e8f0;
+    padding: 5rem 3rem 3.5rem;
+}
+
+.marketing-public-hero h1 {
+    color: #0f172a;
+    font-size: clamp(2.2rem, 5vw, 4.8rem);
+    line-height: 1.02;
+    margin: 0 0 1rem;
+    max-width: 880px;
+}
+
+.marketing-public-hero p {
+    color: #334155;
+    font-size: 1.15rem;
+    line-height: 1.7;
+    max-width: 720px;
+}
+
+.marketing-public-section,
+.marketing-public-cta {
+    border-bottom: 1px solid #e2e8f0;
+    padding: 2.4rem 3rem;
+}
+
+.marketing-public-section h2,
+.marketing-public-cta h2 {
+    font-size: 1.45rem;
+    margin: 0 0 0.75rem;
+}
+
+.marketing-public-section p,
+.marketing-public-cta p {
+    line-height: 1.75;
+    white-space: pre-wrap;
+}
+
+.marketing-public-section p {
+    color: #334155;
+}
+
+.media {
+    margin: 1.25rem 0 0;
+}
+
+.media img,
+.media video {
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    display: block;
+    max-height: 460px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.media figcaption {
+    color: #64748b;
+    font-size: 0.9rem;
+    margin-top: 0.45rem;
+}
+
+.marketing-public-gallery {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.marketing-public-cta {
+    background: #0f172a;
+    color: #ffffff;
+}
+
+.marketing-public-cta p,
+.marketing-public-cta h2 {
+    color: #ffffff;
+}
+
+.marketing-public-cta-link {
+    align-items: center;
+    background: #ffffff;
+    border-radius: 10px;
+    color: #0f172a;
+    display: inline-flex;
+    font-weight: 800;
+    justify-content: center;
+    margin: 0.5rem 0.5rem 0 0;
+    min-height: 44px;
+    padding: 0.7rem 1rem;
+    text-decoration: none;
+}
+
+.marketing-public-cta-link:hover,
+.marketing-public-cta-link:focus-visible {
+    background: #bfdbfe;
+}
+
+.marketing-public-cta-link:focus-visible {
+    outline: 3px solid rgba(37, 99, 235, 0.35);
+    outline-offset: 3px;
+}
+
+.marketing-public-form-note {
+    color: #bfdbfe;
+    font-weight: 700;
+    margin-top: 1rem;
+}
+
+.marketing-public-preferences-card {
+    background: #ffffff;
+    border: 1px solid #dbe4f0;
+    border-radius: 16px;
+    box-shadow: 0 18px 50px rgba(15, 23, 42, 0.10);
+    padding: 32px;
+    width: min(100%, 520px);
+}
+
+.marketing-public-preferences-card h1 {
+    font-size: 28px;
+    line-height: 1.15;
+    margin: 0 0 10px;
+}
+
+.marketing-public-preferences-card p {
+    color: #475569;
+    line-height: 1.55;
+    margin: 0 0 20px;
+}
+
+.marketing-public-preferences-status {
+    align-items: center;
+    background: #eff6ff;
+    border-radius: 999px;
+    color: #1d4ed8;
+    display: inline-flex;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 18px;
+    min-height: 28px;
+    padding: 0 12px;
+}
+
+.marketing-public-preferences-status.is-success {
+    background: #ecfdf3;
+    color: #047857;
+}
+
+.marketing-public-preferences-status.is-error {
+    background: #fef2f2;
+    color: #b42318;
+}
+
+.marketing-public-preferences-form button {
+    background: #2563eb;
+    border: 0;
+    border-radius: 10px;
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 800;
+    min-height: 44px;
+    padding: 0 18px;
+}
+
+.marketing-public-preferences-form button:hover,
+.marketing-public-preferences-form button:focus-visible {
+    background: #1d4ed8;
+}
+
+.marketing-public-preferences-form button:focus-visible {
+    outline: 3px solid rgba(37, 99, 235, 0.35);
+    outline-offset: 3px;
+}
+
+.marketing-public-preferences-card .marketing-public-preferences-muted {
+    color: #64748b;
+    font-size: 13px;
+    margin-top: 18px;
+}
+
+@media (max-width: 760px) {
+    .marketing-public-hero,
+    .marketing-public-section,
+    .marketing-public-cta {
+        padding: 1.6rem;
+    }
+
+    .marketing-public-gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .marketing-public-preferences-card {
+        padding: 24px;
+    }
+}

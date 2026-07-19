@@ -1,0 +1,106 @@
+# Apache Configuration for CRM System
+# This file should be in the public/ directory
+
+# Enable Rewrite Engine
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    
+    # Redirect to HTTPS (uncomment when SSL is configured)
+    # RewriteCond %{HTTPS} off
+    # RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+    
+    # Remove trailing slashes
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)/$ /$1 [L,R=301]
+    
+    # Protect database directory from direct access
+    RewriteRule ^database/ - [F,L]
+    
+    # Handle front controller - send all requests to index.php ONLY if file doesn't exist
+    # Apache will serve existing files directly, so this only catches non-existent files
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^ index.php [L]
+</IfModule>
+
+# Set default charset
+AddDefaultCharset UTF-8
+
+# Prevent directory listing
+Options -Indexes
+
+# Set default index file
+DirectoryIndex index.php index.html
+
+# Protect sensitive files - Apache 2.4 syntax (for localhost)
+<IfModule mod_authz_core.c>
+    <FilesMatch "^(config\.php|config\.production\.php|\.env.*|\.git|composer\.(json|lock)|package\.json)$">
+        Require all denied
+    </FilesMatch>
+</IfModule>
+
+# Protect sensitive files - Apache 2.2 syntax (for hosting)
+<IfModule !mod_authz_core.c>
+    <FilesMatch "^(config\.php|config\.production\.php|\.env.*|\.git|composer\.(json|lock)|package\.json)$">
+        Order allow,deny
+        Deny from all
+    </FilesMatch>
+</IfModule>
+
+# PHP Settings - Try PHP 8 first (for localhost), then PHP 7 (for hosting)
+<IfModule mod_php8.c>
+    php_value upload_max_filesize 50M
+    php_value post_max_size 60M
+    php_value max_execution_time 300
+    php_value max_input_time 300
+</IfModule>
+
+<IfModule mod_php7.c>
+    php_value upload_max_filesize 50M
+    php_value post_max_size 60M
+    php_value max_execution_time 300
+    php_value max_input_time 300
+</IfModule>
+
+<IfModule mod_php.c>
+    php_value upload_max_filesize 50M
+    php_value post_max_size 60M
+    php_value max_execution_time 300
+    php_value max_input_time 300
+</IfModule>
+
+# Security Headers
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+    
+    # Enable CORS for API endpoints (if needed)
+    <FilesMatch "\.(php)$">
+        Header set Access-Control-Allow-Origin "*"
+        Header set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+        Header set Access-Control-Allow-Headers "Content-Type, Authorization"
+    </FilesMatch>
+</IfModule>
+
+# Enable compression
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+</IfModule>
+
+# Cache static assets
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+</IfModule>
+
+# Custom error pages (optional)
+# ErrorDocument 404 /404.html
+# ErrorDocument 500 /500.html

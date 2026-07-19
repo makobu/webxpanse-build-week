@@ -1,0 +1,52 @@
+-- Marketing Phase 39: AI media generation bridge.
+
+CREATE TABLE IF NOT EXISTS marketing_ai_media_requests (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    workspace_id INT NOT NULL,
+    uuid CHAR(36) NOT NULL,
+    title VARCHAR(180) NOT NULL,
+    request_type ENUM('image','video','thumbnail','banner','storyboard','other') NOT NULL DEFAULT 'image',
+    status ENUM('draft','generated','accepted','rejected','archived') NOT NULL DEFAULT 'draft',
+    content_item_id INT NULL,
+    landing_page_id INT NULL,
+    creative_brief_id INT NULL,
+    asset_request_id INT NULL,
+    prompt_text TEXT NULL,
+    prompt_json JSON NULL,
+    context_json JSON NULL,
+    provider_json JSON NULL,
+    result_json JSON NULL,
+    accepted_media_file_id INT NULL,
+    created_by INT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    UNIQUE KEY uniq_marketing_ai_media_requests_uuid (uuid),
+    KEY idx_marketing_ai_media_requests_workspace_status (workspace_id, status, updated_at),
+    KEY idx_marketing_ai_media_requests_workspace_landing (workspace_id, landing_page_id),
+    KEY idx_marketing_ai_media_requests_workspace_content (workspace_id, content_item_id),
+    CONSTRAINT fk_marketing_ai_media_requests_workspace FOREIGN KEY (workspace_id) REFERENCES workspaces(id) ON DELETE CASCADE,
+    CONSTRAINT fk_marketing_ai_media_requests_creator FOREIGN KEY (created_by) REFERENCES users(id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS marketing_ai_media_outputs (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    workspace_id INT NOT NULL,
+    request_id INT NOT NULL,
+    uuid CHAR(36) NOT NULL,
+    output_type ENUM('prompt','image_url','video_url','storyboard','thumbnail_prompt','metadata','other') NOT NULL DEFAULT 'prompt',
+    status ENUM('draft','generated','accepted','rejected','archived') NOT NULL DEFAULT 'generated',
+    title VARCHAR(180) NULL,
+    prompt_text TEXT NULL,
+    output_url TEXT NULL,
+    output_json JSON NULL,
+    accepted_media_file_id INT NULL,
+    created_by INT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    UNIQUE KEY uniq_marketing_ai_media_outputs_uuid (uuid),
+    KEY idx_marketing_ai_media_outputs_workspace_request (workspace_id, request_id, created_at),
+    KEY idx_marketing_ai_media_outputs_workspace_status (workspace_id, status, updated_at),
+    CONSTRAINT fk_marketing_ai_media_outputs_workspace FOREIGN KEY (workspace_id) REFERENCES workspaces(id) ON DELETE CASCADE,
+    CONSTRAINT fk_marketing_ai_media_outputs_request FOREIGN KEY (request_id) REFERENCES marketing_ai_media_requests(id) ON DELETE CASCADE,
+    CONSTRAINT fk_marketing_ai_media_outputs_creator FOREIGN KEY (created_by) REFERENCES users(id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

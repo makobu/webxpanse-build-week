@@ -1,0 +1,479 @@
+AI COACH CUSTOMER-FACING OVERVIEW
+
+AI Coach is the proactive "what should I do next?" layer inside Clarity CRM.
+
+Instead of waiting for a user to search through dashboards, reports, contacts, deals, tasks, and settings, AI Coach turns the workspace's live context into clear next-step recommendations. It helps teams understand what matters now, what setup is blocking better performance, and which practical actions can move revenue, follow-up, and execution forward.
+
+The value is simple: AI Coach helps every user spend less time guessing and more time acting on the highest-value next move.
+
+
+THE CUSTOMER OUTCOME
+
+AI Coach helps businesses turn CRM data into daily execution.
+
+Most CRMs store information. AI Coach helps users act on it. It reviews the workspace context, installed skills, company profile, product or offer setup, user strategy brief, contacts, deals, tasks, targets, and activity signals, then presents practical guidance in clear recommendation sections.
+
+Customers get:
+
+- Better focus: users know what to work on next instead of scanning multiple modules.
+- Stronger follow-through: recommendations can become task candidates with subtasks and source tracking.
+- Faster setup: the system highlights missing company, offer, strategy, or Marketplace setup that blocks better AI guidance.
+- More consistent execution: sales, marketing, and operations teams receive recommendations based on the same workspace context.
+- More trustworthy AI guidance: recommendation cards explain why they appeared and include confidence, context, and source signals.
+- Safer strategic advice: AI Coach stays inside the boundaries of installed, ready skills instead of inventing unsupported business advice.
+
+
+WHAT AI COACH DOES
+
+AI Coach is a dashboard coaching layer that reads the current workspace and recommends the next best actions.
+
+It is designed to answer questions like:
+
+- What should I focus on today?
+- Which setup gaps are stopping the CRM from giving better guidance?
+- Which contacts, deals, tasks, or targets need attention?
+- Which quick wins can improve follow-up, pipeline movement, or adoption?
+- Which Marketplace skills should be installed or completed next?
+- Is the workspace ready for business-growth recommendations?
+
+AI Coach is not just a chatbot. It is a recommendation orchestrator. It connects CRM evidence with installed skill contracts and presents decision-ready guidance without forcing the user to prompt the system first.
+
+
+CORE OUTCOMES AI COACH HELPS DELIVER
+
+1. Daily focus
+
+AI Coach gives users a short list of practical priorities so they can start the day with direction. Instead of wondering whether to follow up, add leads, clean up deals, create tasks, set targets, or configure workflows, users see ranked recommendations based on their current workspace activity.
+
+2. Better sales follow-up
+
+AI Coach can surface actions tied to contacts, deals, tasks, and targets. It helps users avoid missed follow-ups, incomplete deal movement, and stale pipeline activity by turning CRM signals into recommended next steps.
+
+3. Cleaner onboarding and setup
+
+AI Coach highlights missing prerequisites such as company context, product or offer information, personal Coach Brief completion, AI service readiness, and advice-skill coverage. This helps customers finish setup in the right order instead of discovering gaps later.
+
+4. More actionable strategy
+
+When strategy context is complete, AI Coach can use fields such as target market, ideal customer profile, offer angle, segment focus, sales motion, deal movement strategy, outreach posture, positioning notes, market view, and strategy hypothesis to make recommendations more relevant.
+
+5. Lean Canvas-backed business guidance
+
+When Lean Canvas context is enabled and complete, AI Coach can ground recommendations in business model assumptions such as problem, customer segments, unique value proposition, solution, channels, revenue streams, cost structure, key metrics, and unfair advantage.
+
+6. Founder and operator discipline
+
+AI Coach supports business fundamentals such as offer definition, pricing logic, sales process structure, segmentation, marketing channels, follow-up discipline, revenue forecasting, KPI tracking, pipeline hygiene, and lead quality.
+
+7. Safer AI adoption
+
+AI Coach includes readiness checks, recommendation boundaries, trust signals, explanation chips, diagnostics, and feedback-aware ranking. This gives teams more confidence in the recommendations they choose to act on.
+
+
+MAIN FEATURE AREAS
+
+Recommendation sections
+
+AI Coach organizes guidance into practical sections:
+
+- Foundation gaps: missing business or workspace fundamentals that should be fixed first.
+- Today's priorities: the top high-impact actions to focus on now.
+- Quick wins: low-effort actions that can create useful momentum.
+- Missing features: CRM, automation, Marketplace, or workflow capabilities the user has not adopted yet.
+
+Each recommendation can include:
+
+- A clear title.
+- Impact level.
+- Effort level.
+- A short reason.
+- Optional target or goal connection.
+- Suggested subtasks.
+- Marketplace setup links where relevant.
+- Source and trust signals.
+- Feedback and learning notes when prior feedback affects ranking.
+
+
+Readiness checklist
+
+AI Coach checks whether the workspace is ready before it generates recommendations.
+
+Readiness can include:
+
+- AI Coach installed for the workspace.
+- AI Coach enabled for the current user.
+- Shared company context completed.
+- Product or offer context completed.
+- Personal Coach Brief completed.
+- AI service availability.
+- At least one ready advice skill when strategic business recommendations are expected.
+
+If the workspace is not ready, AI Coach explains what is missing instead of giving weak or generic advice.
+
+
+Coach Brief and strategy profile
+
+AI Coach becomes more useful when each user completes their Coach Brief and strategy profile.
+
+The strategy profile can include:
+
+- Target market focus.
+- Ideal customer profile.
+- Offer angle.
+- Segment focus.
+- Sales motion.
+- Deal movement strategy.
+- Outreach posture.
+- Positioning notes.
+- Market view.
+- Strategy hypothesis.
+- Draft tone and voice preferences.
+- CTA style, formality level, and reading level.
+
+This allows recommendations and AI outputs across the system to better match the customer's actual go-to-market approach.
+
+
+Idea validation
+
+AI Coach supports idea validation context for early-stage or strategy-focused users.
+
+Users can capture:
+
+- Value proposition.
+- Target market.
+- Customer pain points.
+- Assumptions to test.
+- Competitors.
+- Differentiator.
+
+This helps AI Coach recommend validation experiments and avoid pushing a business to scale before its assumptions are clear.
+
+
+Lean Canvas support
+
+AI Coach can use Lean Canvas as a structured business model layer.
+
+When Lean Canvas is enabled, AI Coach can reference:
+
+- Problem.
+- Customer segments.
+- Unique value proposition.
+- Solution.
+- Channels.
+- Revenue streams.
+- Cost structure.
+- Key metrics.
+- Unfair advantage.
+- Completion status and missing blocks.
+
+This makes recommendations more grounded for founders, operators, and teams still clarifying their business model.
+
+
+Marketplace guidance
+
+AI Coach integrates with the workspace Marketplace.
+
+It can recommend installing or completing relevant modules when the workspace needs more capability. For example, if a recommendation depends on a missing channel, automation, strategy, marketing, or setup skill, AI Coach can point the user toward the right Marketplace action.
+
+This helps customers understand not only what to do, but what capability they need in order to do it well.
+
+
+Task follow-through
+
+AI Coach recommendations can become actionable task candidates.
+
+Task candidates can preserve:
+
+- The recommendation source.
+- The guidance run.
+- The target or goal relationship.
+- Suggested subtasks.
+- Marketplace skill source.
+- Follow-through context.
+
+This turns coaching into execution rather than leaving advice as a passive suggestion.
+
+
+Trust and explanation signals
+
+AI Coach recommendation cards can explain why a recommendation appeared.
+
+Signals can include:
+
+- Confidence.
+- Context quality.
+- Goal relevance.
+- Source section.
+- Marketplace source.
+- Setup gap.
+- Lean Canvas context.
+- Ready skill coverage.
+
+These signals help users understand whether a recommendation is based on strong context, setup gaps, goals, or installed capabilities.
+
+
+Feedback-aware learning
+
+Users and admins can provide feedback on recommendation quality.
+
+Feedback can include signals such as:
+
+- Useful.
+- Not relevant.
+- Already done.
+- Show fewer like this.
+- Dismissed.
+- Acted on.
+
+AI Coach can use explicit feedback conservatively to adjust future ranking and explain when feedback influenced a recommendation.
+
+
+Diagnostics and admin insight
+
+Admins can review AI Coach recommendation patterns through diagnostics.
+
+This helps teams see:
+
+- Which recommendations users accept.
+- Which recommendations are dismissed.
+- Which recommendation types need review.
+- Which patterns are useful or not relevant.
+- Where tuning controls or setup changes may improve the experience.
+
+
+Guidance modes
+
+AI Coach supports different guidance modes for different customer needs.
+
+Foundation Mode
+
+Best for early setup, founders, and teams that need business fundamentals reviewed. This mode can surface foundation gaps around company setup, product definitions, pricing, offer clarity, sales process, segmentation, budget, targets, and go-to-market basics.
+
+Operations Mode
+
+Best for teams that already have their business model and strategy in place. This mode focuses on execution inside the growth system, such as activities, follow-ups, automations, tasks, deals, targets, and feature adoption.
+
+Guardian Mode
+
+Best for teams that want minimal proactive coaching. In this mode, AI Coach avoids daily coaching and only alerts for critical issues.
+
+
+WHO AI COACH IS FOR
+
+Workspace owners
+
+AI Coach helps owners see whether the workspace is ready, what setup is incomplete, and which actions will create the next operational improvement.
+
+Sales teams
+
+AI Coach helps sales users prioritize follow-ups, move deals, create tasks, set goals, and avoid losing track of customer activity.
+
+Marketing teams
+
+AI Coach helps marketing users identify missing campaign, positioning, outreach, and channel setup work when paired with the right strategy or marketing skills.
+
+Founders
+
+AI Coach helps founders connect strategy, validation, pricing, runway, customer segments, and first-customer activity to concrete CRM actions.
+
+Admins and operators
+
+AI Coach helps admins understand whether the workspace is configured correctly and whether users are trusting, acting on, or dismissing recommendations.
+
+
+WHY CUSTOMERS SHOULD CARE
+
+AI Coach makes the CRM feel alive.
+
+Without AI Coach, users may have to inspect contacts, deals, tasks, reports, targets, automations, settings, and Marketplace modules separately. With AI Coach, the workspace can tell users what is missing, what is urgent, and what can create momentum.
+
+That creates a better operating rhythm:
+
+- Start the day with recommended priorities.
+- Convert guidance into tasks.
+- Complete missing setup in the correct order.
+- Use strategy context to make advice more specific.
+- Improve recommendations with feedback.
+- Give admins visibility into what users trust and act on.
+
+
+CUSTOMER-FACING POSITIONING
+
+Short positioning statement
+
+AI Coach turns your CRM activity into clear next-step recommendations, so your team knows what to fix, what to follow up, and what to focus on next.
+
+Outcome-led positioning statement
+
+AI Coach helps teams move from stored data to daily action. It reviews your workspace context, strategy brief, installed skills, contacts, deals, tasks, targets, and setup readiness, then gives practical recommendations that help users focus, follow through, and improve execution.
+
+Premium positioning statement
+
+AI Coach is the decision-ready coaching layer for Clarity CRM. It combines your company context, user strategy, CRM activity, goals, installed skills, and setup readiness to recommend the next actions most likely to improve follow-through, pipeline discipline, and workspace adoption.
+
+
+FEATURE-TO-OUTCOME MAPPING
+
+Feature: Readiness checklist
+Customer outcome: Users know exactly what setup is missing before relying on AI recommendations.
+
+Feature: Recommendation cards
+Customer outcome: Users get clear, prioritized actions instead of vague advice.
+
+Feature: Foundation gaps
+Customer outcome: Teams fix missing business basics before scaling activity.
+
+Feature: Today's priorities
+Customer outcome: Users start work with a short, focused action list.
+
+Feature: Quick wins
+Customer outcome: Teams build momentum with low-effort improvements.
+
+Feature: Missing features
+Customer outcome: Customers discover underused CRM and Marketplace capabilities that can improve execution.
+
+Feature: Suggested subtasks
+Customer outcome: Recommendations are easier to complete because the next steps are already broken down.
+
+Feature: Task creation candidates
+Customer outcome: Coaching becomes tracked work, not forgotten advice.
+
+Feature: Coach Brief
+Customer outcome: AI guidance reflects the user's market, offer, sales motion, and communication style.
+
+Feature: Lean Canvas support
+Customer outcome: Founder and strategy recommendations are grounded in business-model assumptions.
+
+Feature: Idea validation
+Customer outcome: Teams test assumptions before spending more time or money scaling the wrong message or channel.
+
+Feature: Marketplace guidance
+Customer outcome: Users know which capabilities to install or complete when their workspace is missing something.
+
+Feature: Trust signals
+Customer outcome: Users can understand why a recommendation appeared and how much confidence to place in it.
+
+Feature: Feedback-aware learning
+Customer outcome: Recommendations become more useful over time based on explicit user feedback.
+
+Feature: Diagnostics
+Customer outcome: Admins can see which recommendation patterns are useful, ignored, dismissed, or acted on.
+
+
+EXAMPLE CUSTOMER MESSAGES
+
+For a sales team
+
+"AI Coach helps your sales team know which follow-ups, deals, tasks, and targets need attention today. It turns CRM activity into practical next steps so opportunities do not stall quietly."
+
+For a founder
+
+"AI Coach helps you turn strategy into execution. It uses your company context, offer, Coach Brief, and optional Lean Canvas to recommend the next validation, pricing, outreach, or customer-development action."
+
+For an operations lead
+
+"AI Coach gives your team an operating rhythm. It spots setup gaps, recommends quick wins, turns guidance into tasks, and helps users adopt the CRM without needing to ask what to do next."
+
+For an admin
+
+"AI Coach includes readiness checks, recommendation boundaries, trust signals, feedback learning, and diagnostics, so administrators can enable proactive guidance with more control and visibility."
+
+
+SALES TALK TRACK
+
+"AI Coach is built for the moment after your CRM has data but your team still needs direction. It looks at your setup, strategy, contacts, deals, tasks, targets, and installed skills, then recommends what to do next. The outcome is faster focus, cleaner follow-up, and better adoption. Users get practical cards like foundation gaps, priorities, quick wins, and missing features. Admins get readiness checks, trust signals, and feedback insight so the system stays explainable."
+
+
+OBJECTION HANDLING
+
+Objection: "Is this just another chatbot?"
+
+Response: "No. AI Coach is proactive. Users do not have to start with a blank chat prompt. It reads workspace context and shows recommendation cards on the dashboard, with reasons, trust signals, and follow-through actions."
+
+Objection: "Will it give generic business advice?"
+
+Response: "AI Coach is designed as an orchestrator. It uses ready workspace skills and CRM evidence. If the right context or advice skill is missing, it recommends setup instead of pretending it has enough information."
+
+Objection: "Can users trust the recommendations?"
+
+Response: "Recommendations can include confidence, context quality, source, goal match, and explanation signals. Admins can also review diagnostics and feedback patterns."
+
+Objection: "What if our workspace is not fully set up?"
+
+Response: "That is one of AI Coach's strengths. It shows a readiness checklist and tells users what is missing, such as company context, offer context, Coach Brief, AI service setup, or advice-skill coverage."
+
+Objection: "Does it replace our sales or marketing process?"
+
+Response: "No. AI Coach helps users execute the process more consistently. It recommends follow-ups, setup improvements, quick wins, and next steps based on the workspace context."
+
+
+IMPLEMENTATION EXPECTATIONS
+
+For best results, customers should complete:
+
+- AI Coach installation in Marketplace.
+- AI Coach visibility enabled for users who should see it.
+- Company profile and business context.
+- Product or offer setup.
+- Personal Coach Brief.
+- Strategy profile.
+- Optional Lean Canvas for business-model guidance.
+- At least one ready advice skill when strategic recommendations are expected.
+- Basic CRM usage such as contacts, deals, tasks, targets, and workflows.
+
+
+BEST-FIT CUSTOMERS
+
+AI Coach is strongest for:
+
+- Teams that want proactive dashboard guidance.
+- Sales teams that need better follow-up discipline.
+- Founders who need strategy translated into practical actions.
+- Operators who want cleaner CRM adoption.
+- Admins who want explainable AI recommendations.
+- Workspaces with enough setup context to make recommendations useful.
+
+AI Coach is less useful when:
+
+- The workspace has no company, product, offer, or user strategy context.
+- AI services are not configured.
+- Users do not want proactive recommendations.
+- The team expects AI Coach to replace domain skills, channel automation, or human decision-making.
+
+
+ONE-SENTENCE VALUE PROPOSITION
+
+AI Coach helps your team know what to do next by turning CRM activity, strategy context, and workspace readiness into practical, explainable recommendations.
+
+
+SHORT WEBSITE COPY
+
+Headline:
+AI Coach
+
+Subheadline:
+Turn CRM activity into clear next-step recommendations.
+
+Body:
+AI Coach reviews your workspace context, contacts, deals, tasks, targets, strategy brief, installed skills, and setup readiness to recommend what your team should focus on next. It highlights foundation gaps, daily priorities, quick wins, and missing capabilities, then helps turn guidance into tracked work.
+
+CTA:
+Open AI Coach
+
+
+LONG WEBSITE COPY
+
+AI Coach is the proactive guidance layer inside Clarity CRM. It helps teams move from information to execution by showing practical recommendations based on real workspace context.
+
+When your company profile, offer, strategy brief, and CRM activity are available, AI Coach can recommend what to fix, what to follow up, what to automate, which features to use, and which setup gaps to close. Recommendation cards explain why they appeared, show trust signals, and can include subtasks so users can turn advice into action.
+
+For founders, AI Coach can connect strategy, Lean Canvas, validation, pricing, channels, and customer-development work to CRM execution. For sales teams, it can surface follow-up priorities, deal movement actions, task discipline, and target-related next steps. For admins, it provides readiness checks, transparent boundaries, feedback learning, and diagnostics.
+
+The result is a CRM that does more than store data. It helps your team decide what to do next.
+
+
+SUMMARY
+
+AI Coach sells outcomes, not novelty.
+
+It gives users focus, helps teams follow through, guides customers through setup, makes strategy more actionable, and gives admins a safer way to manage proactive AI recommendations. Its strongest promise is not "AI for AI's sake." Its promise is practical execution: fewer missed next steps, clearer priorities, better setup, and more confident CRM adoption.

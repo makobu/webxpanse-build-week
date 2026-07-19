@@ -1,0 +1,4 @@
+ALTER TABLE notifications
+    ADD COLUMN IF NOT EXISTS severity VARCHAR(20) NULL AFTER link,
+    ADD COLUMN IF NOT EXISTS ai_insight VARCHAR(255) NULL AFTER severity,
+    ADD COLUMN IF NOT EXISTS ai_action VARCHAR(255) NULL AFTER ai_insight;

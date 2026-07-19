@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /billing-hub/
+Disallow: /cli/
+Disallow: /config/
+Disallow: /core/
+Disallow: /database/
+Disallow: /docs/
+Disallow: /modules/
+Disallow: /scripts/
+Disallow: /services/
+Disallow: /tests/
+Disallow: /vendor/
+Disallow: /public/
+Allow: /public/assets/images/clarity-landing-og.png
+Allow: /public/assets/videos/clarity-demo-poster-landscape.webp
+Allow: /public/assets/videos/clarity-demo.mp4
+Allow: /public/privacy-policy.php
+Allow: /public/terms-of-service.php
+
+Sitemap: https://crm.makdennis.dev/sitemap.xml

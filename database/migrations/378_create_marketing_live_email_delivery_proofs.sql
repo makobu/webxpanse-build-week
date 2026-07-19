@@ -1,0 +1,30 @@
+-- Marketing Phase 86: live email delivery proof records.
+
+CREATE TABLE IF NOT EXISTS marketing_live_email_delivery_proofs (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    workspace_id INT NOT NULL,
+    uuid CHAR(36) NOT NULL,
+    handoff_id INT NOT NULL,
+    worker_run_id INT NULL,
+    email_id INT NULL,
+    email_queue_id INT NULL,
+    proof_status ENUM('sent','simulated','failed','blocked','skipped') NOT NULL DEFAULT 'sent',
+    provider_key VARCHAR(120) NULL,
+    smtp_profile VARCHAR(120) NULL,
+    smtp_method VARCHAR(120) NULL,
+    message_id VARCHAR(255) NULL,
+    communication_id INT NULL,
+    from_email VARCHAR(255) NULL,
+    to_email VARCHAR(255) NULL,
+    evidence_json JSON NULL,
+    error_message VARCHAR(500) NULL,
+    proved_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE KEY uniq_marketing_live_email_delivery_proof_uuid (uuid),
+    KEY idx_marketing_live_email_delivery_workspace_status (workspace_id, proof_status, proved_at),
+    KEY idx_marketing_live_email_delivery_handoff (workspace_id, handoff_id, proved_at),
+    KEY idx_marketing_live_email_delivery_run (workspace_id, worker_run_id, proof_status),
+    CONSTRAINT fk_marketing_live_email_delivery_workspace FOREIGN KEY (workspace_id) REFERENCES workspaces(id) ON DELETE CASCADE,
+    CONSTRAINT fk_marketing_live_email_delivery_handoff FOREIGN KEY (handoff_id) REFERENCES marketing_live_email_handoffs(id) ON DELETE CASCADE,
+    CONSTRAINT fk_marketing_live_email_delivery_worker_run FOREIGN KEY (worker_run_id) REFERENCES marketing_live_email_worker_runs(id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

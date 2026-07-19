@@ -1,0 +1,33 @@
+-- Marketing Phase 12: AI assistant run history and draft-side effects.
+
+CREATE TABLE IF NOT EXISTS marketing_assistant_runs (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    workspace_id INT NOT NULL,
+    uuid CHAR(36) NOT NULL,
+    assistant_type ENUM('strategist','content_planner','seo_researcher','copywriter','email_sequence_builder','landing_page_optimizer','repurposing','performance_analyst') NOT NULL,
+    status ENUM('completed','failed') NOT NULL DEFAULT 'completed',
+    prompt_inputs_json JSON NULL,
+    context_used_json JSON NULL,
+    provider_json JSON NULL,
+    result_json JSON NULL,
+    linked_content_item_id INT NULL,
+    linked_campaign_brief_id INT NULL,
+    linked_landing_page_id INT NULL,
+    created_content_item_id INT NULL,
+    created_comment_id INT NULL,
+    created_tool_run_id INT NULL,
+    created_by INT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    UNIQUE KEY uniq_marketing_assistant_runs_uuid (uuid),
+    KEY idx_marketing_assistant_workspace_type (workspace_id, assistant_type, created_at),
+    KEY idx_marketing_assistant_workspace_content (workspace_id, linked_content_item_id),
+    CONSTRAINT fk_marketing_assistant_workspace FOREIGN KEY (workspace_id) REFERENCES workspaces(id) ON DELETE CASCADE,
+    CONSTRAINT fk_marketing_assistant_linked_content FOREIGN KEY (linked_content_item_id) REFERENCES marketing_content_items(id) ON DELETE SET NULL,
+    CONSTRAINT fk_marketing_assistant_linked_brief FOREIGN KEY (linked_campaign_brief_id) REFERENCES marketing_campaign_briefs(id) ON DELETE SET NULL,
+    CONSTRAINT fk_marketing_assistant_linked_landing FOREIGN KEY (linked_landing_page_id) REFERENCES marketing_landing_pages(id) ON DELETE SET NULL,
+    CONSTRAINT fk_marketing_assistant_created_content FOREIGN KEY (created_content_item_id) REFERENCES marketing_content_items(id) ON DELETE SET NULL,
+    CONSTRAINT fk_marketing_assistant_created_comment FOREIGN KEY (created_comment_id) REFERENCES marketing_content_comments(id) ON DELETE SET NULL,
+    CONSTRAINT fk_marketing_assistant_created_tool_run FOREIGN KEY (created_tool_run_id) REFERENCES marketing_content_tool_runs(id) ON DELETE SET NULL,
+    CONSTRAINT fk_marketing_assistant_creator FOREIGN KEY (created_by) REFERENCES users(id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

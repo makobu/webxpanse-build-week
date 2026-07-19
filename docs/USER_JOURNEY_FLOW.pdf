@@ -1,0 +1,236 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+2 0 obj
+<< /Length 1963 >>
+stream
+BT
+/F1 12 Tf
+50 790 Td
+14 TL
+(CRM User Journey Flow) Tj
+T*
+/F1 9 Tf
+(Page 1 of 2) Tj
+T*
+T*
+/F1 11 Tf
+() Tj
+T*
+(USER JOURNEY FLOW) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+(1. System Setup) Tj
+T*
+(- Admin configures company profile, products, pricing, invoicing, channels, users,) Tj
+T*
+(  permissions, and automation defaults.) Tj
+T*
+(- Admin decides whether Auto Admin manages AI and automation setup.) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+(2. Lead Capture) Tj
+T*
+(- New leads enter from forms, manual entry, imports, email, WhatsApp, SMS, or) Tj
+T*
+(  API/integration sources.) Tj
+T*
+(- The system creates or matches contacts and logs the first communication event.) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+(3. Contact Qualification) Tj
+T*
+(- Contact record becomes the operational workspace.) Tj
+T*
+(- Users add notes, update business details, review data quality, and see AI/context) Tj
+T*
+(  enrichment.) Tj
+T*
+(- Contact intelligence surfaces relationship health, buying role, communication risks, and) Tj
+T*
+(  next best actions.) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+(4. Communication Handling) Tj
+T*
+(- Messages land in the unified inbox across email, WhatsApp, and SMS.) Tj
+T*
+(- Inbox triage scores the conversation, assigns owner/task where allowed, and updates) Tj
+T*
+(  conversation state.) Tj
+T*
+(- Users or AI drafts respond through the relevant channel.) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+(5. Deal Creation and Pipeline Movement) Tj
+T*
+(- Qualified opportunities become deals.) Tj
+T*
+(- Users move deals through stages or allow automation to suggest or apply stage) Tj
+T*
+(  progression.) Tj
+T*
+(- Deal activity updates pipeline health, related tasks, and commercial triggers.) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+(6. Task Execution) Tj
+T*
+(- Manual tasks and AI-created tasks are generated from workflow, communication, coaching,) Tj
+T*
+(  or operational gaps.) Tj
+T*
+(- Tasks break down into measurable subtasks.) Tj
+T*
+(- Evidence-aware completion checks whether work is actually done before completion is) Tj
+T*
+ET
+endstream
+endobj
+3 0 obj
+<< /Length 1903 >>
+stream
+BT
+/F1 12 Tf
+50 790 Td
+14 TL
+(CRM User Journey Flow) Tj
+T*
+/F1 9 Tf
+(Page 2 of 2) Tj
+T*
+T*
+/F1 11 Tf
+(  finalized.) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+(7. Commercial Operations) Tj
+T*
+(- Deals can generate quotes, proformas, and invoices.) Tj
+T*
+(- Users send documents, track views, status changes, approvals, and payments.) Tj
+T*
+(- Commercial automation reacts to invoice and deal milestones.) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+(8. Targets and Performance Tracking) Tj
+T*
+(- Personal, team, and company targets track goals across deals, invoices, tasks, contacts,) Tj
+T*
+(  and communications.) Tj
+T*
+(- Targets can be manual, auto-rollup, or hybrid.) Tj
+T*
+(- Forecast, pace, blockers, milestones, and next actions help users stay on track.) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+(9. AI Guidance and Assistance) Tj
+T*
+(- AI Coach recommends priorities and setup actions.) Tj
+T*
+(- Clarity uses operating context, work context, contact intelligence, inbox state, and) Tj
+T*
+(  target health to guide the user.) Tj
+T*
+(- AI auto-responder, task completion, and diagnostics remain policy-controlled.) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+(10. Notifications and Follow-Through) Tj
+T*
+(- The system sends assignment alerts, inbox nudges, operational notices, and AI-driven) Tj
+T*
+(  prompts.) Tj
+T*
+(- Users act from notifications, inbox, tasks, deals, and contact pages without losing) Tj
+T*
+(  context.) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+(11. Reporting and Review) Tj
+T*
+(- Dashboards summarize activity, targets, pipeline, communication load, and execution) Tj
+T*
+(  health.) Tj
+T*
+(- Admins review diagnostics, automation health, incidents, and readiness states.) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+(12. Continuous Optimization) Tj
+T*
+(- CRM activity refreshes contact intelligence, conversation intelligence, and target) Tj
+T*
+(  intelligence.) Tj
+T*
+(- Admin and AI guidance surfaces identify setup gaps, execution risks, and growth) Tj
+T*
+(  opportunities.) Tj
+T*
+ET
+endstream
+endobj
+4 0 obj
+<< /Type /Pages /Kids [5 0 R 6 0 R] /Count 2 >>
+endobj
+5 0 obj
+<< /Type /Page /Parent 4 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 2 0 R >>
+endobj
+6 0 obj
+<< /Type /Page /Parent 4 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 3 0 R >>
+endobj
+7 0 obj
+<< /Type /Catalog /Pages 4 0 R >>
+endobj
+xref
+0 8
+0000000000 65535 f 
+0000000015 00000 n 
+0000000085 00000 n 
+0000002100 00000 n 
+0000004055 00000 n 
+0000004118 00000 n 
+0000004244 00000 n 
+0000004370 00000 n 
+trailer
+<< /Size 8 /Root 7 0 R >>
+startxref
+4419
+%%EOF

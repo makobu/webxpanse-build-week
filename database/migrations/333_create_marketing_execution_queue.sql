@@ -1,0 +1,76 @@
+-- Marketing Phase 41: controlled publishing and send queue.
+-- Queue records remain dry-run/test-mode unless connector readiness and explicit approval exist.
+
+CREATE TABLE IF NOT EXISTS marketing_execution_queue (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    workspace_id INT NOT NULL,
+    uuid CHAR(36) NOT NULL,
+    execution_type ENUM('email','whatsapp','sms','social','ad','website_webhook','other') NOT NULL DEFAULT 'other',
+    status ENUM('draft','pending_approval','approved','queued','running','succeeded','failed','blocked','cancelled','archived') NOT NULL DEFAULT 'draft',
+    execution_mode ENUM('test','dry_run','live') NOT NULL DEFAULT 'dry_run',
+    connector_id INT NULL,
+    content_item_id INT NULL,
+    distribution_post_id INT NULL,
+    email_run_id INT NULL,
+    channel_export_bundle_id INT NULL,
+    landing_page_id INT NULL,
+    scheduled_at DATETIME NULL,
+    requested_by INT NULL,
+    payload_json JSON NULL,
+    readiness_json JSON NULL,
+    metadata_json JSON NULL,
+    created_by INT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    UNIQUE KEY uniq_marketing_execution_queue_uuid (uuid),
+    KEY idx_marketing_execution_queue_workspace_status (workspace_id, status, scheduled_at),
+    KEY idx_marketing_execution_queue_workspace_type (workspace_id, execution_type, status),
+    KEY idx_marketing_execution_queue_workspace_connector (workspace_id, connector_id, status),
+    CONSTRAINT fk_marketing_execution_queue_workspace FOREIGN KEY (workspace_id) REFERENCES workspaces(id) ON DELETE CASCADE,
+    CONSTRAINT fk_marketing_execution_queue_connector FOREIGN KEY (connector_id) REFERENCES marketing_channel_connectors(id) ON DELETE SET NULL,
+    CONSTRAINT fk_marketing_execution_queue_requester FOREIGN KEY (requested_by) REFERENCES users(id) ON DELETE SET NULL,
+    CONSTRAINT fk_marketing_execution_queue_creator FOREIGN KEY (created_by) REFERENCES users(id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS marketing_execution_attempts (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    workspace_id INT NOT NULL,
+    queue_id INT NOT NULL,
+    uuid CHAR(36) NOT NULL,
+    status ENUM('dry_run','success','failed','blocked') NOT NULL DEFAULT 'dry_run',
+    attempt_mode ENUM('test','dry_run','live') NOT NULL DEFAULT 'dry_run',
+    result_json JSON NULL,
+    error_message TEXT NULL,
+    started_at DATETIME NULL,
+    completed_at DATETIME NULL,
+    created_by INT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE KEY uniq_marketing_execution_attempts_uuid (uuid),
+    KEY idx_marketing_execution_attempts_workspace_queue (workspace_id, queue_id, created_at),
+    KEY idx_marketing_execution_attempts_workspace_status (workspace_id, status, created_at),
+    CONSTRAINT fk_marketing_execution_attempts_workspace FOREIGN KEY (workspace_id) REFERENCES workspaces(id) ON DELETE CASCADE,
+    CONSTRAINT fk_marketing_execution_attempts_queue FOREIGN KEY (queue_id) REFERENCES marketing_execution_queue(id) ON DELETE CASCADE,
+    CONSTRAINT fk_marketing_execution_attempts_creator FOREIGN KEY (created_by) REFERENCES users(id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS marketing_execution_approvals (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    workspace_id INT NOT NULL,
+    queue_id INT NOT NULL,
+    uuid CHAR(36) NOT NULL,
+    requested_by INT NULL,
+    approved_by INT NULL,
+    status ENUM('pending','approved','rejected','cancelled') NOT NULL DEFAULT 'pending',
+    decision_note TEXT NULL,
+    requested_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    decided_at DATETIME NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    UNIQUE KEY uniq_marketing_execution_approvals_uuid (uuid),
+    KEY idx_marketing_execution_approvals_workspace_queue (workspace_id, queue_id, status),
+    KEY idx_marketing_execution_approvals_workspace_status (workspace_id, status, requested_at),
+    CONSTRAINT fk_marketing_execution_approvals_workspace FOREIGN KEY (workspace_id) REFERENCES workspaces(id) ON DELETE CASCADE,
+    CONSTRAINT fk_marketing_execution_approvals_queue FOREIGN KEY (queue_id) REFERENCES marketing_execution_queue(id) ON DELETE CASCADE,
+    CONSTRAINT fk_marketing_execution_approvals_requester FOREIGN KEY (requested_by) REFERENCES users(id) ON DELETE SET NULL,
+    CONSTRAINT fk_marketing_execution_approvals_approver FOREIGN KEY (approved_by) REFERENCES users(id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

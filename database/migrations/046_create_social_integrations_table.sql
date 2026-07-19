@@ -1,0 +1,50 @@
+-- Social Media Integrations Table
+CREATE TABLE IF NOT EXISTS social_integrations (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    provider ENUM('facebook', 'twitter', 'linkedin', 'instagram', 'telegram') NOT NULL,
+    account_id VARCHAR(255) NOT NULL,
+    account_name VARCHAR(255) NULL,
+    access_token TEXT NULL,
+    refresh_token TEXT NULL,
+    token_expires_at TIMESTAMP NULL,
+    page_id VARCHAR(255) NULL,
+    page_name VARCHAR(255) NULL,
+    is_active TINYINT(1) DEFAULT 1,
+    settings JSON NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    INDEX idx_user_id (user_id),
+    INDEX idx_provider (provider),
+    INDEX idx_account_id (account_id),
+    INDEX idx_is_active (is_active),
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Social Messages Table
+CREATE TABLE IF NOT EXISTS social_messages (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    integration_id INT NOT NULL,
+    contact_id INT NULL,
+    user_id INT NULL,
+    provider_message_id VARCHAR(255) NOT NULL,
+    thread_id VARCHAR(255) NULL,
+    direction ENUM('inbound', 'outbound') DEFAULT 'inbound',
+    message_type ENUM('text', 'image', 'video', 'file', 'link') DEFAULT 'text',
+    message_body TEXT NOT NULL,
+    media_url VARCHAR(500) NULL,
+    sender_id VARCHAR(255) NULL,
+    sender_name VARCHAR(255) NULL,
+    status ENUM('sent', 'delivered', 'read', 'failed') DEFAULT 'sent',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    INDEX idx_integration_id (integration_id),
+    INDEX idx_contact_id (contact_id),
+    INDEX idx_user_id (user_id),
+    INDEX idx_provider_message_id (provider_message_id),
+    INDEX idx_thread_id (thread_id),
+    INDEX idx_created_at (created_at DESC),
+    FOREIGN KEY (integration_id) REFERENCES social_integrations(id) ON DELETE CASCADE,
+    FOREIGN KEY (contact_id) REFERENCES contacts(id) ON DELETE SET NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

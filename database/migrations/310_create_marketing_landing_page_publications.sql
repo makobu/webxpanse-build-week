@@ -1,0 +1,30 @@
+-- Marketing Phase 16: self-hosted landing page publication records.
+
+CREATE TABLE IF NOT EXISTS marketing_landing_page_publications (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    workspace_id INT NOT NULL,
+    landing_page_id INT NOT NULL,
+    uuid CHAR(36) NOT NULL,
+    slug VARCHAR(180) NOT NULL,
+    public_token VARCHAR(64) NOT NULL,
+    public_url VARCHAR(255) NULL,
+    status ENUM('published','unpublished','archived') NOT NULL DEFAULT 'published',
+    conversion_goal VARCHAR(64) NULL,
+    readiness_score INT NOT NULL DEFAULT 0,
+    readiness_json JSON NULL,
+    metadata_json JSON NULL,
+    published_at DATETIME NULL,
+    unpublished_at DATETIME NULL,
+    created_by INT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    UNIQUE KEY uniq_marketing_landing_publications_uuid (uuid),
+    UNIQUE KEY uniq_marketing_landing_publications_page (workspace_id, landing_page_id),
+    UNIQUE KEY uniq_marketing_landing_publications_slug (workspace_id, slug),
+    UNIQUE KEY uniq_marketing_landing_publications_token (public_token),
+    KEY idx_marketing_landing_publications_workspace_status (workspace_id, status, published_at),
+    KEY idx_marketing_landing_publications_workspace_goal (workspace_id, conversion_goal),
+    CONSTRAINT fk_marketing_landing_publications_workspace FOREIGN KEY (workspace_id) REFERENCES workspaces(id) ON DELETE CASCADE,
+    CONSTRAINT fk_marketing_landing_publications_page FOREIGN KEY (landing_page_id) REFERENCES marketing_landing_pages(id) ON DELETE CASCADE,
+    CONSTRAINT fk_marketing_landing_publications_creator FOREIGN KEY (created_by) REFERENCES users(id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

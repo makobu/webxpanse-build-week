@@ -1,0 +1,53 @@
+-- Marketing Phase 87: live email unsubscribe tokens and suppression evidence.
+
+CREATE TABLE IF NOT EXISTS marketing_live_email_unsubscribe_tokens (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    workspace_id INT NOT NULL,
+    uuid CHAR(36) NOT NULL,
+    token_hash CHAR(64) NOT NULL,
+    email_run_id INT NULL,
+    queue_id INT NULL,
+    handoff_id INT NULL,
+    contact_id INT NULL,
+    recipient_email VARCHAR(255) NOT NULL,
+    status ENUM('active','used','expired','revoked') NOT NULL DEFAULT 'active',
+    expires_at DATETIME NULL,
+    used_at DATETIME NULL,
+    metadata_json JSON NULL,
+    created_by INT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    UNIQUE KEY uniq_marketing_live_email_unsubscribe_uuid (uuid),
+    UNIQUE KEY uniq_marketing_live_email_unsubscribe_hash (token_hash),
+    KEY idx_marketing_live_email_unsubscribe_workspace_status (workspace_id, status, created_at),
+    KEY idx_marketing_live_email_unsubscribe_run (workspace_id, email_run_id, status),
+    KEY idx_marketing_live_email_unsubscribe_handoff (workspace_id, handoff_id),
+    CONSTRAINT fk_marketing_live_email_unsubscribe_workspace FOREIGN KEY (workspace_id) REFERENCES workspaces(id) ON DELETE CASCADE,
+    CONSTRAINT fk_marketing_live_email_unsubscribe_run FOREIGN KEY (email_run_id) REFERENCES marketing_email_campaign_runs(id) ON DELETE SET NULL,
+    CONSTRAINT fk_marketing_live_email_unsubscribe_handoff FOREIGN KEY (handoff_id) REFERENCES marketing_live_email_handoffs(id) ON DELETE SET NULL,
+    CONSTRAINT fk_marketing_live_email_unsubscribe_creator FOREIGN KEY (created_by) REFERENCES users(id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS marketing_live_email_unsubscribe_events (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    workspace_id INT NOT NULL,
+    uuid CHAR(36) NOT NULL,
+    token_id INT NULL,
+    email_run_id INT NULL,
+    handoff_id INT NULL,
+    contact_id INT NULL,
+    recipient_email VARCHAR(255) NULL,
+    event_type ENUM('unsubscribe_requested','suppression_created','token_invalid','token_expired','token_used') NOT NULL DEFAULT 'unsubscribe_requested',
+    status ENUM('info','success','blocked','failed') NOT NULL DEFAULT 'info',
+    ip_hash CHAR(64) NULL,
+    user_agent_hash CHAR(64) NULL,
+    metadata_json JSON NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE KEY uniq_marketing_live_email_unsubscribe_event_uuid (uuid),
+    KEY idx_marketing_live_email_unsubscribe_event_workspace_type (workspace_id, event_type, created_at),
+    KEY idx_marketing_live_email_unsubscribe_event_token (workspace_id, token_id, created_at),
+    CONSTRAINT fk_marketing_live_email_unsubscribe_event_workspace FOREIGN KEY (workspace_id) REFERENCES workspaces(id) ON DELETE CASCADE,
+    CONSTRAINT fk_marketing_live_email_unsubscribe_event_token FOREIGN KEY (token_id) REFERENCES marketing_live_email_unsubscribe_tokens(id) ON DELETE SET NULL,
+    CONSTRAINT fk_marketing_live_email_unsubscribe_event_run FOREIGN KEY (email_run_id) REFERENCES marketing_email_campaign_runs(id) ON DELETE SET NULL,
+    CONSTRAINT fk_marketing_live_email_unsubscribe_event_handoff FOREIGN KEY (handoff_id) REFERENCES marketing_live_email_handoffs(id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

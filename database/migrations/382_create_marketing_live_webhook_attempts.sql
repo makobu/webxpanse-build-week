@@ -1,0 +1,36 @@
+-- Marketing Phase 91: controlled outbound webhook attempt evidence.
+-- Stores sanitized request/response proof for live webhook adapter attempts.
+
+CREATE TABLE IF NOT EXISTS marketing_live_webhook_attempts (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    workspace_id INT NOT NULL,
+    uuid CHAR(36) NOT NULL,
+    queue_id INT NULL,
+    connector_id INT NULL,
+    status ENUM('pending','sent','failed','blocked') NOT NULL DEFAULT 'pending',
+    http_method VARCHAR(12) NOT NULL DEFAULT 'POST',
+    endpoint_host VARCHAR(190) NULL,
+    endpoint_url_hash CHAR(64) NULL,
+    request_headers_json JSON NULL,
+    request_payload_json JSON NULL,
+    response_status_code INT NULL,
+    response_preview TEXT NULL,
+    error_message TEXT NULL,
+    duration_ms INT NULL,
+    attempt_count INT NOT NULL DEFAULT 1,
+    external_api_called TINYINT(1) NOT NULL DEFAULT 0,
+    third_party_delivery TINYINT(1) NOT NULL DEFAULT 0,
+    metadata_json JSON NULL,
+    attempted_at DATETIME NULL,
+    created_by INT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE KEY uniq_marketing_live_webhook_attempts_uuid (uuid),
+    KEY idx_marketing_live_webhook_attempts_workspace_status (workspace_id, status, created_at),
+    KEY idx_marketing_live_webhook_attempts_workspace_queue (workspace_id, queue_id, created_at),
+    KEY idx_marketing_live_webhook_attempts_workspace_connector (workspace_id, connector_id, created_at),
+    KEY idx_marketing_live_webhook_attempts_workspace_host (workspace_id, endpoint_host, created_at),
+    CONSTRAINT fk_marketing_live_webhook_attempts_workspace FOREIGN KEY (workspace_id) REFERENCES workspaces(id) ON DELETE CASCADE,
+    CONSTRAINT fk_marketing_live_webhook_attempts_queue FOREIGN KEY (queue_id) REFERENCES marketing_execution_queue(id) ON DELETE SET NULL,
+    CONSTRAINT fk_marketing_live_webhook_attempts_connector FOREIGN KEY (connector_id) REFERENCES marketing_channel_connectors(id) ON DELETE SET NULL,
+    CONSTRAINT fk_marketing_live_webhook_attempts_creator FOREIGN KEY (created_by) REFERENCES users(id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

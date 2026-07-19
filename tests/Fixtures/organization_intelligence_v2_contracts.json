@@ -1,0 +1,26 @@
+{
+  "schema_version": 2,
+  "calculation_version": "oi-score-v2",
+  "scenarios": {
+    "solo_founder": {"effective_model": "solo_founder", "minimum_members": 1, "department_aggregate": false},
+    "multi_founder": {"effective_model": "multi_founder", "minimum_founders": 2, "founder_load_is_cohort": true},
+    "founder_led_team": {"effective_model": "founder_led_team", "founder_core_function_threshold": 3},
+    "functional_team": {"effective_model": "functional_team", "explicit_department_count_max": 1},
+    "departmental_organization": {"effective_model": "departmental_organization", "minimum_owner_departments": 2},
+    "scaling_multi_team": {"effective_model": "scaling_multi_team", "minimum_members": 10, "minimum_owner_departments": 3},
+    "low_evidence": {"score": null, "score_status": "insufficient_evidence"},
+    "no_evidence": {"score": null, "evidence_families": [], "headline": "Baseline forming"},
+    "mixed_versions": {"delta_allowed": false, "methodology_marker": true},
+    "stale_snapshot": {"age_hours": 49, "status": "stale", "mutations_enabled": false}
+  },
+  "required_mobile_keys": [
+    "schema_version",
+    "calculation_version",
+    "organization_profile",
+    "data_quality",
+    "structural_readiness",
+    "snapshot_metadata",
+    "mutation_context_token",
+    "clarity"
+  ]
+}

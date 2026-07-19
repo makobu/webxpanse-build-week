@@ -1,0 +1,70 @@
+# Root .htaccess - Works for both localhost and SiteGround
+# On localhost: http://localhost/crm/public/login.php (no rewrite needed)
+# On SiteGround: https://crm.makdennis.dev/login.php (rewrites to public/)
+
+# Set default index file (prioritize root index.php)
+DirectoryIndex index.php index.html
+
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    
+    # Detect if we're on localhost - don't rewrite on localhost
+    # On localhost, Apache serves files directly from /crm/public/
+    # On SiteGround, we want to rewrite root requests to public/
+    
+    # Only apply rewrites on production (not localhost)
+    RewriteCond %{HTTP_HOST} !^localhost [NC]
+    RewriteCond %{HTTP_HOST} !^127\.0\.0\.1 [NC]
+    RewriteCond %{HTTP_HOST} !^::1 [NC]
+    
+    # Handle /crm/public/ paths on SiteGround - rewrite internally to public/
+    # This allows both /crm/public/login.php and /login.php to work
+    RewriteCond %{REQUEST_URI} ^/crm/public/(.*)$
+    RewriteRule ^crm/public/(.*)$ public/$1 [L]
+
+    # Guard malformed URLs that accidentally include server filesystem paths.
+    RewriteCond %{REQUEST_URI} ^/public/home/customer/www/[^/]+/public_html/public/(.*)$ [NC]
+    RewriteRule ^public/home/customer/www/[^/]+/public_html/public/(.*)$ /$1 [R=302,L]
+    
+    # Handle /crm/api/ paths - rewrite internally to api/
+    RewriteCond %{REQUEST_URI} ^/crm/api/(.*)$
+    RewriteRule ^crm/api/(.*)$ api/$1 [L]
+    
+    # Don't rewrite if already in public/ or api/
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteCond %{REQUEST_URI} !^/api/
+    RewriteCond %{REQUEST_URI} !^/crm/public/
+    RewriteCond %{REQUEST_URI} !^/crm/api/
+    # Don't rewrite if root index.php exists and is being requested
+    RewriteCond %{REQUEST_URI} !^/crm/?$
+    RewriteCond %{REQUEST_URI} !^/crm/index\.php$
+    # Only rewrite if file doesn't exist in root (for SiteGround)
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    # Rewrite everything else to public/
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+
+# Block direct access to sensitive and operator-only directories
+<IfModule mod_rewrite.c>
+    RewriteRule ^(vendor|config|core|database|modules|services|tests|scripts|cli|docs|\.git|\.cursor)/ - [F,L]
+</IfModule>
+
+# Block direct access to environment files and generated sensitive artifacts.
+# Runtime logs, dumps, archives, backups, and key material should never be
+# downloadable from hosts that serve this repository root.
+<IfModule !mod_authz_core.c>
+    <FilesMatch "(^\.env|(\.log|\.zip|\.sql|\.dump|\.bak|\.backup|\.tar|\.gz|\.pem|\.key|\.p12|\.pfx|\.crt|\.cer|\.jks)$)">
+        Order allow,deny
+        Deny from all
+    </FilesMatch>
+</IfModule>
+
+<IfModule mod_authz_core.c>
+    <FilesMatch "(^\.env|(\.log|\.zip|\.sql|\.dump|\.bak|\.backup|\.tar|\.gz|\.pem|\.key|\.p12|\.pfx|\.crt|\.cer|\.jks)$)">
+        Require all denied
+    </FilesMatch>
+</IfModule>
+
+# Prevent directory listing
+Options -Indexes

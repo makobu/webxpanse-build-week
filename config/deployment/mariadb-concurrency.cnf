@@ -1,0 +1,12 @@
+# Production MariaDB baseline for the current CRM data size.
+# Merge under [mysqld], confirm available RAM, and restart MariaDB in a planned
+# maintenance window. Keep at least 50 percent of host RAM for PHP and the OS.
+
+[mysqld]
+innodb_buffer_pool_size=512M
+innodb_buffer_pool_instances=1
+innodb_log_file_size=128M
+innodb_flush_log_at_trx_commit=1
+max_connections=200
+thread_cache_size=50
+table_open_cache=4000

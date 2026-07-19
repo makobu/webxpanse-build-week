@@ -1,0 +1,45 @@
+-- Marketing Phase 64: campaign playbook template application runs.
+
+ALTER TABLE marketing_campaign_playbooks
+    ADD COLUMN IF NOT EXISTS playbook_type ENUM('product_launch','lead_magnet','webinar','nurture','seasonal_promo','reactivation','case_study','custom') NOT NULL DEFAULT 'custom' AFTER status,
+    ADD COLUMN IF NOT EXISTS template_key VARCHAR(120) NULL AFTER playbook_type,
+    ADD COLUMN IF NOT EXISTS is_template TINYINT(1) NOT NULL DEFAULT 0 AFTER template_key,
+    ADD COLUMN IF NOT EXISTS default_content_plan_json JSON NULL AFTER checklist_json,
+    ADD COLUMN IF NOT EXISTS default_distribution_plan_json JSON NULL AFTER default_content_plan_json,
+    ADD COLUMN IF NOT EXISTS recommended_assets_json JSON NULL AFTER default_distribution_plan_json,
+    ADD COLUMN IF NOT EXISTS automation_notes_json JSON NULL AFTER recommended_assets_json,
+    ADD COLUMN IF NOT EXISTS last_applied_at DATETIME NULL AFTER automation_notes_json,
+    ADD INDEX IF NOT EXISTS idx_marketing_playbooks_workspace_template (workspace_id, is_template, playbook_type),
+    ADD INDEX IF NOT EXISTS idx_marketing_playbooks_workspace_template_key (workspace_id, template_key);
+
+CREATE TABLE IF NOT EXISTS marketing_playbook_application_runs (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    workspace_id INT NOT NULL,
+    playbook_id INT NOT NULL,
+    campaign_id INT NULL,
+    campaign_brief_id INT NULL,
+    landing_page_id INT NULL,
+    uuid CHAR(36) NOT NULL,
+    run_name VARCHAR(180) NOT NULL,
+    status ENUM('draft','applied','archived') NOT NULL DEFAULT 'applied',
+    applied_scope_json JSON NULL,
+    created_content_ids_json JSON NULL,
+    created_distribution_ids_json JSON NULL,
+    created_calendar_ids_json JSON NULL,
+    created_queue_item_ids_json JSON NULL,
+    summary_json JSON NULL,
+    metadata_json JSON NULL,
+    created_by INT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    UNIQUE KEY uniq_marketing_playbook_runs_uuid (uuid),
+    KEY idx_marketing_playbook_runs_workspace_playbook (workspace_id, playbook_id, created_at),
+    KEY idx_marketing_playbook_runs_workspace_campaign (workspace_id, campaign_id, created_at),
+    KEY idx_marketing_playbook_runs_workspace_brief (workspace_id, campaign_brief_id),
+    CONSTRAINT fk_marketing_playbook_runs_workspace FOREIGN KEY (workspace_id) REFERENCES workspaces(id) ON DELETE CASCADE,
+    CONSTRAINT fk_marketing_playbook_runs_playbook FOREIGN KEY (playbook_id) REFERENCES marketing_campaign_playbooks(id) ON DELETE CASCADE,
+    CONSTRAINT fk_marketing_playbook_runs_campaign FOREIGN KEY (campaign_id) REFERENCES campaigns(id) ON DELETE SET NULL,
+    CONSTRAINT fk_marketing_playbook_runs_brief FOREIGN KEY (campaign_brief_id) REFERENCES marketing_campaign_briefs(id) ON DELETE SET NULL,
+    CONSTRAINT fk_marketing_playbook_runs_landing FOREIGN KEY (landing_page_id) REFERENCES marketing_landing_pages(id) ON DELETE SET NULL,
+    CONSTRAINT fk_marketing_playbook_runs_creator FOREIGN KEY (created_by) REFERENCES users(id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
