@@ -251,7 +251,9 @@ See [Contributing Guide](docs/contributing.md) for development guidelines.
 
 ## 📝 License
 
-Proprietary - All rights reserved
+Copyright (c) 2026 Dennis Makobu. This Build Week snapshot is provided under
+the [WebXpanse Build Week Evaluation License](LICENSE); only event-evaluation
+permissions are granted, and all other rights are reserved.
 
 ## 🆘 Support
 

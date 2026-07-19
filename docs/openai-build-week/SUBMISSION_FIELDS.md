@@ -17,7 +17,7 @@ Live requirements verified July 19, 2026 for OpenAI Build Week (`challenge_slug:
 | `27945` | Submitter Type | `Individual` |
 | `27946` | Country of Residence | `Kenya` |
 | `27947` | Category | `Work & Productivity` |
-| `27948` | Code repository URL | **[ADD JUDGE-ACCESSIBLE REPOSITORY URL]** |
+| `27948` | Code repository URL | `https://github.com/makobu/webxpanse-build-week` |
 | `27950` | `/feedback` Session ID | `019f74ad-26fd-7713-a474-cb83d9cb101e` |
 
 ## Optional judge-testing field (`27949`)
@@ -39,7 +39,7 @@ Field `27951` is not applicable because WebXpanse is submitted as a Work & Produ
     {"submission_field_id": 27945, "value": "Individual"},
     {"submission_field_id": 27946, "value": ["Kenya"]},
     {"submission_field_id": 27947, "value": "Work & Productivity"},
-    {"submission_field_id": 27948, "value": "REPLACE_WITH_REPOSITORY_URL"},
+    {"submission_field_id": 27948, "value": "https://github.com/makobu/webxpanse-build-week"},
     {"submission_field_id": 27949, "value": "REPLACE_WITH_THE_JUDGE_TESTING_TEXT_ABOVE"},
     {"submission_field_id": 27950, "value": "019f74ad-26fd-7713-a474-cb83d9cb101e"}
   ]

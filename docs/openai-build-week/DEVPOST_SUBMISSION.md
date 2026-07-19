@@ -84,7 +84,7 @@ Next I want to measure whether the operating rhythm shortens time-to-decision an
 ## Links
 
 - Try it: **[ADD LIVE DEMO URL, if public]**
-- Source code: **[ADD PUBLIC REPOSITORY URL]**
+- Source code: https://github.com/makobu/webxpanse-build-week
 - Demo video: **[ADD PUBLIC YOUTUBE URL]**
 - OpenAI feedback: `019f74ad-26fd-7713-a474-cb83d9cb101e`
 
