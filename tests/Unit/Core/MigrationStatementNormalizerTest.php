@@ -87,4 +87,17 @@ final class MigrationStatementNormalizerTest extends TestCase
         $this->assertSame('CREATE INDEX idx_status ON sample (status)', $missing);
         $this->assertSame('', $existing);
     }
+
+    public function testTemporaryTablesUseTheApplicationCollation(): void
+    {
+        $normalized = MigrationStatementNormalizer::normalizeWithLookup(
+            "CREATE TEMPORARY TABLE upgrades (template_key VARCHAR(100) PRIMARY KEY) ENGINE=InnoDB",
+            static fn(): bool => false
+        );
+
+        $this->assertStringContainsString(
+            'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci',
+            $normalized
+        );
+    }
 }

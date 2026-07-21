@@ -41,6 +41,7 @@ final class MigrationStatementNormalizer
     public static function normalizeWithLookup(string $statement, callable $exists): string
     {
         $statement = self::normalizeTenantKeyNumericCasts($statement);
+        $statement = self::normalizeTemporaryTableCollation($statement);
 
         if (stripos($statement, 'IF NOT EXISTS') === false && stripos($statement, 'IF EXISTS') === false) {
             return $statement;
@@ -199,6 +200,22 @@ final class MigrationStatementNormalizer
             "/CAST\\(SUBSTRING_INDEX\\(([A-Za-z0-9_]+\\.tenant_key),\\s*':',\\s*-1\\)\\s+AS\\s+UNSIGNED\\)/i",
             "CASE WHEN $1 REGEXP ':[0-9]+$' THEN CAST(SUBSTRING_INDEX($1, ':', -1) AS UNSIGNED) ELSE NULL END",
             $statement
+        ) ?? $statement;
+    }
+
+    private static function normalizeTemporaryTableCollation(string $statement): string
+    {
+        if (preg_match('/^\s*CREATE\s+TEMPORARY\s+TABLE\b/i', $statement) !== 1
+            || preg_match('/\bCOLLATE\b/i', $statement) === 1
+        ) {
+            return $statement;
+        }
+
+        return preg_replace(
+            '/\bENGINE\s*=\s*InnoDB\b/i',
+            'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci',
+            $statement,
+            1
         ) ?? $statement;
     }
 }
