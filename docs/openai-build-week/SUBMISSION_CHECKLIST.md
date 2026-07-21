@@ -11,14 +11,14 @@ Deadline: July 22, 2026 at 3:00 AM East Africa Time. Treat July 21 as the final 
 - [x] Remove contradictory setup and automation-readiness cards from the presentation dashboard.
 - [x] Send the visible constraint and evidence into “Ask Clarity why.”
 - [x] Verify the dashboard and Clarity handoff in a real browser.
-- [ ] Record a final clean browser pass after the committed code is checked out.
+- [x] Record a final clean browser pass after the committed code is checked out.
 
 ## Repository
 
 - [x] Create a public GitHub repository or make the intended repository public.
 - [x] Add the repository URL to all Build Week documents and Devpost.
 - [x] Confirm `.env`, credentials, uploads, logs, exports, backups, and local archives are not published.
-- [ ] Verify a fresh clone can install dependencies and reach the documented setup path.
+- [x] Verify a fresh clone can install dependencies and reach the documented setup path.
 - [x] Run `php scripts/create_build_week_demo.php --help` and create one fresh judging workspace from the published repository.
 - [x] Document the original Build Week milestone hashes and the public snapshot limitation honestly.
 - [ ] Confirm the public CI run is green on the documented PHP version.
