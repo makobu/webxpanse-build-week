@@ -49,7 +49,13 @@ class EmailAssistantResolverTest extends DatabaseTestCase
     {
         Database::execute(
             "INSERT INTO workspaces (id, uuid, name, slug, status, plan_status, created_at, updated_at)
-             VALUES (2, ?, 'Email Assistant Foreign', 'email-assistant-foreign', 'active', 'trialing', NOW(), NOW())",
+             VALUES (2, ?, 'Email Assistant Foreign', 'email-assistant-foreign', 'active', 'trialing', NOW(), NOW())
+             ON DUPLICATE KEY UPDATE
+                name = VALUES(name),
+                slug = VALUES(slug),
+                status = VALUES(status),
+                plan_status = VALUES(plan_status),
+                updated_at = VALUES(updated_at)",
             ['00000000-0000-4000-8000-000000000002']
         );
         Database::execute("INSERT INTO users (email, password_hash, role, created_at) VALUES ('foreign-agent@example.com', 'x', 'admin', NOW())");

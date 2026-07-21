@@ -21,7 +21,13 @@ class WorkflowQueueServiceTest extends DatabaseTestCase
 
         Database::execute(
             "INSERT INTO workspaces (id, uuid, name, slug, status, plan_status, created_at, updated_at)
-             VALUES (2, ?, 'Queue Workspace', 'queue-workspace', 'active', 'trialing', NOW(), NOW())",
+             VALUES (2, ?, 'Queue Workspace', 'queue-workspace', 'active', 'trialing', NOW(), NOW())
+             ON DUPLICATE KEY UPDATE
+                name = VALUES(name),
+                slug = VALUES(slug),
+                status = VALUES(status),
+                plan_status = VALUES(plan_status),
+                updated_at = VALUES(updated_at)",
             ['00000000-0000-4000-8000-000000000002']
         );
 

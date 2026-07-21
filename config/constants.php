@@ -200,32 +200,41 @@ if (!function_exists('getBasePath')) {
         $requestUri = $_SERVER['REQUEST_URI'] ?? '';
         $scriptName = $_SERVER['SCRIPT_NAME'] ?? '';
         $httpHost = $_SERVER['HTTP_HOST'] ?? '';
+
+        // An explicit base path is the deployment contract. This keeps cloned
+        // subdirectory installs, virtual hosts, and production deployments
+        // independent from the repository's folder name.
+        $configuredBasePath = normalizePathPrefix((string) ($_ENV['BASE_PATH'] ?? ''));
+        if ($configuredBasePath !== '') {
+            return $configuredBasePath;
+        }
+
+        $appUrlPath = parse_url($_ENV['APP_URL'] ?? '', PHP_URL_PATH);
+        $appUrlPath = is_string($appUrlPath) ? normalizePathPrefix($appUrlPath) : '';
         
         // Detect if we're on localhost
         $isLocalhost = strpos($httpHost, 'localhost') !== false 
                     || strpos($httpHost, '127.0.0.1') !== false
                     || strpos($httpHost, '::1') !== false;
         
-        // On localhost, always use /crm/public/ if present
+        // Derive any localhost subdirectory through its public web root instead
+        // of assuming the checkout is always named "crm".
         if ($isLocalhost) {
-            if (strpos($scriptName, '/crm/public/') !== false || strpos($requestUri, '/crm/public/') !== false) {
-                return '/crm/public';
+            foreach ([$scriptName, $requestUri] as $candidate) {
+                $candidatePath = parse_url((string) $candidate, PHP_URL_PATH);
+                $candidatePath = is_string($candidatePath) ? normalizePathPrefix($candidatePath) : '';
+                if ($candidatePath !== '' && preg_match('#^(.*?/public)(?:/|$)#', $candidatePath, $matches) === 1) {
+                    return normalizePathPrefix((string) $matches[1]);
+                }
             }
-            if (strpos($scriptName, '/public/') !== false || strpos($requestUri, '/public/') !== false) {
-                return '/public';
-            }
-            // Fallback for localhost
-            return '/crm/public';
+
+            return $appUrlPath;
         }
         
         // Production should not depend on a /crm folder. Prefer root URLs.
         // If APP_URL has a path segment (e.g. https://domain.com/subapp), honor it.
-        $appUrlPath = parse_url($_ENV['APP_URL'] ?? '', PHP_URL_PATH);
-        if (is_string($appUrlPath)) {
-            $appUrlPath = normalizePathPrefix($appUrlPath);
-            if ($appUrlPath !== '' && $appUrlPath !== '/public') {
-                return $appUrlPath;
-            }
+        if ($appUrlPath !== '' && $appUrlPath !== '/public') {
+            return $appUrlPath;
         }
 
         // SiteGround-style deployment: web root is public_html and requests are rewritten

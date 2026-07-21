@@ -41,6 +41,7 @@ use CRM\Services\AICoachWorkspaceSetupService;
 use CRM\Services\AnalyticsWorkspaceService;
 use CRM\Services\ClarityPageContextService;
 use CRM\Services\ClarityConversationService;
+use CRM\Services\ClarityDeterministicFallbackService;
 use CRM\Services\ClarityExplanationContextService;
 use CRM\Services\ClarityOperatorControlsService;
 use CRM\Services\ClarityQuestionIntentService;
@@ -1141,6 +1142,9 @@ try {
     $usedDeterministicFallback = $answer === '';
     if ($answer === '' && $organizationIntelligencePageContext !== []) {
         $answer = buildOrganizationIntelligenceFallbackAnswer($message, $organizationIntelligencePageContext);
+    }
+    if ($answer === '') {
+        $answer = (new ClarityDeterministicFallbackService())->build($message, $questionIntent);
     }
     $answer = $answer !== '' ? $answer : "I couldn't generate an answer. Try rephrasing your question.";
     $answer = unwrapAssistantAnswer($answer);

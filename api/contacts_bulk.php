@@ -122,6 +122,15 @@ try {
 } catch (InvalidArgumentException $e) {
     http_response_code(400);
     echo json_encode(['error' => $e->getMessage()]);
+} catch (RuntimeException $e) {
+    if ($e->getMessage() === 'The selected user is not a member of the active workspace.') {
+        http_response_code(400);
+        echo json_encode(['error' => $e->getMessage()]);
+    } else {
+        error_log('Bulk contacts request failed: ' . $e->getMessage());
+        http_response_code(500);
+        echo json_encode(['error' => 'The bulk contact request could not be completed.']);
+    }
 } catch (Throwable $e) {
     error_log('Bulk contacts request failed: ' . $e->getMessage());
     http_response_code(500);

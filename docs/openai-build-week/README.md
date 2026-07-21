@@ -37,7 +37,7 @@ The OpenAI model is used for contextual reasoning and explanation. Deterministic
 
 WebXpanse existed before Build Week and has been developed by founder Dennis Makobu over several months. Its pre-existing foundation includes workspace tenancy, CRM records, communications, tasks, pipelines, reporting, permissions, and automation infrastructure.
 
-The Build Week work concentrates that foundation into the submitted experience. The [Build Week change log](BUILD_WEEK_CHANGELOG.md) records the milestone hashes from the original July 14–19, 2026 development history, including:
+The Build Week work concentrates that foundation into the submitted experience. The [Build Week change log](BUILD_WEEK_CHANGELOG.md) records the milestone hashes from the original July 14–19, 2026 development history, while the [feature and evidence manifest](BUILD_WEEK_FILE_MANIFEST.md) maps judge-facing claims to public source and focused verification, including:
 
 - Clarity's AI business operating-system positioning;
 - the calm founder operating-rhythm command center;
@@ -51,7 +51,7 @@ Codex with GPT-5.6 was used for the Build Week implementation, debugging, focuse
 
 ## Source evaluation setup
 
-Requirements: PHP 8.1+, MySQL 8+, Composer, and Apache or another web server configured for the `public/` directory.
+Requirements: PHP 8.2+, MySQL 8+, Composer, and Apache or another web server configured for the `public/` directory.
 
 ```bash
 cp .env.example .env
@@ -62,10 +62,10 @@ php scripts/create_admin_user.php
 
 On Windows PowerShell, use `Copy-Item .env.example .env` instead of `cp`. Create the MySQL database named in `.env` before running migrations.
 
-With this repository at `C:\xampp\htdocs\crm`, open:
+With this repository at `C:\xampp\htdocs\webxpanse-build-week`, open:
 
 ```text
-http://localhost/crm/public/
+http://localhost/webxpanse-build-week/public/
 ```
 
 AI configuration is workspace-scoped. Save and enable an OpenAI-compatible provider in workspace Settings. Official OpenAI endpoints can use the Responses API path in `AIService`.

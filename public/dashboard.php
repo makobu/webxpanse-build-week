@@ -7613,7 +7613,9 @@ window.DashboardAsyncConfig = {
     var aiCoachButton = document.getElementById('ai-coach-open');
     if (aiCoachButton) {
         aiCoachButton.addEventListener('click', function firstCoachClick(event) {
-            if (window.ClarityChatBubble && typeof window.ClarityChatBubble.ask === 'function') {
+            if (aiCoachButton.hasAttribute('data-founder-command-coach')
+                && window.ClarityChatBubble
+                && typeof window.ClarityChatBubble.ask === 'function') {
                 event.preventDefault();
                 event.stopImmediatePropagation();
                 var title = String(aiCoachButton.dataset.constraintTitle || 'the current founder constraint').trim();

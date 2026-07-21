@@ -35,21 +35,6 @@ register_shutdown_function(function() {
     }
 });
 
-// #region agent log
-$logFile = __DIR__ . '/../.cursor/debug.log';
-$logEntry = json_encode([
-    'id' => 'log_' . time() . '_' . uniqid(),
-    'timestamp' => round(microtime(true) * 1000),
-    'location' => 'index.php:8',
-    'message' => 'Entry point loaded',
-    'data' => ['path' => $_SERVER['REQUEST_URI'] ?? '/'],
-    'sessionId' => 'debug-session',
-    'runId' => 'run1',
-    'hypothesisId' => 'D'
-]) . "\n";
-@file_put_contents($logFile, $logEntry, FILE_APPEND);
-// #endregion
-
 // Try to load autoloader with error handling
 try {
     $autoloadPath = __DIR__ . '/../vendor/autoload.php';
@@ -168,35 +153,8 @@ try {
     echo "</body></html>";
     exit;
 }
-// #region agent log
-$logEntry = json_encode([
-    'id' => 'log_' . time() . '_' . uniqid(),
-    'timestamp' => round(microtime(true) * 1000),
-    'location' => 'index.php:32',
-    'message' => 'Database initialized',
-    'data' => ['initialized' => true],
-    'sessionId' => 'debug-session',
-    'runId' => 'run1',
-    'hypothesisId' => 'D'
-]) . "\n";
-@file_put_contents($logFile, $logEntry, FILE_APPEND);
-// #endregion
-
 // Start session
 Session::start();
-// #region agent log
-$logEntry = json_encode([
-    'id' => 'log_' . time() . '_' . uniqid(),
-    'timestamp' => round(microtime(true) * 1000),
-    'location' => 'index.php:35',
-    'message' => 'Session started in index',
-    'data' => ['sessionStarted' => true],
-    'sessionId' => 'debug-session',
-    'runId' => 'run1',
-    'hypothesisId' => 'D'
-]) . "\n";
-@file_put_contents($logFile, $logEntry, FILE_APPEND);
-// #endregion
 
 // When this file is required by a page or API endpoint, it acts as the shared
 // bootstrap only. Route handling below should run only for direct front-controller
@@ -213,70 +171,24 @@ $path = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH);
 // Remove leading slash
 $path = ltrim($path, '/');
 
-// Remove base path (crm/public/ or public/) if present
-if (strpos($path, 'crm/public/') === 0) {
-    $path = substr($path, strlen('crm/public/'));
-} elseif ($path === 'crm/public' || $path === 'crm/public/') {
-    $path = '';
-} elseif (strpos($path, 'public/') === 0) {
-    $path = substr($path, strlen('public/'));
-} elseif ($path === 'public' || $path === 'public/') {
+// Remove the configured or derived public base path without assuming a
+// particular checkout directory name.
+$routeBasePath = trim(normalizePathPrefix(getBasePath()), '/');
+if ($routeBasePath !== '' && strpos($path, $routeBasePath . '/') === 0) {
+    $path = substr($path, strlen($routeBasePath) + 1);
+} elseif ($routeBasePath !== '' && ($path === $routeBasePath || $path === $routeBasePath . '/')) {
     $path = '';
 }
 
 // Default to dashboard if logged in, otherwise login
 if (empty($path) || $path === 'index.php') {
-    // #region agent log
-    $logEntry = json_encode([
-        'id' => 'log_' . time() . '_' . uniqid(),
-        'timestamp' => round(microtime(true) * 1000),
-        'location' => 'index.php:44',
-        'message' => 'Checking authentication for routing',
-        'data' => ['path' => $path],
-        'sessionId' => 'debug-session',
-        'runId' => 'run1',
-        'hypothesisId' => 'D'
-    ]) . "\n";
-    @file_put_contents($logFile, $logEntry, FILE_APPEND);
-    // #endregion
     if (Auth::check()) {
-        // #region agent log
-        $logEntry = json_encode([
-            'id' => 'log_' . time() . '_' . uniqid(),
-            'timestamp' => round(microtime(true) * 1000),
-            'location' => 'index.php:46',
-            'message' => 'User authenticated, redirecting to dashboard',
-            'data' => ['redirect' => 'dashboard.php'],
-            'sessionId' => 'debug-session',
-            'runId' => 'run1',
-            'hypothesisId' => 'D'
-        ]) . "\n";
-        @file_put_contents($logFile, $logEntry, FILE_APPEND);
-        // #endregion
-        // Get base path dynamically (function defined in config/constants.php)
-        $basePath = getBasePath();
-        header('Location: ' . $basePath . '/dashboard.php');
+        header('Location: ' . publicUrl('dashboard.php'));
         exit;
     } else {
-        // #region agent log
-        $logEntry = json_encode([
-            'id' => 'log_' . time() . '_' . uniqid(),
-            'timestamp' => round(microtime(true) * 1000),
-            'location' => 'index.php:49',
-            'message' => 'User not authenticated, redirecting to landing page',
-            'data' => ['redirect' => 'landing'],
-            'sessionId' => 'debug-session',
-            'runId' => 'run1',
-            'hypothesisId' => 'D'
-        ]) . "\n";
-        @file_put_contents($logFile, $logEntry, FILE_APPEND);
-        // #endregion
-        // Get base path dynamically (function defined in config/constants.php)
-        $basePath = getBasePath();
-        // Redirect to landing page root dynamically by stripping trailing /public if present.
-        $landingBase = preg_replace('#/public$#', '', rtrim($basePath, '/'));
-        $landingPath = ($landingBase === '' || $landingBase === '/') ? '/' : ($landingBase . '/');
-        header('Location: ' . $landingPath);
+        // A reviewer who opens the public application root should reach the
+        // sign-in surface directly, regardless of the checkout folder name.
+        header('Location: ' . publicUrl('login.php'));
         exit;
     }
 }
