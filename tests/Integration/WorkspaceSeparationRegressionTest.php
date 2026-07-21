@@ -411,9 +411,9 @@ class WorkspaceSeparationRegressionTest extends DatabaseTestCase
     private function insertCommunication(int $workspaceId, int $contactId, string $channel, array $metadata = []): int
     {
         Database::execute(
-            "INSERT INTO communications (workspace_id, uuid, contact_id, channel, direction, body, status, metadata, created_at)
-             VALUES (?, ?, ?, ?, 'inbound', 'Media message', 'sent', ?, NOW())",
-            [$workspaceId, sprintf('00000000-0000-4000-8000-%012d', random_int(1, 999999999999)), $contactId, $channel, json_encode($metadata)]
+            "INSERT INTO communications (workspace_id, uuid, contact_id, thread_key, channel, direction, body, status, metadata, created_at)
+             VALUES (?, ?, ?, ?, ?, 'inbound', 'Media message', 'sent', ?, NOW())",
+            [$workspaceId, uuid_v4(), $contactId, $channel . ':contact:' . $contactId, $channel, json_encode($metadata)]
         );
 
         return (int) Database::lastInsertId();

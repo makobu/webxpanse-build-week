@@ -31,7 +31,7 @@ class TenantEndpointIsolationTest extends DatabaseTestCase
         Database::execute(
             "INSERT INTO users (uuid, email, password_hash, role, created_at)
              VALUES (?, ?, ?, 'viewer', NOW())",
-            [uniqid('tenant-endpoint-user-', true), 'tenant-endpoint@example.com', password_hash('secret', PASSWORD_DEFAULT)]
+            [uuid_v4(), 'tenant-endpoint@example.com', password_hash('secret', PASSWORD_DEFAULT)]
         );
         $this->userId = (int) Database::lastInsertId();
 

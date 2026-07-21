@@ -10,7 +10,10 @@ class EmailAssistantResolverTest extends DatabaseTestCase
 {
     public function testResolveInvoiceByDealContext(): void
     {
-        Database::execute("INSERT INTO users (email, password_hash, role, created_at) VALUES ('owner@example.com', 'x', 'admin', NOW())");
+        Database::execute(
+            "INSERT INTO users (uuid, email, password_hash, role, created_at) VALUES (?, 'owner@example.com', 'x', 'admin', NOW())",
+            [uuid_v4()]
+        );
         $userId = (int) Database::lastInsertId();
         Database::execute("INSERT INTO contacts (workspace_id, first_name, last_name, email, created_by) VALUES (1, 'John', 'Buyer', 'john@example.com', ?)", [$userId]);
         $contactId = (int) Database::lastInsertId();
@@ -28,13 +31,16 @@ class EmailAssistantResolverTest extends DatabaseTestCase
 
     public function testResolveFromCustomerThreadUsesThreadContext(): void
     {
-        Database::execute("INSERT INTO users (email, password_hash, role, created_at) VALUES ('agent@example.com', 'x', 'admin', NOW())");
+        Database::execute(
+            "INSERT INTO users (uuid, email, password_hash, role, created_at) VALUES (?, 'agent@example.com', 'x', 'admin', NOW())",
+            [uuid_v4()]
+        );
         $userId = (int) Database::lastInsertId();
         Database::execute("INSERT INTO contacts (workspace_id, first_name, last_name, email, created_by) VALUES (1, 'Alice', 'Client', 'alice@example.com', ?)", [$userId]);
         $contactId = (int) Database::lastInsertId();
         Database::execute("INSERT INTO deals (workspace_id, title, stage, contact_id, created_by) VALUES (1, 'Consulting Package', 'negotiation', ?, ?)", [$contactId, $userId]);
         $dealId = (int) Database::lastInsertId();
-        Database::execute("INSERT INTO communications (workspace_id, uuid, contact_id, channel, direction, subject, body, status, created_at) VALUES (1, ?, ?, 'email', 'inbound', 'Pricing', 'Can you reduce the setup fee?', 'received', NOW())", [uuid_v4(), $contactId]);
+        Database::execute("INSERT INTO communications (workspace_id, uuid, contact_id, thread_key, channel, direction, subject, body, status, created_at) VALUES (1, ?, ?, ?, 'email', 'inbound', 'Pricing', 'Can you reduce the setup fee?', 'received', NOW())", [uuid_v4(), $contactId, 'email:contact:' . $contactId]);
         $communicationId = (int) Database::lastInsertId();
 
         $resolved = (new EmailAssistantResolver())->resolveFromCustomerThread($communicationId);
@@ -58,13 +64,16 @@ class EmailAssistantResolverTest extends DatabaseTestCase
                 updated_at = VALUES(updated_at)",
             ['00000000-0000-4000-8000-000000000002']
         );
-        Database::execute("INSERT INTO users (email, password_hash, role, created_at) VALUES ('foreign-agent@example.com', 'x', 'admin', NOW())");
+        Database::execute(
+            "INSERT INTO users (uuid, email, password_hash, role, created_at) VALUES (?, 'foreign-agent@example.com', 'x', 'admin', NOW())",
+            [uuid_v4()]
+        );
         $userId = (int) Database::lastInsertId();
         Database::execute("INSERT INTO contacts (workspace_id, first_name, last_name, email, created_by) VALUES (2, 'Foreign', 'Client', 'foreign-client@example.com', ?)", [$userId]);
         $contactId = (int) Database::lastInsertId();
         Database::execute("INSERT INTO deals (workspace_id, title, stage, contact_id, created_by) VALUES (2, 'Foreign Workspace Deal', 'proposal', ?, ?)", [$contactId, $userId]);
         $dealId = (int) Database::lastInsertId();
-        Database::execute("INSERT INTO communications (workspace_id, uuid, contact_id, channel, direction, subject, body, status, created_at) VALUES (2, ?, ?, 'email', 'inbound', 'Foreign Pricing', 'Can you reduce the setup fee?', 'received', NOW())", [uuid_v4(), $contactId]);
+        Database::execute("INSERT INTO communications (workspace_id, uuid, contact_id, thread_key, channel, direction, subject, body, status, created_at) VALUES (2, ?, ?, ?, 'email', 'inbound', 'Foreign Pricing', 'Can you reduce the setup fee?', 'received', NOW())", [uuid_v4(), $contactId, 'email:contact:' . $contactId]);
         $communicationId = (int) Database::lastInsertId();
 
         $resolver = new EmailAssistantResolver();
