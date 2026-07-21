@@ -40,6 +40,8 @@ final class MigrationStatementNormalizer
      */
     public static function normalizeWithLookup(string $statement, callable $exists): string
     {
+        $statement = self::normalizeTenantKeyNumericCasts($statement);
+
         if (stripos($statement, 'IF NOT EXISTS') === false && stripos($statement, 'IF EXISTS') === false) {
             return $statement;
         }
@@ -168,6 +170,15 @@ final class MigrationStatementNormalizer
                 '/\bFOREIGN\s+KEY\s+IF\s+NOT\s+EXISTS\b/i',
             ],
             ['ADD COLUMN', 'ADD $1', 'DROP INDEX', 'FOREIGN KEY'],
+            $statement
+        ) ?? $statement;
+    }
+
+    private static function normalizeTenantKeyNumericCasts(string $statement): string
+    {
+        return preg_replace(
+            "/CAST\\(SUBSTRING_INDEX\\(([A-Za-z0-9_]+\\.tenant_key),\\s*':',\\s*-1\\)\\s+AS\\s+UNSIGNED\\)/i",
+            "CASE WHEN $1 REGEXP ':[0-9]+$' THEN CAST(SUBSTRING_INDEX($1, ':', -1) AS UNSIGNED) ELSE NULL END",
             $statement
         ) ?? $statement;
     }

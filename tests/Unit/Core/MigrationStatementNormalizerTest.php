@@ -58,4 +58,18 @@ final class MigrationStatementNormalizerTest extends TestCase
         $this->assertStringContainsString('ADD INDEX idx_workspace', $normalized);
         $this->assertStringNotContainsString('IF NOT EXISTS', $normalized);
     }
+
+    public function testMakesLegacyTenantKeyNumericCastsStrictModeSafe(): void
+    {
+        $normalized = MigrationStatementNormalizer::normalizeWithLookup(
+            "UPDATE ai_autonomy_domain_controls adc "
+                . "LEFT JOIN contacts c ON c.id = CAST(SUBSTRING_INDEX(adc.tenant_key, ':', -1) AS UNSIGNED) "
+                . "SET adc.workspace_id = c.workspace_id",
+            static fn(): bool => false
+        );
+
+        $this->assertStringContainsString("adc.tenant_key REGEXP ':[0-9]+$'", $normalized);
+        $this->assertStringContainsString('ELSE NULL END', $normalized);
+        $this->assertStringNotContainsString('c.id = CAST(SUBSTRING_INDEX', $normalized);
+    }
 }
