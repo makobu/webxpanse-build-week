@@ -300,6 +300,11 @@ abstract class DatabaseTestCase extends TestCase
 
     private function executeMigrationStatement(PDO $pdo, string $statement): void
     {
+        $statement = \CRM\MigrationStatementNormalizer::normalize($pdo, $statement);
+        if (trim($statement) === '') {
+            return;
+        }
+
         $stmt = $pdo->prepare($statement);
         $stmt->execute();
 
