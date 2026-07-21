@@ -27,7 +27,7 @@ class InvoiceWorkspaceIsolationTest extends DatabaseTestCase
         Database::execute(
             "INSERT INTO users (uuid, email, password_hash, role, created_at)
              VALUES (?, ?, ?, 'admin', NOW())",
-            [uniqid('invoice-isolation-user-', true), 'invoice-isolation@example.test', password_hash('secret', PASSWORD_DEFAULT)]
+            [uuid_v4(), 'invoice-isolation@example.test', password_hash('secret', PASSWORD_DEFAULT)]
         );
         $this->userId = (int) Database::lastInsertId();
 
@@ -119,7 +119,7 @@ class InvoiceWorkspaceIsolationTest extends DatabaseTestCase
         Database::execute(
             "INSERT INTO contacts (workspace_id, uuid, first_name, last_name, email, created_at)
              VALUES (?, ?, ?, ?, ?, NOW())",
-            [$workspaceId, uniqid('invoice-contact-', true), 'Invoice', (string) $workspaceId, $email]
+            [$workspaceId, uuid_v4(), 'Invoice', (string) $workspaceId, $email]
         );
         $contactId = (int) Database::lastInsertId();
 

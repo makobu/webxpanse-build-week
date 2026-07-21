@@ -107,6 +107,7 @@ function splitSqlStatements(string $sql): array
  */
 function executeMigrationStatement(PDO $pdo, string $statement): void
 {
+    $statement = \CRM\MigrationStatementNormalizer::normalize($pdo, $statement);
     $trimmed = ltrim($statement);
     if ($trimmed === '') {
         return;

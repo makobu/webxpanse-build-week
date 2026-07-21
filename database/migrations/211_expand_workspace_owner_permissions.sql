@@ -95,6 +95,10 @@ UPDATE user_roles ur
 JOIN roles cr ON cr.id = ur.role_id
 JOIN roles owner_role ON owner_role.slug = 'owner'
 JOIN users u ON u.id = ur.user_id
+LEFT JOIN roles super_role ON super_role.slug = 'superadmin'
+LEFT JOIN user_roles super_ur
+    ON super_ur.user_id = ur.user_id
+   AND super_ur.role_id = super_role.id
 SET ur.role_id = owner_role.id,
     ur.updated_at = NOW(),
     u.role = 'owner'
@@ -106,10 +110,4 @@ WHERE cr.slug = 'admin'
         AND wm.membership_status = 'active'
         AND (wm.is_owner = 1 OR wm.role_slug = 'owner')
   )
-  AND NOT EXISTS (
-      SELECT 1
-      FROM user_roles super_ur
-      JOIN roles super_role ON super_role.id = super_ur.role_id
-      WHERE super_ur.user_id = ur.user_id
-        AND super_role.slug = 'superadmin'
-  );
+  AND super_ur.user_id IS NULL;

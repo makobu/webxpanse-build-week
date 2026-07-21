@@ -113,7 +113,12 @@ function collectFinished(array &$running, array &$failures): void
         foreach ($task['pipes'] as $pipe) {
             fclose($pipe);
         }
-        $exitCode = proc_close($task['process']);
+        // On Unix, proc_close() may return -1 after proc_get_status() has
+        // already observed the child exit. Preserve the status exit code so a
+        // successful lint is not reported as a CI failure.
+        $statusExitCode = (int) ($status['exitcode'] ?? -1);
+        $closeExitCode = proc_close($task['process']);
+        $exitCode = $statusExitCode >= 0 ? $statusExitCode : $closeExitCode;
         if ($exitCode !== 0) {
             $failures[] = trim((string) $task['output']) ?: 'Syntax check failed for ' . (string) $task['path'];
         }

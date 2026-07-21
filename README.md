@@ -12,10 +12,12 @@ The Build Week entry focuses on a narrow daily loop for solo founders:
 4. Connect the founder's decision to a dated commitment and CRM action.
 5. Report only verified automation outcomes.
 
-Start with the [Build Week submission brief](docs/openai-build-week/README.md), [change log](docs/openai-build-week/BUILD_WEEK_CHANGELOG.md), [three-minute demo script](docs/openai-build-week/DEMO_SCRIPT.md), [Devpost copy](docs/openai-build-week/DEVPOST_SUBMISSION.md), and [final field package](docs/openai-build-week/SUBMISSION_FIELDS.md).
+Start with the [Build Week submission brief](docs/openai-build-week/README.md), [change log](docs/openai-build-week/BUILD_WEEK_CHANGELOG.md), [feature manifest](docs/openai-build-week/BUILD_WEEK_FILE_MANIFEST.md), [three-minute demo script](docs/openai-build-week/DEMO_SCRIPT.md), [Devpost copy](docs/openai-build-week/DEVPOST_SUBMISSION.md), and [final field package](docs/openai-build-week/SUBMISSION_FIELDS.md).
 
-![Status](https://img.shields.io/badge/status-Build%20Week%20ready-blue)
-![PHP Version](https://img.shields.io/badge/PHP-8.1%2B-blue)
+Dennis Makobu built the entry as a solo founder. Codex with GPT-5.6 was used during Build Week to inspect the real runtime, implement and debug the founder command center, harden the isolated presentation workspace, write focused tests, verify browser behavior, and prepare the submission. Earlier WebXpanse development also used ChatGPT and Codex with GPT-5.4 and GPT-5.5. Dennis made the product, safety, and submission decisions.
+
+![Status](https://img.shields.io/badge/status-core%20verified%20%E2%80%94%20video%20pending-yellow)
+![PHP Version](https://img.shields.io/badge/PHP-8.2%2B-blue)
 ![License](https://img.shields.io/badge/license-Proprietary-red)
 
 ## 🚀 Features
@@ -71,7 +73,7 @@ The source setup below is provided for Build Week evaluation and platform develo
 
 ## 📋 Local Evaluation Requirements
 
-- **PHP** 8.1 or higher
+- **PHP** 8.2 or higher
 - **MySQL** 8.0 or higher
 - **Composer** (for dependency management)
 - **Redis** (optional, recommended for caching)
@@ -95,7 +97,8 @@ The source setup below is provided for Build Week evaluation and platform develo
 3. **Configure environment**
    ```bash
    cp .env.example .env
-   # Edit .env with your database credentials
+   # Edit .env with your database credentials.
+   # If the clone folder or web URL differs, also update APP_URL and BASE_PATH.
    ```
 
 4. **Run database migrations**
@@ -170,7 +173,7 @@ vendor/bin/phpunit tests/Integration
 ## 🏗️ Project Structure
 
 ```
-crm/
+webxpanse-build-week/
 ├── api/                 # API endpoints
 ├── cli/                 # CLI scripts and workers
 ├── config/              # Configuration files
@@ -277,17 +280,10 @@ See [TODO.md](TODO.md) for current development priorities and upcoming features.
 ## 📈 Status
 
 **Current Version**: 1.0.0-beta  
-**Completion**: 94%  
-**Status**: Build Week evaluation snapshot ready (core experience complete)
+**Build Week code status**: Core Clarity experience verified on PHP 8.2
+**Submission status**: Public video and final Devpost submission still pending
 
-### Completion Breakdown
-- ✅ Core Features: 100%
-- ✅ Communication System: 100%
-- ✅ Integrations: 80% (SMS ✅, iCal ✅, Webhooks ✅, API Keys ✅)
-- ✅ Monitoring: 85%
-- ✅ Documentation: 95% (All guides complete, API collection ready)
-- ⚠️ Testing: 70%
-- ✅ AI Features: 70%
+The judge-facing claim is intentionally narrow: business context, one ranked constraint, an evidence-grounded Clarity explanation, a dated commitment, and verified outcome boundaries. Broad platform modules outside that recorded path are not presented as completed Build Week work.
 
 ---
 

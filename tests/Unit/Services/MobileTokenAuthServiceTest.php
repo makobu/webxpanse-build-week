@@ -52,13 +52,13 @@ class MobileTokenAuthServiceTest extends DatabaseTestCase
     {
         Database::execute(
             "INSERT INTO users (uuid, email, password_hash, role, created_at) VALUES (?, ?, ?, 'viewer', NOW())",
-            [uniqid('mobile-owner-', true), 'mobile-owner@example.com', password_hash('secret', PASSWORD_DEFAULT)]
+            [uuid_v4(), 'mobile-owner@example.com', password_hash('secret', PASSWORD_DEFAULT)]
         );
         $ownerUserId = (int) Database::lastInsertId();
 
         Database::execute(
             "INSERT INTO users (uuid, email, password_hash, role, created_at) VALUES (?, ?, ?, 'viewer', NOW())",
-            [uniqid('mobile-viewer-', true), 'mobile-viewer@example.com', password_hash('secret', PASSWORD_DEFAULT)]
+            [uuid_v4(), 'mobile-viewer@example.com', password_hash('secret', PASSWORD_DEFAULT)]
         );
         $viewerUserId = (int) Database::lastInsertId();
 
@@ -82,7 +82,7 @@ class MobileTokenAuthServiceTest extends DatabaseTestCase
     {
         Database::execute(
             "INSERT INTO users (uuid, email, password_hash, role, created_at) VALUES (?, ?, ?, 'viewer', NOW())",
-            [uniqid('mobile-expiry-', true), 'mobile-expiry@example.com', password_hash('secret', PASSWORD_DEFAULT)]
+            [uuid_v4(), 'mobile-expiry@example.com', password_hash('secret', PASSWORD_DEFAULT)]
         );
         $userId = (int) Database::lastInsertId();
 

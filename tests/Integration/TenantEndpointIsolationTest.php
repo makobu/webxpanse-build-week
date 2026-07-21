@@ -31,7 +31,7 @@ class TenantEndpointIsolationTest extends DatabaseTestCase
         Database::execute(
             "INSERT INTO users (uuid, email, password_hash, role, created_at)
              VALUES (?, ?, ?, 'viewer', NOW())",
-            [uniqid('tenant-endpoint-user-', true), 'tenant-endpoint@example.com', password_hash('secret', PASSWORD_DEFAULT)]
+            [uuid_v4(), 'tenant-endpoint@example.com', password_hash('secret', PASSWORD_DEFAULT)]
         );
         $this->userId = (int) Database::lastInsertId();
 
@@ -43,7 +43,8 @@ class TenantEndpointIsolationTest extends DatabaseTestCase
         $this->workspaceTwoContactId = $this->insertContact(2, 'Foreign', 'Contact', 'foreign-contact@example.test');
 
         Database::execute(
-            "INSERT INTO companies (workspace_id, name, created_at) VALUES (2, 'Foreign Company', NOW())"
+            "INSERT INTO companies (workspace_id, uuid, name, created_at) VALUES (2, ?, 'Foreign Company', NOW())",
+            [uuid_v4()]
         );
         $this->workspaceTwoCompanyId = (int) Database::lastInsertId();
 
@@ -63,8 +64,8 @@ class TenantEndpointIsolationTest extends DatabaseTestCase
 
         Database::execute(
             "INSERT INTO communications (workspace_id, uuid, contact_id, thread_key, channel, direction, subject, body, status, created_at)
-             VALUES (2, ?, ?, ?, 'email', 'inbound', 'Foreign Subject', 'Foreign conversation body', 'unread', NOW())",
-            [uniqid('comm-', true), $this->workspaceTwoContactId, 'email:contact:' . $this->workspaceTwoContactId]
+             VALUES (2, ?, ?, ?, 'email', 'inbound', 'Foreign Subject', 'Foreign conversation body', 'delivered', NOW())",
+            [uuid_v4(), $this->workspaceTwoContactId, 'email:contact:' . $this->workspaceTwoContactId]
         );
         $this->workspaceTwoCommunicationId = (int) Database::lastInsertId();
         $this->markDemoPublicSeed('communications', $this->workspaceTwoCommunicationId);
@@ -72,8 +73,8 @@ class TenantEndpointIsolationTest extends DatabaseTestCase
 
         Database::execute(
             "INSERT INTO communications (workspace_id, uuid, contact_id, thread_key, channel, direction, subject, body, status, created_at)
-             VALUES (1, ?, ?, ?, 'email', 'inbound', 'Current Subject', 'Current conversation body', 'unread', NOW())",
-            [uniqid('comm-', true), $this->workspaceOneContactId, 'email:contact:' . $this->workspaceOneContactId]
+             VALUES (1, ?, ?, ?, 'email', 'inbound', 'Current Subject', 'Current conversation body', 'delivered', NOW())",
+            [uuid_v4(), $this->workspaceOneContactId, 'email:contact:' . $this->workspaceOneContactId]
         );
         $this->markDemoPublicSeed('communications', (int) Database::lastInsertId());
         $this->upsertConversationThread(1, $this->workspaceOneContactId, 'email:contact:' . $this->workspaceOneContactId);
@@ -865,7 +866,7 @@ class TenantEndpointIsolationTest extends DatabaseTestCase
         Database::execute(
             "INSERT INTO contacts (workspace_id, uuid, first_name, last_name, email, assigned_to, created_at)
              VALUES (?, ?, ?, ?, ?, ?, NOW())",
-            [$workspaceId, uniqid('contact-', true), $firstName, $lastName, $email, $this->userId]
+            [$workspaceId, uuid_v4(), $firstName, $lastName, $email, $this->userId]
         );
 
         $contactId = (int) Database::lastInsertId();
@@ -972,7 +973,7 @@ class TenantEndpointIsolationTest extends DatabaseTestCase
              ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'sent', ?, ?, ?, ?, ?, ?)",
             [
                 $workspaceId,
-                uniqid('mobile-inbox-comm-', true),
+                uuid_v4(),
                 $contactId,
                 $threadKey,
                 (string) ($overrides['channel'] ?? 'email'),

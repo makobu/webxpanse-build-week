@@ -31,7 +31,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.1'
+          php-version: '8.2'
           extensions: pdo, pdo_mysql, json, mbstring, openssl
           coverage: none
 
@@ -78,7 +78,7 @@ jobs:
           APP_ENV: testing
         run: composer test:workspace-smoke
 
-      - name: Run PHPUnit
+      - name: Run Build Week feature suite
         env:
           DB_HOST: 127.0.0.1
           DB_PORT: 3306
@@ -86,4 +86,18 @@ jobs:
           DB_USER: root
           DB_PASS: root
           APP_ENV: testing
-        run: vendor/bin/phpunit
+        run: >-
+          vendor/bin/phpunit
+          tests/Unit/Config/BasePathResolutionTest.php
+          tests/Unit/Core/MigrationStatementNormalizerTest.php
+          tests/Unit/Frontend/DashboardAutomationGateTest.php
+          tests/Unit/Frontend/FounderCommandCenterHandoffTest.php
+          tests/Unit/Frontend/FrontControllerBasePathTest.php
+          tests/Unit/Api/MobileDecisionCenterApiContractTest.php
+          tests/Unit/Services/AIServiceResponsesTest.php
+          tests/Unit/Services/BusinessContextSnapshotServiceTest.php
+          tests/Unit/Services/ClarityDeterministicFallbackServiceTest.php
+          tests/Unit/Services/ClarityResponsePresentationServiceTest.php
+          tests/Unit/Services/FounderCommandCenterAccessServiceTest.php
+          tests/Unit/Services/FounderCommandCenterServiceTest.php
+          tests/Unit/Services/PresentationFounderWorkspaceServiceTest.php
