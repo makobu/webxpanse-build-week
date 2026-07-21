@@ -87,6 +87,7 @@ abstract class DatabaseTestCase extends TestCase
                 \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
                 \PDO::ATTR_EMULATE_PREPARES => true,
                 \PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => true,
+                \PDO::MYSQL_ATTR_INIT_COMMAND => "SET SESSION sql_mode = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION'",
             ],
         ]);
         Authorization::resetCaches();

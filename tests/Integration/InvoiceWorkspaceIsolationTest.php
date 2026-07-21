@@ -119,7 +119,7 @@ class InvoiceWorkspaceIsolationTest extends DatabaseTestCase
         Database::execute(
             "INSERT INTO contacts (workspace_id, uuid, first_name, last_name, email, created_at)
              VALUES (?, ?, ?, ?, ?, NOW())",
-            [$workspaceId, uniqid('invoice-contact-', true), 'Invoice', (string) $workspaceId, $email]
+            [$workspaceId, uuid_v4(), 'Invoice', (string) $workspaceId, $email]
         );
         $contactId = (int) Database::lastInsertId();
 
