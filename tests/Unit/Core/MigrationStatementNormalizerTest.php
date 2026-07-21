@@ -72,4 +72,19 @@ final class MigrationStatementNormalizerTest extends TestCase
         $this->assertStringContainsString('ELSE NULL END', $normalized);
         $this->assertStringNotContainsString('c.id = CAST(SUBSTRING_INDEX', $normalized);
     }
+
+    public function testNormalizesStandaloneConditionalCreateIndex(): void
+    {
+        $missing = MigrationStatementNormalizer::normalizeWithLookup(
+            'CREATE INDEX IF NOT EXISTS idx_status ON sample (status)',
+            static fn(): bool => false
+        );
+        $existing = MigrationStatementNormalizer::normalizeWithLookup(
+            'CREATE INDEX IF NOT EXISTS idx_status ON sample (status)',
+            static fn(): bool => true
+        );
+
+        $this->assertSame('CREATE INDEX idx_status ON sample (status)', $missing);
+        $this->assertSame('', $existing);
+    }
 }

@@ -47,6 +47,25 @@ final class MigrationStatementNormalizer
         }
 
         if (preg_match(
+            '/^\s*CREATE\s+(?:UNIQUE\s+)?INDEX\s+IF\s+NOT\s+EXISTS\s+`?([A-Za-z0-9_]+)`?\s+ON\s+((?:`[^`]+`|[A-Za-z0-9_]+)(?:\s*\.\s*(?:`[^`]+`|[A-Za-z0-9_]+))?)/i',
+            $statement,
+            $indexMatch
+        ) === 1) {
+            $tableParts = preg_split('/\s*\.\s*/', str_replace('`', '', (string) $indexMatch[2])) ?: [];
+            $table = (string) end($tableParts);
+            if ($exists('index', $table, (string) $indexMatch[1])) {
+                return '';
+            }
+
+            return preg_replace(
+                '/^(\s*CREATE\s+(?:UNIQUE\s+)?INDEX)\s+IF\s+NOT\s+EXISTS\s+/i',
+                '$1 ',
+                $statement,
+                1
+            ) ?? $statement;
+        }
+
+        if (preg_match(
             '/^\s*ALTER\s+TABLE\s+((?:`[^`]+`|[A-Za-z0-9_]+)(?:\s*\.\s*(?:`[^`]+`|[A-Za-z0-9_]+))?)\s+([\s\S]+)$/i',
             $statement,
             $matches
